@@ -16,7 +16,6 @@ export default function SearchBar() {
     const response = await fetch(`https://jsonplaceholder.typicode.com/comments?postId=${keyword}`)
     const result =  await response.json() 
     setMovies(result)
-    console.log(result)
   }
 
   const searchRef =useRef()
@@ -44,7 +43,7 @@ export default function SearchBar() {
     };
   }, []);
 
-  console.log(showSearch)
+  // console.log(showSearch)
   return (
     <>
       <div className={styles.container}>

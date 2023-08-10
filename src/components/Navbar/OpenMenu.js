@@ -5,10 +5,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Link from 'next/link';
 
 
-
 const OpenMenu = () => {
     const [showNavbar, setShowNavbar] = useState(false);
     const navbarRef = useRef(null);
+    const navbarRef1 =useRef()
   
     const handleShowNavbar = () => {
       setShowNavbar(!showNavbar);
@@ -18,15 +18,16 @@ const OpenMenu = () => {
       if (!navbarRef.current || navbarRef.current.contains(event.target)) {
         return;
       }
+      else if (!navbarRef1.current || navbarRef1.current.contains(event.target)) {
+        return;
+      }
       else{
         setShowNavbar(false);
       }
       
     };
   
-    const handleMenuItemClick = () => {
-      setShowNavbar(false);
-    };
+
   
     useEffect(() => {
       document.addEventListener('mousedown', handleClickOutside);
@@ -35,30 +36,30 @@ const OpenMenu = () => {
       };
     }, []);
 
-    console.log(showNavbar)
+    // console.log(showNavbar)
     return (
       <>
       <div className={styles.menuIcon} onClick={handleShowNavbar} ref={navbarRef}>
           <MenuIcon fontSize='large' />
         </div>
         <div
-          className={`${styles.toggleMenu} ${showNavbar && styles.active}`}
+          className={`${styles.toggleMenu} ${showNavbar && styles.active}`} ref={navbarRef1}
         >
           <ul>
             <li className={styles.toggleMenuItem}>
-              <Link className={styles.link} href="/filmler" onClick={handleMenuItemClick}>Filmler</Link>
+              <Link className={styles.link} href="/filmler" onClick={()=>setShowNavbar(false)}>Filmler</Link>
             </li>
             <li className={styles.toggleMenuItem}>
-              <Link className={styles.link} href="/diziler" onClick={handleMenuItemClick}>Diziler</Link>
+              <Link className={styles.link} href="/diziler" onClick={()=>setShowNavbar(false)}>Diziler</Link>
             </li>
             <li className={styles.toggleMenuItem}>
-              <Link className={styles.link} href="/vizyondakifilmler" onClick={handleMenuItemClick}>Vizyondaki Filmler</Link>
+              <Link className={styles.link} href="/vizyondakifilmler" onClick={()=>setShowNavbar(false)}>Vizyondaki Filmler</Link>
             </li>
             <li className={styles.toggleMenuItem}>
-              <Link href="/profile" className={styles.link} onClick={handleMenuItemClick}>Giriş Yap</Link>
+              <Link href="/login" className={styles.link} onClick={()=>setShowNavbar(false)}>Giriş Yap</Link>
             </li>
             <li className={styles.toggleMenuItem}>
-              <Link href="/profile" className={styles.link} onClick={handleMenuItemClick}>Çıkış Yap</Link>
+              <Link href="/profile" className={styles.link} onClick={()=>setShowNavbar(false)}>Çıkış Yap</Link>
             </li>
           </ul>
         </div>

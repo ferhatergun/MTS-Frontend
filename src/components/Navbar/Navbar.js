@@ -1,7 +1,8 @@
 import styles from './page.module.css'
 import SearchBar from '../SearchBar/SearchBar'
-import '$/app/globals.css'
+import '../../app/globals.css'
 import OpenMenu from './OpenMenu';
+import Link from 'next/link';
 
 export default function Navbar(){
     return(
@@ -16,7 +17,7 @@ export default function Navbar(){
                     <li className={styles.ustNavItem}>
                         <OpenMenu />
                         <div className={styles.Button}>
-                            Giriş Yap
+                            <Link href="/login">Giriş Yap</Link>
                         </div>
                     </li>
                 </ul>
@@ -28,7 +29,6 @@ export default function Navbar(){
                     <li className={styles.altNavItem}>Vizyondaki Filmler</li>
                 </ul>
             </div>
-            
         </div>
     </>
     )
