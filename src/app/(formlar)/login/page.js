@@ -133,7 +133,7 @@ const Login = () => {
                                             label="Email" 
                                             onChange={handleChange}
                                             value={values.email}
-                                            onBlur={handleBlur}
+                                            onBlur={handleBlur} 
                                             error={errors.email && touched.email}
                                             helperText={errors.email && touched.email ? errors.email:null}
                                             sx={{...inputstyles, ...erorStyles}}

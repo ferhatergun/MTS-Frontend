@@ -21,7 +21,7 @@
     gap: 15px;
 }
 .leftForm_register{
-    min-width: 400px;
+    max-width: 500px;
     padding: 5% 5%;
     background-color: #fff;
     border-radius: 10px;
