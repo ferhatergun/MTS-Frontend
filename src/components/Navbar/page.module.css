@@ -1,19 +1,16 @@
 .container{
     width:100vw;
-    /* height: 95px; */
     background-color: #77091C;
 }
 .ustContainer{
     width: 80vw;
     height: 50px;
-    /* background-color: yellow; */
     margin:auto;
     padding:10px 20px  20px;
 }
 .altContainer{
     width: 100vw;
     height: 45px;
-    /* background-color: brown; */
 }
 .ustNavbar{
     display:flex;
@@ -44,13 +41,13 @@
     right: 0;
     top:60px;
     padding:10px 20px;
+    z-index: 999;
 }
 .active{
     display:block ;
 }
 
 .toggleMenuItem {
-    /* padding:10px 0; */
     width: 200px;
     height: 60px;
     color:white;
