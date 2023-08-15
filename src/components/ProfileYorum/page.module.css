@@ -1,12 +1,32 @@
 .container{
     width: 100%;
-    height: 150px;
-    background-color: aqua;
+    background-color: rgb(230, 230, 230);
     margin:5px 0;
+    display: flex;
 }
 .Image{
     width: 100px;
-    height: 100%;
+    height: 120px;
     position: relative;
     object-fit: contain;
+}
+.contentDiv{
+    padding: 1% 2%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.movieName{
+    font-size: 20px;
+    color:var(--color1);
+    font-weight: bold;
+    padding-bottom: 3px;
+}
+.content{
+    padding: 10px 0;
+}
+
+.link{
+    color:var(--color1);
+
 }
