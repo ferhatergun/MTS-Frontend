@@ -1,10 +1,11 @@
 .container{
-    width: 80vw;
-    background-color: antiquewhite;
+    width: 60vw;
+    /* background-color: antiquewhite; */ 
     margin:auto;
+    padding-bottom: 20px;
 }
 .headerDiv{
-    width: 80vw;
+    width: 100%;
     background-color: yellow;
     margin: auto;
     padding-top:5vh;
@@ -45,8 +46,15 @@
 }
 .menuItem{
     /* background-color: aqua; */
-    padding: 5px 20px;
+    padding: 15px 20px;
 }
 .active {
     border-bottom: 2px solid red;
+}
+
+
+@media(max-width:700px){
+    .container{
+        width: 95vw !important;
+    }
 }

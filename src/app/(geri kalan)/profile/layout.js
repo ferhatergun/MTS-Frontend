@@ -9,7 +9,6 @@ import Link from 'next/link'
 export default function layout({children}) {
   const pathname = usePathname()
   const path=pathname.split("/")
-  console.log(path)
   return (
     <div className={styles.container} >
         <div className={styles.headerDiv}>
