@@ -1,0 +1,98 @@
+.commnetCreateDiv{
+    width: 100%;
+}
+.topComment{
+    display: flex;
+    align-items: center; 
+    gap: 30px;
+    margin-bottom: 20px;
+}
+.bottomComment{
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+.sendBtn{
+    width: 20vw;
+    height: 50px;
+    background-color: antiquewhite;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    gap: 5px;
+}
+.commentInput{
+    width: 80vw;
+}
+
+.commentDiv{
+    /* background-color: aliceblue; */
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.commentTop{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.commentBottom{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap:3%;
+    height: 40px;
+}
+.commentIcon{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    height: 100%;
+    padding: 2%;
+    color: black;
+}
+.IconChecked{
+    color: purple;
+}
+.commentIconn{
+    display: flex;
+    align-items: center;
+    gap: 1%;
+    margin-left: auto;
+    height: 100%;
+    padding: 2%;
+}
+.commentContent{
+    padding: 20px;
+}
+.menu ul{
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+@media(max-width:700px){
+    .container{
+        width: 95vw;
+    }
+
+}
+@media(max-width:500px){
+    .bottomComment{
+        flex-wrap: wrap;
+    }
+    .commentInput{
+        width: 100vw !important;
+    }
+    .sendBtn{
+        width: 100%;
+    }
+    .commentBottom{
+        font-size: 13px;
+    }
+    .Icon,.IconChecked{
+        font-size: 20px !important;
+    }
+    
+}
