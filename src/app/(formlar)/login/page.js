@@ -9,9 +9,6 @@ import img from '../../../assets/login.jpg'
 import { Formik } from 'formik'
 import * as yup from "yup"
 import { motion } from "framer-motion";
-// import { useDispatch } from 'react-redux';
-// import { updateUser } from '../../redux/UserSlice';
-// import { updateOrganizer } from '../../redux/OrganizerSlice';
 import IconButton from "@mui/material/IconButton";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import InputLabel from "@mui/material/InputLabel";
@@ -21,7 +18,8 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import {FormHelperText} from '@mui/material';
 import Link from 'next/link';
 import Image from 'next/image';
-
+import {userLogin} from '$/utils/AuthOperations';
+import { useRouter } from 'next/navigation';
 
 
 const Login = () => {
@@ -33,7 +31,6 @@ const Login = () => {
       event.preventDefault();
     };
 
-    // const dispatch=useDispatch()
 
     const inputstyles = {
         "& .MuiInputLabel-root.Mui-focused ": {
@@ -54,47 +51,8 @@ const Login = () => {
           marginLeft:0
         }
     }
-
-    const userLogin=async(values,setErrors)=>{
-        const data={
-            email:values.email,
-            password:values.password
-        }
-        try{
-            const response = await fetch("http://localhost:5000/users/login",{
-                method:'POST',
-                headers:{
-                    'Content-Type':'application/json'
-                },
-                body:JSON.stringify(data)
-                 }) 
-                 const result = await response.json(); // database den gelen mesaj 
-                 
-                console.log(result)
-                if(result.status == 'success'){
-                    console.log("kayıt başarılı")
-                    localStorage.setItem("user",JSON.stringify(result.user))
-                    dispatch(updateUser(result.user))
-                    localStorage.removeItem("organizer") // iki kllanıcı türü aynı anda giriş yapmış olamaz öncekini sileriz
-                    dispatch(updateOrganizer(false))
-                }
-                else{
-                    console.log("kayıt başarısız")
-                    if(result.error =="Kayitli kullanici bulunamadi"){
-                        setErrors({ email: 'Kayıtlı Kullanıcı Bulunamadı' })
-                    }
-                    else if(result.error =="Girdiginiz şifre yanlis"){
-                        setErrors({ password: 'Girdiğiniz Şifre Yanlış' })
-                    }
-                }
-
-
-        }catch(e){
-            console.log(e)
-        }
-
-    }
-
+    
+    const router = useRouter()
   return (
     <div>
         <Grid container>
@@ -121,7 +79,7 @@ const Login = () => {
                             onSubmit={(values,{setErrors})=>{ // form submit olduktan sonra yapılacaklar
 
                                     console.log(values)
-                                    userLogin(values,setErrors)
+                                    userLogin(values,setErrors,router)
                                     
                                 }}
                             >

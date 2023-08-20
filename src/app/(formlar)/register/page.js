@@ -10,7 +10,8 @@ import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { motion } from "framer-motion";
 import Link from 'next/link'
 import Image from 'next/image'
-
+import { userRegister } from '$/utils/AuthOperations'
+import { useRouter } from 'next/navigation'
 
 
 const Register = () => {
@@ -46,47 +47,7 @@ const Register = () => {
         }
     }
 
-
-    const userRegister=async(values,setErrors)=>{
-        const data={
-            name:"ali",
-            surname:values.namesurname,
-            telephone:values.phonenumber,
-            email:values.email,
-            password:values.password
-        }
-         try{
-            const response = await fetch("http://localhost:5000/users/register",{
-                method:'POST',
-                headers:{
-                    'Content-Type':'application/json'
-                },
-                body:JSON.stringify(data)
-                 }) 
-                 const result = await response.json(); // database den gelen mesaj 
-                 
-                console.log(result)
-                if(result.status === 'success'){ // kayıt başarılı ise giriş yap sayfasına yönlendiriyoruz
-                    console.log("kayıt başarılı")
-                    navigate("/login")
-                }
-                else{ // hatanın kaynağını bulup kullanıcıya gösteriyoruz 
-                    console.log("kayıt başarısız")
-                   if(result.message ==='Bu telefon numarası zaten kullanılıyor.'){ 
-                    setErrors({ phonenumber: 'Telefon numarası kullanımda' })
-                   }
-                   else if(result.message === 'Bu e-posta adresi zaten kullanılıyor.'){ 
-                    setErrors({ email: 'Email kullanımda' })
-                   }
-                   else if(result.message === 'Bu telefon numarası ve e-posta adresi zaten kullanılıyor.'){
-                    setErrors({email:'Email kullanımda',phonenumber:'Telefon numarası kullanımda'})
-                   }
-                }
-        }catch(e){
-            console.log(e)
-        }  
-    }
-
+   
  
     const Controlpassword=(values)=>{
         if((regexBig.test(values.password) || regexBig.test(values.trypassword))&& 
@@ -101,6 +62,9 @@ const Register = () => {
             values.passwordControl=false
         }
     }
+
+
+const router = useRouter()
  
   return (
     <div>
@@ -117,7 +81,7 @@ const Register = () => {
                             <Formik
 
                             initialValues={{
-                                namesurname:"",
+                                UserName:"",
                                 email:"",
                                 phonenumber:"",
                                 password:"",
@@ -126,7 +90,7 @@ const Register = () => {
                             }}
                             validationSchema={
                                 yup.object({
-                                    namesurname:yup.string().required("İsim alanı boş bırakılamaz"),
+                                    UserName:yup.string().required("İsim alanı boş bırakılamaz"),
                                     email:yup.string().email("Lütfen Geçerli Bir Mail Giriniz( @ )").required("Email Boş Bırakilamaz") ,
                                     phonenumber:yup.string().min(11,"Eksik numara girdiniz").required("Telefon numarası zorunludur"),
                                     password:yup.string().min(6,"Şifre En Az 6 Karakterli Olmalıdır").required("Şifre Boş Bırakılamaz"),
@@ -137,8 +101,11 @@ const Register = () => {
                             onSubmit={(values,{setErrors})=>{ // form submit olduktan sonra yapılacaklar
                                 if(values.trypassword === values.password && values.passwordControl===true)
                                 {    
-                                    userRegister(values,setErrors)
-                                    console.log()
+                                  /*   const registered =  */ userRegister(values,setErrors,router) // başarılı şekilde kayıt olursa true döndürdü
+                                /*     if(registered){ // true ise giriş sayfasına yönlendirme yaptık
+                                        router.push("/login")
+                                    }       
+                                    console.log(registered) */
 
                                     
                                 }
@@ -153,12 +120,12 @@ const Register = () => {
                                         <form onSubmit={handleSubmit} style={{width:'80%',textAlign:'center'}} method='POST'>
                                             <TextField 
                                             label="İsim Soyisim"
-                                            id="namesurname"
+                                            id="UserName"
                                             onChange={handleChange}
-                                            value={values.namesurname}
+                                            value={values.UserName}
                                             onBlur={handleBlur}
-                                            error={errors.namesurname && touched.namesurname}
-                                            helperText={errors.namesurname && touched.namesurname ? errors.namesurname:null}
+                                            error={errors.UserName && touched.UserName}
+                                            helperText={errors.UserName && touched.UserName ? errors.UserName:null}
                                             sx={{...inputstyles, ...erorStyles}}
                                             />
                                             <TextField 
@@ -242,7 +209,7 @@ const Register = () => {
                                                         (regexBig.test(values.password) || regexBig.test(values.trypassword)) &&
                                                         (regexSpecial.test(values.password) ||regexSpecial.test(values.trypassword)) &&
                                                        ( values.password.length >= 8 || values.trypassword.length >= 8)  &&
-                                                       !errors.email && !errors.namesurname && !errors.password && !errors.phonenumber && !errors.trypassword
+                                                       !errors.email && !errors.UserName && !errors.password && !errors.phonenumber && !errors.trypassword
                                                         ? 
                                                         <Button className='btn' type='submit' variant="contained" >Kayıt Ol</Button>
                                                         :
