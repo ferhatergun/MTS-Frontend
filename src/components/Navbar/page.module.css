@@ -7,6 +7,7 @@
     height: 50px;
     margin:auto;
     padding:10px 20px  20px;
+    
 }
 .altContainer{
     width: 100vw;
@@ -16,7 +17,9 @@
     display:flex;
     justify-content: space-between;
     height: 100%;
-    
+}
+.ustNavItem{
+    align-items: end;
 }
 .altNavbar{
     display: flex;

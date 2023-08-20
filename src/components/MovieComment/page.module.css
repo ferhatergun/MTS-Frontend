@@ -1,36 +1,11 @@
-.commnetCreateDiv{
-    width: 100%;
-}
-.topComment{
-    display: flex;
-    align-items: center; 
-    gap: 30px;
-    margin-bottom: 20px;
-}
-.bottomComment{
-    width: 100%;
-    display: flex;
-    gap: 10px;
-}
-.sendBtn{
-    width: 20vw;
-    height: 50px;
-    background-color: antiquewhite;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    gap: 5px;
-}
-.commentInput{
-    width: 80vw;
-}
+
 
 .commentDiv{
     /* background-color: aliceblue; */
     border-radius: 10px;
     margin-top: 10px;
+    box-shadow: 4px 4px 8px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
 }
 
 .commentTop{
@@ -81,12 +56,6 @@
 @media(max-width:500px){
     .bottomComment{
         flex-wrap: wrap;
-    }
-    .commentInput{
-        width: 100vw !important;
-    }
-    .sendBtn{
-        width: 100%;
     }
     .commentBottom{
         font-size: 13px;

@@ -1,0 +1,16 @@
+.commentBtn{
+    padding: 10px;
+    background-color: antiquewhite;
+    border-radius: 10px;
+    min-width: 48%;
+    text-align:center;
+}
+.commentBtn:hover{
+    cursor: pointer;
+}
+
+@media(max-width:400px){
+    .commentBtn{
+        width: 100%;
+    }
+}

@@ -44,14 +44,6 @@
     min-width: 48%;
     text-align: center;
 }
-.commentBtn{
-    padding: 10px;
-    background-color: antiquewhite;
-    border-radius: 10px;
-    min-width: 48%;
-    text-align:center;
-
-}
 .movieSummary{
     width: 100%;
     height: 150px;
@@ -96,7 +88,7 @@
 }
 
 @media(max-width:400px){
-    .fav_comment_btnDiv ,.favBtn ,.commentBtn{
+    .fav_comment_btnDiv ,.favBtn{
         width: 100%;
     }
 }

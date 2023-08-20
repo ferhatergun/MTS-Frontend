@@ -2,11 +2,16 @@ import React from 'react'
 import styles from './page.module.css'
 import img from '$/assets/hizli-ve-ofkeli-9.jpeg'
 import Image from 'next/image'
-import { Rating ,Avatar,TextField, Button} from '@mui/material'
-import Comments from '$/components/Comments/Comments'
+import { Rating } from '@mui/material'
+import MovieComment from '$/components/MovieComment/MovieComment'
+import CreateComment from '$/components/CreateComment/CreateComment'
+import { getMovie } from '$/utils/api'
+import ScrollToComment from '$/components/ScrollToComment/ScrollToComment'
 
-export default function page({params}) {
-console.log(params.id)
+export default async function page({params}) {
+
+// const movie = await getMovie(params.id) // use client yapmadan veri çekme
+
   return (
     <div className={styles.container}>
         <p className={styles.movieName}>Hızlı ve öfkeli 9</p>
@@ -22,7 +27,7 @@ console.log(params.id)
                 <Rating value={4} readOnly sx={{color:'purple'}} /> 
                 <div className={styles.fav_comment_btnDiv}>
                     <div className={styles.favBtn}>Favoriye Ekle</div>
-                    <div className={styles.commentBtn}>Yorum Yaz</div>
+                    <ScrollToComment />
                 </div>
             </div>
         </div>
@@ -31,7 +36,9 @@ console.log(params.id)
         </div>
         <div className={styles.enPopulerSlider}>en populer filmler</div>
         <div className={styles.movieCommentsDiv}>
-            <Comments />
+            <CreateComment />
+            <MovieComment />
+            <MovieComment />
         </div>
 
     </div>
