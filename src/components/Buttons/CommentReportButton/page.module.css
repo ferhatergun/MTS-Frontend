@@ -1,0 +1,22 @@
+.reportBtn{
+    display: flex;
+    align-items: center;
+    gap: 2%;
+    margin-left: auto;
+    height: 100%;
+    width: 90px;
+    justify-content: center;
+}
+.menu ul{
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+.menu{
+    padding: 0 !important;
+}
+@media(max-width:500px){
+    .Icon{
+        font-size: 20px !important;
+    }
+    
+}

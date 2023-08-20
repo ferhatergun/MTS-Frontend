@@ -1,31 +1,20 @@
 
-"use client"
+// "use client"
 import React from 'react'
 import { Avatar,Rating,TextField,Checkbox } from '@mui/material'
 import styles from './page.module.css'
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import ThumbDownOffAltIcon from '@mui/icons-material/ThumbDownOffAlt';
 import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
-import ReportOutlinedIcon from '@mui/icons-material/ReportOutlined';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import Fade from '@mui/material/Fade';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
+import CommentReportButton from '../Buttons/CommentReportButton/CommentReportButton';
 
 
-export default function Comments() {
-    const [anchorEl, setAnchorEl] = React.useState(null);
-    const open = Boolean(anchorEl);
-    const handleClick = (event) => {
-      setAnchorEl(event.currentTarget);
-    };
-    const handleClose = () => {
-      setAnchorEl(null);
-    };
-  
-  return (
+export default function Comments({Id}) {
+
+    console.log(Id)
+  return ( // film id si gelecek ve istekler burada atılacak
     <div>
         <div className={styles.commentDiv}>
             <div className={styles.commentTop}>
@@ -48,26 +37,9 @@ export default function Comments() {
                 className={styles.commentIcon}/>
                     
                 <div className={styles.commentIcon}><ModeCommentOutlinedIcon className={styles.Icon} />Cevapla</div>
-                <div className={styles.commentIconn}
-                onClick={handleClick}
-                ><MoreVertIcon className={styles.Icon} /></div>
+                <CommentReportButton />
             </div>
         </div>
-
-
-            <Menu
-                id="fade-menu"
-                MenuListProps={{
-                'aria-labelledby': 'fade-button',
-                }}
-                anchorEl={anchorEl}
-                open={open}
-                onClose={handleClose}
-                TransitionComponent={Fade}
-                className={styles.menu}
-            >
-                <MenuItem onClick={handleClose}> <ReportOutlinedIcon/>Rapor Et</MenuItem>
-            </Menu>
     </div>
   )
 }

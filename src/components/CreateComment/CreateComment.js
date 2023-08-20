@@ -1,20 +1,82 @@
+"use client"
 import React from 'react'
 import styles from './page.module.css'
-import { Avatar ,Rating ,TextField } from '@mui/material'
+import { Avatar ,FormHelperText,Rating ,TextField } from '@mui/material'
 import SendIcon from '@mui/icons-material/Send';
+import { Formik } from 'formik'
+import * as yup from "yup"
 
 
 export default function CreateComment() {
+
+  const CreateCommnet = () =>{
+
+  }
+
   return (
     <div className={styles.commnetCreateDiv} id='create-comment'>
-        <div className={styles.topComment}>
-            <Avatar sx={{width:50,height:50}}>F</Avatar>
-            <Rating />
-        </div>
-        <div className={styles.bottomComment}>
-            <TextField id="standard-basic" variant="standard" placeholder='Yorum Giriniz'  multiline className={styles.commentInput} />
-            <div className={styles.sendBtn}>Gönder <SendIcon/></div>
-        </div>
+          <Formik
+            initialValues={{
+                star:"2",
+                text:""
+            }}
+            validationSchema={
+                yup.object({
+                    star:yup.string().required("Yıldız Boş Bırakılamaz"),
+                    text:yup.string().required("Yorum Boş Bırakılamaz"),
+                })
+            }
+            onSubmit={(values,{setErrors,resetForm})=>{ // form submit olduktan sonra yapılacaklar
+
+                    console.log(values)
+                    setTimeout(() => {
+                      resetForm()
+                    }, 2000);
+                    // CreateComment(values,setErrors,router)
+                    
+                }}
+            >
+              {({values,errors,handleSubmit,handleChange,touched,handleBlur})=>(
+                <>
+                <form onSubmit={handleSubmit}>
+                  <div className={styles.topComment}>
+                    <Avatar sx={{width:50,height:50}}>F</Avatar>
+                    <Rating 
+                    id='star'
+                    name='star'
+                    value={parseInt(values.star)}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    />
+                  </div>
+                  <div className={styles.bottomComment}>
+                      <TextField 
+                      id="text" 
+                      variant="standard" 
+                      placeholder='Yorum Giriniz'  
+                      multiline 
+                      className={styles.commentInput} 
+                      value={values.text}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+
+                      />
+                      <button className={styles.sendBtn} type='submit' >Gönder <SendIcon/></button>
+                  </div>
+                  {
+                    errors.star &&
+                    <FormHelperText className={styles.error}>{errors.star}</FormHelperText>
+                  }
+                  {
+                    errors.text &&
+                    <FormHelperText className={styles.error}>{errors.text}</FormHelperText>
+                  }
+                  
+                </form>
+              </>
+              )}
+            </Formik>
+        
     </div>
   )
 }

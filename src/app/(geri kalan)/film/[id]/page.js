@@ -3,10 +3,10 @@ import styles from './page.module.css'
 import img from '$/assets/hizli-ve-ofkeli-9.jpeg'
 import Image from 'next/image'
 import { Rating } from '@mui/material'
-import MovieComment from '$/components/MovieComment/MovieComment'
+import MovieComments from '$/components/MovieComments/MovieComments'
 import CreateComment from '$/components/CreateComment/CreateComment'
 import { getMovie } from '$/utils/api'
-import ScrollToComment from '$/components/ScrollToComment/ScrollToComment'
+import ScrollToComment from '$/components/Buttons/ScrollToComment/ScrollToComment'
 
 export default async function page({params}) {
 
@@ -37,8 +37,8 @@ export default async function page({params}) {
         <div className={styles.enPopulerSlider}>en populer filmler</div>
         <div className={styles.movieCommentsDiv}>
             <CreateComment />
-            <MovieComment />
-            <MovieComment />
+            <MovieComments Id={params.id} />
+            <MovieComments />
         </div>
 
     </div>
