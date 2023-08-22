@@ -1,6 +1,10 @@
+import { useDispatch } from "react-redux";
+import { updateUser } from "$/redux/userSlice";
+import { updateToken } from "$/redux/userSlice";
 
 
-export const userLogin=async(values,setErrors,router)=>{
+
+export const userLogin=async(values,setErrors,router,dispatch)=>{
     const data={
         email:values.email,
         password:values.password
@@ -19,8 +23,7 @@ export const userLogin=async(values,setErrors,router)=>{
             if(result.status == 'success'){
                 console.log("kayıt başarılı")
                 localStorage.setItem("user",JSON.stringify(result.user))
-                // dispatch(updateUser(result.user))
-                // dispatch(updateOrganizer(false))
+                localStorage.setItem("token",result.token)
                 router.push("/")
             }
             else{
