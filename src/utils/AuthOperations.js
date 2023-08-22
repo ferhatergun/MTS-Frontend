@@ -1,6 +1,5 @@
-import { useDispatch } from "react-redux";
-import { updateUser } from "$/redux/userSlice";
-import { updateToken } from "$/redux/userSlice";
+import { toast } from "react-toastify";
+
 
 
 
@@ -21,9 +20,9 @@ export const userLogin=async(values,setErrors,router,dispatch)=>{
              
             console.log(result)
             if(result.status == 'success'){
-                console.log("kayıt başarılı")
                 localStorage.setItem("user",JSON.stringify(result.user))
                 localStorage.setItem("token",result.token)
+                toast.success("Giriş Başarılı")
                 router.push("/")
             }
             else{
@@ -63,7 +62,7 @@ export const userRegister=async(values,setErrors,router)=>{
              
             console.log(result)
             if(result.status === 'success'){ // kayıt başarılı ise giriş yap sayfasına yönlendiriyoruz
-                console.log("kayıt başarılı")
+                toast.success("Kayıt Başarılı")
                 router.push("/login")
                 
             }
