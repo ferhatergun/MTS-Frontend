@@ -1,11 +1,10 @@
 "use client"
-import React from 'react'
+import React ,{useState}from 'react'
 import { Grid } from '@mui/material'
 import '../Forms.css'
 import TextField  from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import img from '../../../assets/login.jpg'
-// import { Link } from 'react-router-dom';
 import { Formik } from 'formik'
 import * as yup from "yup"
 import { motion } from "framer-motion";
@@ -20,10 +19,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import {userLogin} from '$/utils/AuthOperations';
 import { useRouter } from 'next/navigation';
+import { useDispatch } from 'react-redux';
 
 
 const Login = () => {
-    const [showPassword, setShowPassword] = React.useState(false);
+    const [showPassword, setShowPassword] = useState(false);
 
     const handleClickShowPassword = () => setShowPassword((show) => !show);
   
@@ -53,6 +53,7 @@ const Login = () => {
     }
     
     const router = useRouter()
+    const dispatch = useDispatch()
   return (
     <div>
         <Grid container>
@@ -79,7 +80,7 @@ const Login = () => {
                             onSubmit={(values,{setErrors})=>{ // form submit olduktan sonra yapılacaklar
 
                                     console.log(values)
-                                    userLogin(values,setErrors,router)
+                                    userLogin(values,setErrors,router,dispatch)
                                     
                                 }}
                             >
