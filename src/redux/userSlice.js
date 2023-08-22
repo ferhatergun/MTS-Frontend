@@ -3,8 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const userSlice = createSlice({
         name: "user",
         initialState: {
-            user:   JSON.parse(localStorage.getItem("user"))  ||  false,
-            token:  localStorage.getItem("token")  ||   false,
+            user:   /* JSON.parse(localStorage.getItem("user"))  ||  */ false,
+            token:  /* localStorage.getItem("token")  || */   false,
         },
         reducers:{
             updateUser: (state, action) => {

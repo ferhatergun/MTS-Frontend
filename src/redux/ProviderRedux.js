@@ -5,7 +5,7 @@ import store from "./store"
 export default function ProviderRedux({children}) {
   return (
     <Provider store={store}>
-        { children }
+        { children } 
     </Provider>
   )
 }

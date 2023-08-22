@@ -1,0 +1,38 @@
+.movieDiv{
+    flex: 0 0 150px;
+    min-width: 0;
+    /* border: 2px solid red; */
+    margin-right: 10px;
+    border-radius: 10px;
+    /* box-shadow: 10px 0px 10px 1px #e0e0e0; */
+    transition: 0.3s ease;
+}
+.movieDiv:hover{
+    transform: translateY(-5px);
+}
+.slideContainer{
+    display: flex;
+    height: 290px;
+}
+.sliderHeader{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+.slideContainerr{
+    overflow: hidden;
+    margin-top: 5px;
+}
+.slideContainer{
+    padding: 10px 0;
+}
+.imageDiv{
+    width: 100%;
+    height: 210px;
+}
+.image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}

@@ -1,5 +1,5 @@
 .container{
-    width: 70vw;
+    /* width: 70vw; */
     margin: auto;
     /* background-color: antiquewhite; */
 }
@@ -62,7 +62,7 @@
 
 @media(max-width:700px){
     .container{
-        width: 95vw;
+        /* width: 95vw; */
     }
 
 }

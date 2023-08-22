@@ -6,8 +6,9 @@ export default function RootLayout({ children }) {
   return (
     <>
         <Navbar />
-        {children}
-    
+        <div className='mainContainerr'>
+          {children}
+        </div>
     </>
   )
 }
