@@ -5,14 +5,13 @@ import { Avatar ,FormHelperText,Rating ,TextField } from '@mui/material'
 import SendIcon from '@mui/icons-material/Send';
 import { Formik } from 'formik'
 import * as yup from "yup"
+import { CommentCreate } from '$/utils/CommentOperations';
 
 
 
 export default function CreateComment() {
 
-  const CreateCommnet = () =>{
 
-  }
 
   return (
     <div className={styles.commnetCreateDiv} id='create-comment'>
@@ -33,7 +32,7 @@ export default function CreateComment() {
                     setTimeout(() => {
                       resetForm()
                     }, 2000);
-                    // CreateComment(values,setErrors,router)
+                    CommentCreate(values,"64e4e3392f0023c29b9d02ee")
                     
                 }}
             >

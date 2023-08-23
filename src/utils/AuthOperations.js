@@ -3,9 +3,7 @@ import { toast } from "react-toastify";
 
 
 
-export const userLogin=async(values,setErrors,router,dispatch,res,req)=>{
-/*     console.log(res.cookie)
-    console.log(req.cookie) */
+export const userLogin=async(values,setErrors,router,dispatch)=>{
     const data={
         email:values.email,
         password:values.password
