@@ -7,6 +7,7 @@ import MovieComments from '$/components/MovieComments/MovieComments'
 import CreateComment from '$/components/CreateComment/CreateComment'
 import { getMovie } from '$/utils/api'
 import ScrollToComment from '$/components/Buttons/ScrollToComment/ScrollToComment'
+import CarouselMovie from '$/components/CarouselMovie/CarouselMovie'
 
 export default async function page({params}) {
 
@@ -34,7 +35,9 @@ export default async function page({params}) {
         <div className={styles.movieSummary}>
             Hızlı ve öfkeli 9 Konusu
         </div>
-        <div className={styles.enPopulerSlider}>en populer filmler</div>
+        <div className={styles.enPopulerSlider}>
+            <CarouselMovie headerTitle="Benzer Filmler" delay={4000} />
+        </div>
         <div className={styles.movieCommentsDiv}>
             <CreateComment />
             <MovieComments Id={params.id} />

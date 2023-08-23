@@ -1,22 +1,31 @@
-import React,{useCallback} from 'react'
+"use client"
+import React,{useCallback, useEffect, useState} from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import styles from './page.module.css'
 import Image from 'next/image'
 import img from '$/assets/hizli-ve-ofkeli-9.jpeg'
 import { Rating } from '@mui/material'
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import Autoplay from 'embla-carousel-autoplay'
 
 
-export default function CarouselMovie() {
-    const [emblaRef,emblaApi] = useEmblaCarousel({align:'start'})
+
+export default function CarouselMovie({headerTitle,data,delay}) {
+    const [emblaRef,emblaApi] = useEmblaCarousel({align:'start'},[
+        Autoplay({ delay: delay }),
+      ])
+    
     const scrollPrev = useCallback(() => {
-        if (emblaApi) emblaApi.scrollPrev()
+        if (emblaApi) emblaApi.scrollPrev() 
       }, [emblaApi])
     
       const scrollNext = useCallback(() => {
         if (emblaApi) emblaApi.scrollNext()
       }, [emblaApi])
 
-      const data =[
+
+      const dataTest =[
         {id:1},
         {id:2},
         {id:3},
@@ -27,21 +36,23 @@ export default function CarouselMovie() {
         {id:8},
       ]
 
+
   return (
     <>
         <div className={styles.visionMovies} >
         <div className={styles.sliderHeader}>
-            <div>vizyondaki filmer</div>
+            <div>{headerTitle}</div>
             <div>tümünü gör</div>
         </div>
         <hr/>
-        <div className={styles.slideContainerr} ref={emblaRef}>
-        <div className={styles.slideContainer}>
+        <div className={styles.embla} ref={emblaRef}>
+        <div className={styles.sliderContainer}>
+            
             {
-                data.map((item,i)=>(
-                    <div className={styles.movieDiv}>
+                dataTest.map((item,i)=>(
+                    <div className={styles.movieDiv} key={i}>
                         <div className={styles.imageDiv}>
-                            <Image src={img} className={styles.image}/>
+                            <Image src={img} className={styles.image} alt='resim bulunamadı' />
                         </div>
                         <div style={{display:'flex',flexDirection:'column',justifyContent:'space-around',height:'50px'}}>
                         <div>Hızlı Ve Öfkeli 9</div>
@@ -51,13 +62,13 @@ export default function CarouselMovie() {
                 ))
             } 
         </div>
-        <button className="embla__prev" onClick={scrollPrev}>
-            Prev
-        </button>
-        <button className="embla__next" onClick={scrollNext}>
-            Next
-        </button>
          </div>
+         <div className={styles.backButton} onClick={scrollPrev}>
+            <ArrowBackIosNewIcon sx={{color:'white'}}/>
+        </div>
+        <div className={styles.nextButton} onClick={scrollNext}>
+            <ArrowForwardIosIcon sx={{color:'white'}}/>
+        </div>
         </div>
     </>
     

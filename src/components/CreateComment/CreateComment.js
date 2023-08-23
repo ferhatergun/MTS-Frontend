@@ -7,6 +7,7 @@ import { Formik } from 'formik'
 import * as yup from "yup"
 
 
+
 export default function CreateComment() {
 
   const CreateCommnet = () =>{
@@ -17,7 +18,7 @@ export default function CreateComment() {
     <div className={styles.commnetCreateDiv} id='create-comment'>
           <Formik
             initialValues={{
-                star:"2",
+                star:"1",
                 text:""
             }}
             validationSchema={

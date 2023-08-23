@@ -1,4 +1,3 @@
-"use client"
 import Navbar from "$/components/Navbar/Navbar";
 import { toast } from "react-toastify";
 import './globals.css'
@@ -9,7 +8,8 @@ export default function Home() {
     <main>
       <Navbar/>
       <div className="mainContainerr">
-         <CarouselMovie/>
+         <CarouselMovie headerTitle="Vizyondaki Filmler" delay={4000} />
+         <CarouselMovie headerTitle="Popüler Filmler" delay={6000} />
       </div>
     </main>
   )

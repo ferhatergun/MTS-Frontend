@@ -1,7 +1,6 @@
 .movieDiv{
-    flex: 0 0 150px;
+    flex: 0 0 150px; /* div genişliği */
     min-width: 0;
-    /* border: 2px solid red; */
     margin-right: 10px;
     border-radius: 10px;
     /* box-shadow: 10px 0px 10px 1px #e0e0e0; */
@@ -10,21 +9,19 @@
 .movieDiv:hover{
     transform: translateY(-5px);
 }
-.slideContainer{
+.sliderContainer{
     display: flex;
-    height: 290px;
+    height: 290px; 
+    padding: 10px 0;
 }
 .sliderHeader{
     display: flex;
     justify-content: space-between;
     padding: 10px 0;
 }
-.slideContainerr{
+.embla{
     overflow: hidden;
     margin-top: 5px;
-}
-.slideContainer{
-    padding: 10px 0;
 }
 .imageDiv{
     width: 100%;
@@ -35,4 +32,48 @@
     height: 100%;
     object-fit: cover;
     border-radius: 10px;
+}
+.backButton{
+    position: absolute;
+    top:40%;
+    left: -12px;
+    border-radius: 20px;
+    background-color: purple;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+
+}
+.nextButton{
+    position: absolute;
+    top:40%;
+    right: -12px;
+    border-radius: 20px;
+    background-color: purple;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+.visionMovies{
+    position: relative;
+}
+
+@media(max-width:700px){
+    .nextButton,.backButton{
+        display:none;
+    }
+}
+
+@media(max-width:500px){
+    .sliderContainer{
+        height: 250px;
+    }
+    .movieDiv{
+        flex: 0 0 130px; /* div genişliği */
+    }
+    .imageDiv{
+        height: 180px;
+    }
 }
