@@ -4,7 +4,7 @@ import { Grid } from '@mui/material'
 import '../Forms.css'
 import TextField  from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import img from '../../../assets/login.jpg'
+import img from '$/assets/login.jpg'
 import { Formik } from 'formik'
 import * as yup from "yup"
 import { motion } from "framer-motion";
@@ -20,6 +20,8 @@ import Image from 'next/image';
 import {userLogin} from '$/utils/AuthOperations';
 import { useRouter } from 'next/navigation';
 import { useDispatch } from 'react-redux';
+
+
 
 
 const Login = () => {
@@ -54,6 +56,7 @@ const Login = () => {
     
     const router = useRouter()
     const dispatch = useDispatch()
+
   return (
     <div>
         <Grid container>

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chakra-ui/react": "^2.8.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.14.3",
@@ -16,10 +17,11 @@
     "@reduxjs/toolkit": "^1.9.5",
     "@trendyol-js/react-carousel": "^3.0.2",
     "antd": "^5.8.4",
+    "cookies-next": "^3.0.0",
     "embla-carousel-autoplay": "^8.0.0-rc12",
     "embla-carousel-react": "^8.0.0-rc12",
     "formik": "^2.4.3",
-    "framer-motion": "^10.15.1",
+    "framer-motion": "^10.16.1",
     "next": "13.4.13",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

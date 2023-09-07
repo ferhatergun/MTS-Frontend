@@ -2,7 +2,7 @@
 import React, {  useState } from 'react'
 import { Grid ,Box,TextField,Button} from '@mui/material'
 import '../Forms.css'
-import img from '../../../assets/login.jpg'
+import img from '$/assets/login.jpg'
 import { Formik } from 'formik'
 import * as yup from "yup"
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';

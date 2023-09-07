@@ -21,7 +21,7 @@
 
 .resultDiv{
     position:absolute;
-    background-color: bisque;
+    background-color: #f1f2f3;
     width:var(--searchw1) ; 
     margin-top: 15px;
     border-radius: 15px;

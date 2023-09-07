@@ -6,6 +6,7 @@
     height: 100%;
     width: 90px;
     justify-content: center;
+    cursor: pointer;
 }
 .menu ul{
     padding-top: 0px;

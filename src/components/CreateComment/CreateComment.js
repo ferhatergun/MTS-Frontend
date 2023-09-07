@@ -47,6 +47,7 @@ export default function CreateComment() {
                     value={parseInt(values.star)}
                     onChange={handleChange}
                     onBlur={handleBlur}
+                    className={styles.rating}
                     />
                   </div>
                   <div className={styles.bottomComment}>

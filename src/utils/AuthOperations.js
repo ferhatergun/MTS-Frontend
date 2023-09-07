@@ -1,4 +1,6 @@
 import { toast } from "react-toastify";
+import { setCookie } from "cookies-next";
+
 
 
 
@@ -19,14 +21,16 @@ export const userLogin=async(values,setErrors,router,dispatch)=>{
              const result = await response.json(); // database den gelen mesaj 
              
             console.log(result)
-            if(result.status == 'success'){
+            if(result.success == true ){
                 localStorage.setItem("user",JSON.stringify(result.user))
                 localStorage.setItem("token",result.token)
                 toast.success("Giriş Başarılı")
+                setCookie("accessToken",result.accessToken,{maxAge:3600})
+                setCookie("userId",result.user._id,{maxAge:3600})
                 router.push("/")
             }
             else{
-                console.log("kayıt başarısız")
+                console.log("giriş başarısız")
                 if(result.error =="Kayitli kullanici bulunamadi"){
                     setErrors({ email: 'Kayıtlı Kullanıcı Bulunamadı' })
                 }

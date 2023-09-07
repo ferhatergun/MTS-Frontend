@@ -1,5 +1,3 @@
-
-// "use client"
 import React from 'react'
 import { Avatar,Rating,TextField,Checkbox } from '@mui/material'
 import styles from './page.module.css'
@@ -9,6 +7,7 @@ import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
 import CommentReportButton from '../Buttons/CommentReportButton/CommentReportButton';
+import RatingStar from '../RatingStar/RatingStar';
 
 
 export default function Comments({Id}) {
@@ -20,7 +19,7 @@ export default function Comments({Id}) {
             <div className={styles.commentTop}>
                 <Avatar sx={{width:50,height:50}}>M</Avatar>
                 <p>Murat Uçar</p>
-                <Rating value={4} readOnly />
+                <RatingStar />
             </div>
             <div className={styles.commentContent}>
                 Güzel film

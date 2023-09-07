@@ -17,9 +17,11 @@
     display:flex;
     justify-content: space-between;
     height: 100%;
+    /* align-items: flex-start; */
 }
-.ustNavItem{
-    align-items: end;
+.ustNavItem:nth-child(1),
+.ustNavItem:nth-child(3) {
+  margin-top: 15px;
 }
 .altNavbar{
     display: flex;
@@ -84,5 +86,11 @@
     }
     .Button{
         display:none;
+    }
+    .ustNavItem:nth-child(1){
+        margin-top: 10px;
+    }
+    .ustNavItem:nth-child(3){
+        margin-top: 0 ;
     }
 }

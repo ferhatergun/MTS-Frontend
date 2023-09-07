@@ -4,6 +4,7 @@ import Image from 'next/image'
 import img from '$/assets/hizli-ve-ofkeli-9.jpeg'
 import { Rating } from '@mui/material'
 import Link from 'next/link'
+import RatingStar from '../RatingStar/RatingStar'
 
 export default function ProfileYorum({movieName,star,content}) {
   return (
@@ -13,7 +14,7 @@ export default function ProfileYorum({movieName,star,content}) {
         </div>
         <div className={styles.contentDiv}>
           <p className={styles.movieName}>{movieName}</p>
-          <Rating value={star} readOnly sx={{color:'purple'}} />
+          <RatingStar />
           <p className={styles.content}>{content}</p>
           <Link href="/" className={styles.link}>Yoruma Git</Link>
         </div>

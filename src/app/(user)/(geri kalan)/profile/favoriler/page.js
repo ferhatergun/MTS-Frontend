@@ -7,23 +7,31 @@ export default function page() {
   return (
     <div className={styles.container}>
         <Grid container spacing={2} >
-                              <Grid item lg={2} md={3} xs={4}>
+            <Grid item lg={2.2} md={3} xs={4}>
                 <ProfileFavori />
-            </Grid>            <Grid item lg={2} md={3} xs={4}>
+            </Grid>
+            <Grid item lg={2.2} md={3} xs={4}>
                 <ProfileFavori />
-            </Grid>            <Grid item lg={2} md={3} xs={4}>
+            </Grid>
+            <Grid item lg={2.2} md={3} xs={4}>
                 <ProfileFavori />
-            </Grid>            <Grid item lg={2} md={3} xs={4}>
+            </Grid>
+            <Grid item lg={2.2} md={3} xs={4}>
                 <ProfileFavori />
-            </Grid>            <Grid item lg={2} md={3} xs={4}>
+            </Grid>
+            <Grid item lg={2.2} md={3} xs={4}>
                 <ProfileFavori />
-            </Grid>            <Grid item lg={2} md={3} xs={4}>
+            </Grid>
+            <Grid item lg={2.2} md={3} xs={4}>
                 <ProfileFavori />
-            </Grid>            <Grid item lg={2} md={3} xs={4}>
+            </Grid>
+            <Grid item lg={2.2} md={3} xs={4}>
                 <ProfileFavori />
-            </Grid>            <Grid item lg={2} md={3} xs={4}>
+            </Grid>
+            <Grid item lg={2.2} md={3} xs={4}>
                 <ProfileFavori />
-            </Grid>            <Grid item lg={2} md={3} xs={4}>
+            </Grid>
+            <Grid item lg={2.2} md={3} xs={4}>
                 <ProfileFavori />
             </Grid>
         </Grid>

@@ -4,7 +4,7 @@ import { Grid } from '@mui/material'
 import '../Forms.css'
 import TextField  from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import img from '../../../assets/login.jpg'
+import img from '$/assets/login.jpg'
 import { Formik } from 'formik'
 import * as yup from "yup"
 import { motion } from "framer-motion";

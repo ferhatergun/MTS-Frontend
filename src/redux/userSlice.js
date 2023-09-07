@@ -1,10 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { getCookie } from "cookies-next";
+
 
 const userSlice = createSlice({
         name: "user",
         initialState: {
-            user:   /* JSON.parse(localStorage.getItem("user"))  ||  */ false,
-            token:  /* localStorage.getItem("token")  || */   false,
+            userId: getCookie("userId") || false,
+            token: getCookie("accessToken") || false,
+            loading:false
         },
         reducers:{
             updateUser: (state, action) => {
@@ -13,8 +16,11 @@ const userSlice = createSlice({
               updateToken: (state, action) => {
                 state.token = action.payload;
               },
+              setLoading: (state, action) => {
+                state.loading = action.payload;
+              }
         }
 })
-export const {updateToken,updateUser}=userSlice.actions
-
+export const {updateToken,updateUser,setLoading}=userSlice.actions
+ 
 export default userSlice.reducer

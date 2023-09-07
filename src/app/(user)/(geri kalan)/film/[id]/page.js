@@ -8,6 +8,7 @@ import CreateComment from '$/components/CreateComment/CreateComment'
 import { getMovie } from '$/utils/api'
 import ScrollToComment from '$/components/Buttons/ScrollToComment/ScrollToComment'
 import CarouselMovie from '$/components/CarouselMovie/CarouselMovie'
+import RatingStar from '$/components/RatingStar/RatingStar'
 
 export default async function page({params}) {
 
@@ -25,7 +26,7 @@ export default async function page({params}) {
                 <p>Yönetmen: Ali Cabbar </p>
                 <p>Vizyona Giriş Tarihi : 13 Temmuz 2022</p>
                 <p>Film Süresi : 2 saat 89 dakika</p>
-                <Rating value={4} readOnly sx={{color:'purple'}} /> 
+                <RatingStar />
                 <div className={styles.fav_comment_btnDiv}>
                     <div className={styles.favBtn}>Favoriye Ekle</div>
                     <ScrollToComment />

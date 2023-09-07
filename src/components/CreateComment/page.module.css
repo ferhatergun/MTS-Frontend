@@ -30,6 +30,10 @@
 .error{
     color: red;
 }
+.rating{
+    color:var(--color2) !important;
+}
+
 
 @media(max-width:500px){
     .commentInput{
