@@ -7,6 +7,7 @@ export default function ScrollToComment() {
         const commentsSection = document.getElementById('create-comment');
         commentsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
       };
+      // yotum yaz divinin konumunu aldık ve oraya animasyonlu bir şekilde gittik
     
   return (
     <div className={styles.commentBtn} onClick={handleScrollToComments}>Yorum Yaz</div>

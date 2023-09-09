@@ -1,26 +1,43 @@
 "use client"
-import React from 'react'
+import React ,{ useState ,useEffect}from 'react'
 import styles from './page.module.css'
-import { Avatar } from '@mui/material'
+import { Avatar ,Skeleton} from '@mui/material'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
+import { useSelector } from 'react-redux'
 
 
 export default function layout({children}) {
   const pathname = usePathname()
   const path=pathname.split("/")
+
+  const [loading,setLoading] = useState(false)
+
+  useEffect(()=>{
+    setLoading(true)
+  },[])
+  // console.log("profile"+userId)
   return (
     <div className={styles.container} >
+      {
+        loading ?
         <div className={styles.headerDiv}>
           <div className={styles.profileCenter}>
-            <Avatar sx={{width:'60px',height:'60px'}}>A</Avatar>
-            <p>Ali Kurt</p>
+            <div style={{display:'flex',flexDirection:'column',gap:'10px',textAlign:'center'}}>
+              <Avatar sx={{width:'70px',height:'70px'}}>A</Avatar>
+              <p>Ali Kurt</p>
+            </div>
+            <div style={{display:'flex',gap:'10px'}}>
+              <div className={styles.level}>Amatör</div>
+              <div className={styles.score}>400 XP</div>
+            </div>
           </div>
-          <div className={styles.profileInformationDiv}>
-            <div className={styles.Information}>Amatör</div>
-            <div className={styles.Information}>400 Puan</div>
-          </div>
-        </div>
+        </div> :
+        <Skeleton animation="wave" height="40vh" width="100%" variant='rectangular' />
+    }
+
+        
+        
         <div className={styles.contentDiv}>
           <div className={styles.menuBarDiv}>
             <ul>

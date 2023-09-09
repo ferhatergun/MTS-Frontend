@@ -1,0 +1,25 @@
+.dropdown{
+    cursor: pointer;
+}
+.reportBtn{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    height: 100%;
+    justify-content: start;
+    cursor: pointer;
+    padding: 5px;
+    max-width: 100px;
+    
+}
+.dropdownOverlay{
+    padding-top: 5px;
+}
+
+
+@media(max-width:500px){
+    .Icon{
+        font-size: 20px !important;
+    }
+    
+}

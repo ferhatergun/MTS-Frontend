@@ -3,12 +3,16 @@ import React, { useState, useEffect, useRef } from 'react';
 import styles from './page.module.css';
 import MenuIcon from '@mui/icons-material/Menu';
 import Link from 'next/link';
+import { useSelector } from 'react-redux';
+import { isAuth } from '$/lib/auth';
 
 
 const OpenMenu = () => {
     const [showNavbar, setShowNavbar] = useState(false);
     const navbarRef = useRef(null);
     const navbarRef1 =useRef()
+    const [loading,setLoading] = useState(false)
+    const auth = isAuth()
   
     const handleShowNavbar = () => {
       setShowNavbar(!showNavbar);
@@ -36,7 +40,11 @@ const OpenMenu = () => {
       };
     }, []);
 
-    // console.log(showNavbar)
+    useEffect(()=>{
+      setLoading(true)
+    },[])
+
+
     return (
       <>
       <div className={styles.menuIcon} onClick={handleShowNavbar} ref={navbarRef}>
@@ -55,12 +63,23 @@ const OpenMenu = () => {
             <li className={styles.toggleMenuItem}>
               <Link className={styles.link} href="/vizyondakifilmler" onClick={()=>setShowNavbar(false)}>Vizyondaki Filmler</Link>
             </li>
-            <li className={styles.toggleMenuItem}>
-              <Link href="/login" className={styles.link} onClick={()=>setShowNavbar(false)}>Giriş Yap</Link>
-            </li>
-            <li className={styles.toggleMenuItem}>
-              <Link href="/profile" className={styles.link} onClick={()=>setShowNavbar(false)}>Çıkış Yap</Link>
-            </li>
+            { loading ?
+              (auth ? 
+              <>
+              <li className={styles.toggleMenuItem}>
+                <Link href="/profile/yorumlar" className={styles.link} onClick={()=>setShowNavbar(false)}>Profilim</Link>
+              </li>
+              <li className={styles.toggleMenuItem}>
+                  <Link href="/profile/ayarlar" className={styles.link} onClick={()=>setShowNavbar(false)}>Ayarlar</Link>
+              </li>
+              <li className={styles.toggleMenuItem}>
+                <Link href="/" className={styles.link} onClick={()=>setShowNavbar(false)}>Çıkış Yap</Link>
+              </li>
+              </> :
+              <li className={styles.toggleMenuItem}>
+                <Link href="/login" className={styles.link} onClick={()=>setShowNavbar(false)}>Giriş Yap</Link>
+              </li>):null
+            }
           </ul>
         </div>
       </>

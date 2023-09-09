@@ -61,7 +61,7 @@ export default function SearchBar() {
         { movies?.length !== 0  ?
           movies?.map((item,index)=>(
             <  >
-              <Link href="/profile" className={styles.movieDiv} key={index} onClick={()=>setShowSearch(false)}>
+              <Link href="/film/1" className={styles.movieDiv} key={index} onClick={()=>setShowSearch(false)}>
                 <div className={styles.movieImageDiv}>
                   <Image 
                     src={image}

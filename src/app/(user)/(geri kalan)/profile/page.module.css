@@ -4,39 +4,23 @@
 }
 .headerDiv{
     width: 100%;
-    background-color: #f1f2f3;
+    /* background-color: #f1f2f3; */
     margin: auto;
-    padding-top:5vh;
+    padding: 8vh 0;
 }
 .profileCenter{
-    width: 150px;
-    height: 120px;
+    width: 250px;
+    height: 200px;
     margin: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
     box-shadow: 0px 0px 5px 0px var(--color1); 
     border-radius: 20px;
 }
-.profileInformationDiv{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: flex-end;
-    text-align: center;
-    
-}
-.Information{/* mobilde div ufalacak fontsize ufalacak */
-    width: 100px; 
-    margin:5px 0;
-    padding: 5px;
-    background-color:white ;
-    border: 1px solid blue;
-    border-radius: 20px;
-}
 .menuBarDiv{
-
+    margin-bottom: 10px;
 }
 .menuBarDiv ul{
     display: flex;
@@ -48,4 +32,16 @@
 }
 .active {
     border-bottom: 2px solid var(--color1);
+}
+.level{
+    border:1px solid var(--color1);
+    padding: 5px;
+    border-radius: 20px;
+    font-size: 15px;
+}
+.score{
+    border:1px solid var(--color1);
+    padding: 5px;
+    border-radius: 20px;
+    font-size: 15px;
 }

@@ -1,20 +1,33 @@
 "use client"
-import React from 'react'
+import React, { useEffect ,useState } from 'react'
 import styles from './page.module.css'
 import { Avatar ,FormHelperText,Rating ,TextField } from '@mui/material'
 import SendIcon from '@mui/icons-material/Send';
 import { Formik } from 'formik'
 import * as yup from "yup"
 import { CommentCreate } from '$/utils/CommentOperations';
+import { useSelector } from 'react-redux';
+import { isAuth } from '$/lib/auth';
+import { Skeleton } from '@mui/material';
 
 
 
 export default function CreateComment() {
+  const [loading,setLoading] = useState(false)
+  const auth = isAuth()
+  console.log(auth)
 
+    useEffect(() => {
+      setLoading(true)
+    }, [])
 
 
   return (
     <div className={styles.commnetCreateDiv} id='create-comment'>
+      {
+        loading ?
+        (auth ?
+
           <Formik
             initialValues={{
                 star:"1",
@@ -77,6 +90,10 @@ export default function CreateComment() {
               </>
               )}
             </Formik>
+            :
+            <center style={{padding:"10px 0"}}>Yorum Yazmak İçin Giriş Yapınız</center>):
+            <Skeleton variant="rectangular" width="100%" height={150} animation="wave" />
+      }
         
     </div>
   )

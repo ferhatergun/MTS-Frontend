@@ -35,8 +35,8 @@
     border:1px solid white
 }
 .rating{
-    color:purple;
-    font-size: 20px;
+    color:purple !important;
+    font-size: 20px !important;
 }
 .movieName{
     font-size: 16px;

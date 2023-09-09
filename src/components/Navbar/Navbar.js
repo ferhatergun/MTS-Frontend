@@ -6,19 +6,19 @@ import OpenMenu from './OpenMenu';
 import Link from 'next/link'
 import { useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { setLoading } from '$/redux/userSlice';
-
+import ProfileToogle from '../ProfileToggleBtn(navbar)/ProfileToogle';
+import logo from '$/assets/logo.jpg'
+import Image from 'next/image';
+import { isAuth } from '$/lib/auth';
 
 export default function Navbar() {
-    const userId = useSelector(state=>state.user.userId)
-    const loading = useSelector(state=>state.user.loading)
-    const [user,setUser] = useState(false)
-    const dispatch = useDispatch()
+    const auth = isAuth()
+    const [loading,setLoading] = useState(false) 
+    // ilk başta useri false aldık sonra userId yi atadık varsa
+    // userId değilde accesToken ile de yapılabilir verifyToken kontrol fonksiyonu oluştur lib klasöründe
     
     useEffect(()=>{
-        setUser(userId)
-        dispatch(setLoading(true))
+        setLoading(true)
     },[])
     
     
@@ -26,7 +26,11 @@ export default function Navbar() {
         <div className={styles.container}>
             <div className={styles.ustContainer}>
                 <ul className={styles.ustNavbar}>
-                    <li className={styles.ustNavItem}>logo</li>
+                    <li className={styles.ustNavItem}>
+                        <Link href="/">
+                            <Image src={logo} alt="logo" width={80} height={50} style={{mixBlendMode:'color-burn'}} />
+                        </Link>
+                    </li>
                     <li className={styles.ustNavItem}>
                         <SearchBar />
                     </li>
@@ -35,7 +39,7 @@ export default function Navbar() {
                         <div className={styles.Button}>
                         <div className={styles.Button}>
                             {loading  ? 
-                            ( user ?<Link href="/profile">Profil</Link>:<Link href="/login">Giriş Yap</Link>): 
+                            ( auth ? <ProfileToogle />:<Link href="/login">Giriş Yap</Link>): 
                             null}
                         </div>
 
