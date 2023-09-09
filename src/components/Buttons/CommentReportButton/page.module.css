@@ -15,9 +15,14 @@
 .menu{
     padding: 0 !important;
 }
+.sendBtn{
+    margin-top: 20px;
+    height: 40px;
+    border-radius: 20px;
+    cursor: pointer;
+}
 @media(max-width:500px){
     .Icon{
         font-size: 20px !important;
     }
-    
 }
