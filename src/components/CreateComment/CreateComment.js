@@ -15,7 +15,6 @@ import { Skeleton } from '@mui/material';
 export default function CreateComment() {
   const [loading,setLoading] = useState(false)
   const auth = isAuth()
-  console.log(auth)
 
     useEffect(() => {
       setLoading(true)

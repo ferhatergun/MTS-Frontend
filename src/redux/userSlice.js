@@ -7,7 +7,6 @@ const userSlice = createSlice({
         initialState: {
             userId: getCookie("userId") || false,
             token: getCookie("accessToken") || false,
-            loading:false
         },
         reducers:{
             updateUser: (state, action) => {
@@ -15,9 +14,6 @@ const userSlice = createSlice({
               },
               updateToken: (state, action) => {
                 state.token = action.payload;
-              },
-              setLoading: (state, action) => {
-                state.loading = action.payload;
               }
         }
 })

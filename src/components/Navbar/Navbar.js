@@ -10,13 +10,14 @@ import ProfileToogle from '../ProfileToggleBtn(navbar)/ProfileToogle';
 import logo from '$/assets/logo.jpg'
 import Image from 'next/image';
 import { isAuth } from '$/lib/auth';
+import { getCookie } from 'cookies-next';
 
 export default function Navbar() {
     const auth = isAuth()
     const [loading,setLoading] = useState(false) 
-    // ilk başta useri false aldık sonra userId yi atadık varsa
-    // userId değilde accesToken ile de yapılabilir verifyToken kontrol fonksiyonu oluştur lib klasöründe
-    
+    const userId = getCookie("userId")
+
+
     useEffect(()=>{
         setLoading(true)
     },[])
@@ -39,7 +40,7 @@ export default function Navbar() {
                         <div className={styles.Button}>
                         <div className={styles.Button}>
                             {loading  ? 
-                            ( auth ? <ProfileToogle />:<Link href="/login">Giriş Yap</Link>): 
+                            ( auth ? <ProfileToogle MyUserId={userId} />:<Link href="/login">Giriş Yap</Link>): 
                             null}
                         </div>
 

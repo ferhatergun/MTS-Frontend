@@ -1,5 +1,6 @@
 import { toast } from "react-toastify";
-import { setCookie } from "cookies-next";
+import { setCookie , deleteCookie } from "cookies-next";
+import { updateUser,updateToken } from "$/redux/userSlice";
 
 
 
@@ -88,3 +89,9 @@ export const userRegister=async(values,setErrors,router)=>{
     }  
 }
 
+export const userLogout=async()=>{
+    deleteCookie("accessToken")
+    deleteCookie("userId")
+    window.location.reload()
+    toast.success("Çıkış Yapıldı")
+}

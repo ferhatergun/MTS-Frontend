@@ -8,6 +8,7 @@ import { Rating } from '@mui/material'
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import Autoplay from 'embla-carousel-autoplay'
+import Link from 'next/link'
 
 
 
@@ -25,16 +26,6 @@ export default function CarouselMovie({headerTitle,data,delay}) {
       }, [emblaApi])
 
 
-      const dataTest =[
-        {id:1},
-        {id:2},
-        {id:3},
-        {id:4},
-        {id:5},
-        {id:6},
-        {id:7},
-        {id:8},
-      ]
 
 
   return (
@@ -49,16 +40,16 @@ export default function CarouselMovie({headerTitle,data,delay}) {
         <div className={styles.sliderContainer}>
             
             {
-                dataTest.map((item,i)=>(
-                    <div className={styles.movieDiv} key={i}>
+                data.map((item,i)=>(
+                    <Link className={styles.movieDiv} key={i} href={`/film/${item._id}`}>
                         <div className={styles.imageDiv}>
                             <Image src={img} className={styles.image} alt='resim bulunamadı' />
                         </div>
                         <div style={{display:'flex',flexDirection:'column',justifyContent:'space-around',height:'50px'}}>
-                        <div>Hızlı Ve Öfkeli 9</div>
+                        <div>{item.name}</div>
                             <Rating value={4} readOnly sx={{color:'purple'}} size='small' />  
                         </div>
-                    </div>
+                    </Link>
                 ))
             } 
         </div>
