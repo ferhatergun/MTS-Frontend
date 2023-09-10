@@ -14,18 +14,30 @@ export default async function page({params}) {
 
 // const movie = await getMovie(params.id) // use client yapmadan veri çekme
 
+
+const dataa=[
+    {id:1,name:'hızlı ve öfkeli 9',},
+    {id:2,name:'hızlı ve öfkeli 9',},
+    {id:3,name:'hızlı ve öfkeli 9',},
+    {id:4,name:'hızlı ve öfkeli 9',},
+   ]
+  
+   const movie = await getMovies(params.id) 
+   
+   
+// telefondan kontrol edebilmek için backend yokken de değerler yazdık
   return (
     <div className={styles.container}>
-        <p className={styles.movieName}>Hızlı ve öfkeli 9</p>
+        <p className={styles.movieName}>{movie.name}</p>
         <div className={styles.movieInformationDiv}>
             <div className={styles.imageDiv}>
                 <Image src={img} fill className={styles.image} />
             </div>
             <div className={styles.informationDiv} >
-                <p>Kategori : Macera</p>
-                <p>Yönetmen: Ali Cabbar </p>
+                <p>Kategori : {movie.category ? movie.category : "Kategori"}</p>
+                <p>Yönetmen: {movie.director ? movie.director :"Yönetmen"} </p>
                 <p>Vizyona Giriş Tarihi : 13 Temmuz 2022</p>
-                <p>Film Süresi : 2 saat 89 dakika</p>
+                <p>Film Süresi : {movie.time ? movie.time : "Süre"}</p>
                 <RatingStar />
                 <div className={styles.fav_comment_btnDiv}>
                     <div className={styles.favBtn}>Favoriye Ekle</div>
@@ -34,17 +46,32 @@ export default async function page({params}) {
             </div>
         </div>
         <div className={styles.movieSummary}>
-            Hızlı ve öfkeli 9 Konusu
+            {movie.description ? movie.description : "Bu film hakkında bir açıklama bulunmamaktadır."}
         </div>
         <div className={styles.enPopulerSlider}>
-            <CarouselMovie headerTitle="Benzer Filmler" delay={4000} />
+            <CarouselMovie headerTitle="Benzer Filmler" delay={4000} data={dataa} />
         </div>
         <div className={styles.movieCommentsDiv}>
             <CreateComment />
-            <MovieComments Id={params.id} />
-            <MovieComments />
+            {
+                movie?.comments?.map((commentId,index) => (
+                    <MovieComments key={index} commentId={commentId} />
+                ))
+            }
         </div>
 
     </div>
   )
+}
+
+
+const getMovies = async (movieId) => {
+    const res = await fetch(`http://localhost:5000/movieSeries/${movieId}`)
+    const data = await res.json()
+    if(data.success){
+      return data.movieseries
+    }
+    else{
+      return false
+    }
 }

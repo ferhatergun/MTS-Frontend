@@ -12,7 +12,7 @@ import RatingStar from '../RatingStar/RatingStar';
 import { isAuth } from '$/lib/auth';
 
 
-export default function Comments({Id}) {
+export default async function Comments({commentId}) {
     const [loading,setLoading] = useState(false)
     const auth = isAuth()
 
@@ -20,20 +20,17 @@ export default function Comments({Id}) {
         setLoading(true)
     }, [])
 
-    console.log(Id)
+    const comment = await getComment(commentId)
   return ( // film id si gelecek ve istekler burada atılacak
     <div>
-        {
-            loading ?
-
         <div className={styles.commentDiv}>
             <div className={styles.commentTop}>
                 <Avatar sx={{width:50,height:50}}>M</Avatar>
                 <p>Murat Uçar</p>
-                <RatingStar />
+                <RatingStar star={comment.rating} />
             </div>
             <div className={styles.commentContent}>
-                Güzel film
+                {comment.comment ? comment.comment : "Bu film hakkında yorum yapılmamıştır."}
             </div>
             <div className={styles.commentBottom}>
                 <Checkbox  
@@ -55,9 +52,17 @@ export default function Comments({Id}) {
                 <CommentReportButton />
             </div>
         </div>
-                 :
-                 <Skeleton variant="rectangular" width="100%" height={150} animation="wave" style={{marginBottom:10}} />  
-        }
     </div>
   )
+}
+
+const getComment = async (id) => {
+    const res = await fetch(`http://localhost:5000/comments/${id}`)
+    const data = await res.json()
+    if(data.success){
+        return data.comment
+    }
+    else{
+        return false
+    }
 }
