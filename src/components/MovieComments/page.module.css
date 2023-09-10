@@ -20,6 +20,9 @@
     gap:3% ;
     height: 40px;
 }
+.commentContent{
+    padding: 20px;
+}
 .commentIcon{
     display: flex;
     align-items: center;
@@ -27,12 +30,6 @@
     height: 100%;
     padding: 2% !important;
     color: black;
-}
-.IconChecked{
-    color: purple;
-}
-.commentContent{
-    padding: 20px;
 }
 
 

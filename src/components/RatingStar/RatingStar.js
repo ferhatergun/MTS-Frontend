@@ -5,6 +5,6 @@ import '$/app/globals.css'
 
 export default function RatingStar({star}) {
   return (
-    <Rating value={star ? star :4} readOnly className={styles.rating} />
+    <Rating value={star ? star :3} readOnly className={styles.rating} />
   )
 }

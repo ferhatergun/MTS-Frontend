@@ -81,7 +81,7 @@ const style = {
   width: 400,
   bgcolor: 'background.paper',
   boxShadow: 24,
-  p: 4,
+  padding: 4,
   borderRadius:5,
   display:'flex',
   flexDirection:'column',

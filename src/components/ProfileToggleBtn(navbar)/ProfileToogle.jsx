@@ -43,7 +43,7 @@ const items = [
     }}
     trigger={['hover']}
     className={styles.dropdown}
-    placement='topCenter'
+    placement='top'
     overlayClassName={styles.dropdownOverlay}
     
     

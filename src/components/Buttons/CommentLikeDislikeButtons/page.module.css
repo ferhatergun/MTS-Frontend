@@ -1,0 +1,18 @@
+.commentIcon{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    height: 100%;
+    padding: 2% !important;
+    color: black;
+}
+.IconChecked{
+    color: purple;
+}
+
+@media(max-width:500px){
+    .Icon,.IconChecked{
+        font-size: 20px !important;
+    }
+    
+}
