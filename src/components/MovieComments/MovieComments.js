@@ -24,6 +24,8 @@ export default function Comments({ commentId }) {
     commentSet();
   }, [commentId]);
 
+
+
   return (
     <div>
       {loading ? (
@@ -40,7 +42,7 @@ export default function Comments({ commentId }) {
             <LikeButtton />
             <DislikeButton />
             <div className={styles.commentIcon}><ModeCommentOutlinedIcon className={styles.Icon} />Cevapla</div>
-            <CommentReportButton />
+            <CommentReportButton commentId={commentId} />
           </div>
         </div>
       ) : null}
@@ -49,7 +51,7 @@ export default function Comments({ commentId }) {
 }
 
 const getComment = async (id) => {
-  const res = await fetch(`http://localhost:5000/comments/${id}`);
+  const res = await fetch(`http://localhost:5000/comments/${id}`,{cache:'no-cache'});
   const data = await res.json();
   if (data.success) {
     return data.comment;

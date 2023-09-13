@@ -56,7 +56,7 @@ export default async function layout({children,...props}) {
 }
 
 const getUser = async (id) =>{
-  const res = await fetch(`http://localhost:5000/users/${id}`)
+  const res = await fetch(`http://localhost:5000/users/${id}`,{cache:'no-cache'})
   const data = await res.json()
   if(data.success == true){
     return data.user

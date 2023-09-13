@@ -52,11 +52,15 @@ const dataa=[
             <CarouselMovie headerTitle="Benzer Filmler" delay={4000} data={dataa} />
         </div>
         <div className={styles.movieCommentsDiv}>
-            <CreateComment />
+            <CreateComment  movieId={params.id} />
             {
-                movie?.comments?.map((commentId,index) => (
+                movie ?
+                (
+                    movie?.comments?.map((commentId,index) => (
                     <MovieComments key={index} commentId={commentId} />
-                ))
+                    ))
+                ) :null
+                
             }
         </div>
 
@@ -66,7 +70,7 @@ const dataa=[
 
 
 const getMovies = async (movieId) => {
-    const res = await fetch(`http://localhost:5000/movieSeries/${movieId}`)
+    const res = await fetch(`http://localhost:5000/movieSeries/${movieId}`,{cache:'no-cache'})
     const data = await res.json()
     if(data.success){
       return data.movieseries

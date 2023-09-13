@@ -1,24 +1,30 @@
 "use client"
-import React from 'react'
+import React ,{useState} from 'react'
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import styles from './page.module.css'
 import ReportOutlinedIcon from '@mui/icons-material/ReportOutlined';
 import { Dropdown, Space } from 'antd';
 import Box from '@mui/material/Box';
-import { TextField,Typography,Modal,InputLabel,MenuItem,FormControl,Select } from '@mui/material';
+import { TextField,Typography,InputLabel,MenuItem,FormControl,Select } from '@mui/material';
+import { Formik } from 'formik'
+import * as yup from "yup"
+import { Modal } from 'antd';
 
 
-export default function CommentReportButton() {
-  const [open, setOpen] = React.useState(false);
+export default function CommentReportButton({ commentId }) {
+  const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const [age, setAge] = React.useState('');
 
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
-
+   const erorStyles={
+    "& .MuiFormHelperText-root.Mui-error":{
+      position:'absolute',
+      marginTop:'55px',
+      marginLeft:0
+    }
+}
+ 
 
 const items = [
   {
@@ -42,47 +48,71 @@ const items = [
     </Dropdown>
     {/* açılır report sayfası */}
     <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Raporla
-          </Typography>
-          <FormControl variant="standard" sx={{ minWidth: 160 ,mt:3}}>
-        <InputLabel id="demo-simple-select-standard-label">Rapor Nedeni</InputLabel>
-        <Select
-          labelId="demo-simple-select-standard-label"
-          id="demo-simple-select-standard"
-          value={age}
-          onChange={handleChange}
-          label="Age"
-        >
-          <MenuItem value={10}>Uygunsuz İçerik</MenuItem>
-          <MenuItem value={20}>Spam Ve Reklam</MenuItem>
-          <MenuItem value={30}>Yalan Bilgi</MenuItem>
-        </Select>
-      </FormControl>
-        <TextField id="standard-basic" label="Açıklayın" variant="standard" sx={{mt:2}} multiline />
-        <button className={styles.sendBtn}>Gönder</button>
-        </Box>
+     open={open}  footer={null} onCancel={handleClose}  /* bodyStyle={modalStyle} */
+      > {/* formik başlangıcı */}
+            <Formik
+            initialValues={{
+                report:"Uygunsuz İçerik",
+                description:"",
+            }}
+            validationSchema={
+                yup.object({
+                    report:yup.string().required("Rapor Nedeni Boş Bırakilamaz"),
+                    description:yup.string().required("Açıklama Yapmak Zorunludur"),
+                })
+            }
+            onSubmit={(values)=>{ // form submit olduktan sonra yapılacaklar
+
+                    console.log(values)                    
+                }}
+            >
+            {              
+              ({values,errors,handleSubmit,handleChange,touched,handleBlur}) =>(
+                <form onSubmit={handleSubmit}> 
+                  <Box sx={modalStyle}>
+                      <Typography id="modal-modal-title" variant="h6" component="h2">
+                        Raporla
+                      </Typography>
+                      <FormControl variant="standard" sx={{ minWidth: 160 ,mt:3}}>
+                    <InputLabel id="demo-simple-select-standard-label">Rapor Nedeni</InputLabel>
+                    <Select
+                      id="report"
+                      value={values.report}
+                      onChange={handleChange}
+                      label="Rapor Nedeni"
+
+                    >
+                      <MenuItem value="Uygunsuz İçerik">Uygunsuz İçerik</MenuItem>
+                      <MenuItem value="Spam Ve Reklam">Spam Ve Reklam</MenuItem>
+                      <MenuItem value="Yalan Bilgi">Yalan Bilgi</MenuItem>
+                    </Select>
+                  </FormControl>
+                    <TextField 
+                    id="description" 
+                    label="Açıklayın" 
+                    variant="standard" 
+                    multiline 
+                    onChange={handleChange}
+                    value={values.description}
+                    onBlur={handleBlur} 
+                    error={errors.description && touched.description}
+                    helperText={errors.description && touched.description ? errors.description:null}  
+                    sx={{...erorStyles,mt:2}}
+                    />
+                    <button className={styles.sendBtn} onClick={()=>console.log(commentId)}  type='submit'>Gönder</button>
+                  </Box>
+                 </form>
+              )}
+            </Formik>
       </Modal>
     </>
   )
-}5
+}
 
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  boxShadow: 24,
-  padding: 4,
-  borderRadius:5,
+
+ const modalStyle={
   display:'flex',
   flexDirection:'column',
-};
+  padding: 3,
+  gap:2,
+ }

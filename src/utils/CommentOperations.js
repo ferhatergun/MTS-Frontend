@@ -1,9 +1,9 @@
 import { toast } from "react-toastify";
 
-export const CommentCreate = async (values,movieId) => {
+export const CommentCreate = async (values,movieId,userId) => {
     const data ={
-        content:values.text,
-        userId:"64dfbe17ab584e9d351b611e", // cokie veya redux dan çekilecek
+        comment:values.text,
+        user:userId, // cokie veya redux dan çekilecek
         rating:values.star
     }
     try{
@@ -19,6 +19,8 @@ export const CommentCreate = async (values,movieId) => {
              console.log(result)
             if(result.success === true){
                 toast.success("Yorum Gönderildi")
+                window.location.reload() // user experience için sayfa yenileme olmayabilir onun yerine
+                // yorum dizisinin en sonuna push edilebilir test edilik karar verilecek
             }
             else if(result.status == 'fail'){
                 toast.warning("Tekrar Deneyiniz")

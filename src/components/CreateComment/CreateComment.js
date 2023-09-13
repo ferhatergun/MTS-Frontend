@@ -12,9 +12,10 @@ import { Skeleton } from '@mui/material';
 
 
 
-export default function CreateComment() {
+export default function CreateComment({movieId}) {
   const [loading,setLoading] = useState(false)
   const auth = isAuth()
+  const userId = useSelector(state => state.user.userId)
 
     useEffect(() => {
       setLoading(true)
@@ -44,7 +45,7 @@ export default function CreateComment() {
                     setTimeout(() => {
                       resetForm()
                     }, 2000);
-                    CommentCreate(values,"64e4e3392f0023c29b9d02ee")
+                    CommentCreate(values,movieId,userId)
                     
                 }}
             >

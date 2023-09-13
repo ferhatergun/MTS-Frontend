@@ -23,15 +23,13 @@ export const userLogin=async(values,setErrors,router,dispatch)=>{
              
             console.log(result)
             if(result.success == true ){
-                localStorage.setItem("user",JSON.stringify(result.user))
-                localStorage.setItem("token",result.token)
                 toast.success("Giriş Başarılı")
                 setCookie("accessToken",result.accessToken,{maxAge:3600})
                 setCookie("userId",result.user._id,{maxAge:3600})
-                router.push("/")
+                window.location.reload()
             }
             else{
-                console.log("giriş başarısız")
+                toast.error("Giriş Başarısız")
                 if(result.error =="Kayitli kullanici bulunamadi"){
                     setErrors({ email: 'Kayıtlı Kullanıcı Bulunamadı' })
                 }
@@ -92,6 +90,6 @@ export const userRegister=async(values,setErrors,router)=>{
 export const userLogout=async()=>{
     deleteCookie("accessToken")
     deleteCookie("userId")
-    window.location.reload()
+    window.location.href="/"
     toast.success("Çıkış Yapıldı")
 }

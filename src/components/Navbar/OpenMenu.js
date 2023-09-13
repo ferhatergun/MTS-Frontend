@@ -5,6 +5,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
 import { isAuth } from '$/lib/auth';
+import { userLogout } from '$/utils/AuthOperations';
 
 
 const OpenMenu = () => {
@@ -13,6 +14,8 @@ const OpenMenu = () => {
     const navbarRef1 =useRef()
     const [loading,setLoading] = useState(false)
     const auth = isAuth()
+    const userId = useSelector(state => state.user.userId)
+
   
     const handleShowNavbar = () => {
       setShowNavbar(!showNavbar);
@@ -44,6 +47,10 @@ const OpenMenu = () => {
       setLoading(true)
     },[])
 
+    const logout = () => {
+      userLogout()
+      setShowNavbar(false)
+    }
 
     return (
       <>
@@ -67,13 +74,13 @@ const OpenMenu = () => {
               (auth ? 
               <>
               <li className={styles.toggleMenuItem}>
-                <Link href="/profile/yorumlar" className={styles.link} onClick={()=>setShowNavbar(false)}>Profilim</Link>
+                <Link href={`/profile/${userId}/yorumlar`} className={styles.link} onClick={()=>setShowNavbar(false)}>Profilim</Link>
               </li>
               <li className={styles.toggleMenuItem}>
-                  <Link href="/profile/ayarlar" className={styles.link} onClick={()=>setShowNavbar(false)}>Ayarlar</Link>
+                  <Link href={`/profile/${userId}/ayarlar`} className={styles.link} onClick={()=>setShowNavbar(false)}>Ayarlar</Link>
               </li>
               <li className={styles.toggleMenuItem}>
-                <Link href="/" className={styles.link} onClick={()=>setShowNavbar(false)}>Çıkış Yap</Link>
+                <div className={styles.link} onClick={logout}>Çıkış Yap</div>
               </li>
               </> :
               <li className={styles.toggleMenuItem}>

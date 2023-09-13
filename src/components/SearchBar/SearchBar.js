@@ -1,7 +1,7 @@
 "use client"
 import { useRef, useState ,useEffect} from 'react';
 import styles from './page.module.css'
-import SearchIcon from '@mui/icons-material/Search';
+import SearchIcon from '@mui/icons-material/Search'
 import Image from 'next/image';
 import image from '../../assets/hizli-ve-ofkeli-9.jpeg'
 import { Rating } from '@mui/material'; 
