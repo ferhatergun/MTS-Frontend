@@ -2,15 +2,17 @@ import React from 'react'
 import styles from './page.module.css'
 import img from '$/assets/hizli-ve-ofkeli-9.jpeg'
 import Image from 'next/image'
-import { Rating } from '@mui/material'
 import MovieComments from '$/components/MovieComments/MovieComments'
 import CreateComment from '$/components/CreateComment/CreateComment'
-import { getMovie } from '$/utils/api'
 import ScrollToComment from '$/components/Buttons/ScrollToComment/ScrollToComment'
 import CarouselMovie from '$/components/CarouselMovie/CarouselMovie'
 import RatingStar from '$/components/RatingStar/RatingStar'
+import { redirect } from 'next/navigation'
+
 
 export default async function page({params}) {
+
+  
 
 // const movie = await getMovie(params.id) // use client yapmadan veri çekme
 
@@ -24,8 +26,8 @@ const dataa=[
   
    const movie = await getMovies(params.id) 
    
+
    
-// telefondan kontrol edebilmek için backend yokken de değerler yazdık
   return (
     <div className={styles.container}>
         <p className={styles.movieName}>{movie.name}</p>
@@ -70,12 +72,18 @@ const dataa=[
 
 
 const getMovies = async (movieId) => {
-    const res = await fetch(`http://localhost:5000/movieSeries/${movieId}`,{cache:'no-cache'})
-    const data = await res.json()
-    if(data.success){
-      return data.movieseries
+    try{
+        const res = await fetch(`http://localhost:5000/movieSeries/${movieId}`,{cache:'no-cache'})
+        const data = await res.json()
+        if(data.success){
+        return data.movieseries
+        }
+        else{
+            redirect('/500')
+        } 
+    }catch(e){
+        console.log(e)
+        redirect('/500')
     }
-    else{
-      return false
-    }
+
 }

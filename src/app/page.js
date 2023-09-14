@@ -1,9 +1,7 @@
 import Navbar from "$/components/Navbar/Navbar";
 import './globals.css'
 import CarouselMovie from "$/components/CarouselMovie/CarouselMovie";
-import { toast } from "react-toastify";
-import ErrorPage from "$/app/ErrorPage";
-
+import { redirect } from "next/navigation";
 
 export default async function Page() {
 
@@ -16,7 +14,6 @@ export default async function Page() {
   {id:3,name:'hızlı ve öfkeli 9',},
   {id:4,name:'hızlı ve öfkeli 9',},
  ]
-if(data){
   return (
     <main>
           <Navbar />
@@ -28,12 +25,6 @@ if(data){
     </main>
   )
 }
-else{
-  return(
-    <ErrorPage/>
-  )
-}
-}
 
 const getMovies = async () => {
   try{
@@ -43,10 +34,11 @@ const getMovies = async () => {
       return data.moviesSeries
     }
     else{
-      return false
+      redirect('/500')
     }
   }catch(e){
-    return false
+    console.log(e)
+    redirect('/500')
   }
   }
   

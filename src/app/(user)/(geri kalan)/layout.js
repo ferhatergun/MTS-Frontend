@@ -4,12 +4,13 @@ import '$/app/globals.css'
 
 
 export default function RootLayout({ children }) {
+  
   return (
     <>
         <Navbar />
-        <div className='mainContainer'>
+        <main className='mainContainer'>
           {children}
-        </div>
+        </main>
         <Footer />
     </>
   )
