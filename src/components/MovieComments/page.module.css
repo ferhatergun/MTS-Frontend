@@ -17,7 +17,7 @@
     width: 100%;
     display: flex;
     align-items: center;
-    gap:3% ;
+    gap:3%;
     height: 40px;
 }
 .commentContent{

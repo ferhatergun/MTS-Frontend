@@ -4,11 +4,10 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import styles from './page.module.css'
 import ReportOutlinedIcon from '@mui/icons-material/ReportOutlined';
 import { Dropdown, Space } from 'antd';
-import Box from '@mui/material/Box';
-import { TextField,Typography,InputLabel,MenuItem,FormControl,Select } from '@mui/material';
+import { TextField,Typography,InputLabel,MenuItem,FormControl,Select, Modal} from '@mui/material';
 import { Formik } from 'formik'
 import * as yup from "yup"
-import { Modal } from 'antd';
+// import { Modal } from 'antd';
 
 
 export default function CommentReportButton({ commentId }) {
@@ -17,11 +16,13 @@ export default function CommentReportButton({ commentId }) {
   const handleClose = () => setOpen(false);
 
 
+
    const erorStyles={
     "& .MuiFormHelperText-root.Mui-error":{
       position:'absolute',
-      marginTop:'55px',
-      marginLeft:0
+      marginTop:'47px',
+      marginLeft:0,
+      fontSize:'11px'
     }
 }
  
@@ -45,11 +46,13 @@ const items = [
       <Space>
       <MoreVertIcon className={styles.Icon} />
       </Space>
-    </Dropdown>
+    </Dropdown>{/* formik başlangıcı */}
     {/* açılır report sayfası */}
-    <Modal
-     open={open}  footer={null} onCancel={handleClose}  /* bodyStyle={modalStyle} */
-      > {/* formik başlangıcı */}
+     <Modal
+      open={open}  
+      onClose={handleClose}  
+      disableScrollLock 
+      > 
             <Formik
             initialValues={{
                 report:"Uygunsuz İçerik",
@@ -69,18 +72,19 @@ const items = [
             {              
               ({values,errors,handleSubmit,handleChange,touched,handleBlur}) =>(
                 <form onSubmit={handleSubmit}> 
-                  <Box sx={modalStyle}>
-                      <Typography id="modal-modal-title" variant="h6" component="h2">
+                  <div className={styles.modal}>
+                      <Typography variant="h6" component="h2">
                         Raporla
                       </Typography>
                       <FormControl variant="standard" sx={{ minWidth: 160 ,mt:3}}>
-                    <InputLabel id="demo-simple-select-standard-label">Rapor Nedeni</InputLabel>
+                    <InputLabel >Rapor Nedeni</InputLabel>
                     <Select
                       id="report"
+                      name="report"
                       value={values.report}
                       onChange={handleChange}
                       label="Rapor Nedeni"
-
+                      MenuProps={{disableScrollLock: true}}
                     >
                       <MenuItem value="Uygunsuz İçerik">Uygunsuz İçerik</MenuItem>
                       <MenuItem value="Spam Ve Reklam">Spam Ve Reklam</MenuItem>
@@ -89,6 +93,7 @@ const items = [
                   </FormControl>
                     <TextField 
                     id="description" 
+                    name='description'
                     label="Açıklayın" 
                     variant="standard" 
                     multiline 
@@ -100,7 +105,7 @@ const items = [
                     sx={{...erorStyles,mt:2}}
                     />
                     <button className={styles.sendBtn} onClick={()=>console.log(commentId)}  type='submit'>Gönder</button>
-                  </Box>
+                  </div>
                  </form>
               )}
             </Formik>
@@ -108,11 +113,3 @@ const items = [
     </>
   )
 }
-
-
- const modalStyle={
-  display:'flex',
-  flexDirection:'column',
-  padding: 3,
-  gap:2,
- }
