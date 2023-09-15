@@ -1,15 +1,16 @@
 "use client";
 import React, { useEffect, useState } from 'react';
-import { Avatar, Rating, Checkbox } from '@mui/material';
+import { Avatar} from '@mui/material';
 import styles from './page.module.css';
 import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
-import CommentReportButton from '../Buttons/CommentReportButton/CommentReportButton';
-import RatingStar from '../RatingStar/RatingStar';
+import CommentReportButton from '../../Buttons/CommentReportButton/CommentReportButton';
+import RatingStar from '../../RatingStar/RatingStar';
 import { isAuth } from '$/lib/auth';
-import LikeButtton from '../Buttons/CommentLikeDislikeButtons/LikeButtton';
-import DislikeButton from '../Buttons/CommentLikeDislikeButtons/DislikeButton';
+import LikeButtton from '../../Buttons/CommentLikeDislikeButtons/LikeButtton';
+import DislikeButton from '../../Buttons/CommentLikeDislikeButtons/DislikeButton'
+import { commentDate } from '$/utils/CommentOperations'
 
-export default function Comments({ commentId }) {
+export default function Comment({ commentId }) {
   const auth = isAuth();
   const [comment, setComment] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -25,14 +26,17 @@ export default function Comments({ commentId }) {
   }, [commentId]);
 
 
-
   return (
     <div>
       {loading ? (
         <div className={styles.commentDiv}>
           <div className={styles.commentTop}>
             <Avatar sx={{ width: 50, height: 50 }}>M</Avatar>
-            <p>Murat Uçar</p>
+            <div style={{display:'relative'}}>
+              <p>Murat Uçar</p>
+              <p className={styles.date}>{commentDate(comment.createdDate)}</p>
+            </div>
+            
             <RatingStar star={comment.rating} />
           </div>
           <div className={styles.commentContent}>

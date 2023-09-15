@@ -2,19 +2,18 @@ import React from 'react'
 import styles from './page.module.css'
 import img from '$/assets/hizli-ve-ofkeli-9.jpeg'
 import Image from 'next/image'
-import MovieComments from '$/components/MovieComments/MovieComments'
-import CreateComment from '$/components/CreateComment/CreateComment'
 import ScrollToComment from '$/components/Buttons/ScrollToComment/ScrollToComment'
 import CarouselMovie from '$/components/CarouselMovie/CarouselMovie'
 import RatingStar from '$/components/RatingStar/RatingStar'
 import { redirect } from 'next/navigation'
+import MovieComment from '$/components/MovieComment/MovieComment'
 
 
 export default async function page({params}) {
+    // const [comments,setComments] = useState(null) 
+    // yorumları yorum componentine gönderdik
+    // create comment componentine gönderdik ki yeni yorumu bu diziye push edebilelim
 
-  
-
-// const movie = await getMovie(params.id) // use client yapmadan veri çekme
 
 
 const dataa=[
@@ -30,16 +29,16 @@ const dataa=[
    
   return (
     <div className={styles.container}>
-        <p className={styles.movieName}>{movie.name}</p>
+        <p className={styles.movieName}>{movie?.name}</p>
         <div className={styles.movieInformationDiv}>
             <div className={styles.imageDiv}>
                 <Image src={img} fill className={styles.image} alt='resim bulunamadı' />
             </div>
             <div className={styles.informationDiv} >
-                <p>Kategori : {movie.category ? movie.category : "Kategori"}</p>
-                <p>Yönetmen: {movie.director ? movie.director :"Yönetmen"} </p>
+                <p>Kategori : {movie?.category}</p>
+                <p>Yönetmen: {movie?.director} </p>
                 <p>Vizyona Giriş Tarihi : 13 Temmuz 2022</p>
-                <p>Film Süresi : {movie.time ? movie.time : "Süre"}</p>
+                <p>Film Süresi : {movie?.time}</p>
                 <RatingStar />
                 <div className={styles.fav_comment_btnDiv}>
                     <div className={styles.favBtn}>Favoriye Ekle</div>
@@ -48,22 +47,13 @@ const dataa=[
             </div>
         </div>
         <div className={styles.movieSummary}>
-            {movie.description ? movie.description : "Bu film hakkında bir açıklama bulunmamaktadır."}
+            {movie?.description}
         </div>
         <div className={styles.enPopulerSlider}>
             <CarouselMovie headerTitle="Benzer Filmler" delay={4000} data={dataa} />
         </div>
         <div className={styles.movieCommentsDiv}>
-            <CreateComment  movieId={params.id} />
-            {
-                movie ?
-                (
-                    movie?.comments?.map((commentId,index) => (
-                    <MovieComments key={index} commentId={commentId} />
-                    ))
-                ) :null
-                
-            }
+            <MovieComment movie={movie} movieId={params.id} />
         </div>
 
     </div>
@@ -82,7 +72,7 @@ const getMovies = async (movieId) => {
             redirect('/500')
         } 
     }catch(e){
-        console.log(e)
+        console.log("film getirilirken hata oluştu",e)
         redirect('/500')
     }
 

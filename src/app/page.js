@@ -34,11 +34,11 @@ const getMovies = async () => {
       return data.moviesSeries
     }
     else{
-      redirect('/500')
+      redirect('/error')
     }
   }catch(e){
     console.log(e)
-    redirect('/500')
+    redirect('/error')
   }
   }
   

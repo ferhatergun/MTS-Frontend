@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React ,{useState,useEffect} from 'react'
 import { Dropdown, Space } from 'antd';
 import styles from './page.module.css'
 import { Avatar } from '@mui/material';
@@ -11,7 +11,22 @@ import { userLogout } from '$/utils/AuthOperations';
 
 
 
+
 export default function ProfileToogle({MyUserId}) {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+
+  useEffect(() => {
+    // Boyut değiştiğinde bu işlev çalışacak
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [window.innerWidth]);
+
 
 
 const items = [
@@ -43,13 +58,12 @@ const items = [
     }}
     trigger={['hover']}
     className={styles.dropdown}
-    placement='top'
+    placement={windowWidth > 1000 ? "top" : "topRight"}
     overlayClassName={styles.dropdownOverlay}
     
     
     >
       <Space>
-      {/* <MoreVertIcon className={styles.Icon} /> */}
       <Avatar>A</Avatar>
       </Space>
     </Dropdown>
