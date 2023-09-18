@@ -9,6 +9,7 @@ import MovieComment from '$/components/MovieComment/MovieComment'
 import { fetchData } from '$/utils/api'
 
 
+
 export default async function page({params}) {
 
 
@@ -19,7 +20,7 @@ const dataa=[
     {id:4,name:'hızlı ve öfkeli 9',},
    ]
   
-   const movie = (await fetchData(`movieSeries/${params.id}`)).movieseries
+   const movie = await getMovie(params.id)
    
 
    
@@ -49,9 +50,18 @@ const dataa=[
             <CarouselMovie headerTitle="Benzer Filmler" delay={4000} data={dataa} />
         </div>
         <div className={styles.movieCommentsDiv}>
-            <MovieComment movie={movie} movieId={params.id} />
+            {
+                movie && params ?
+                <MovieComment movie={movie} movieId={params.id} /> :null
+            }
         </div>
 
     </div>
   )
+}
+
+const getMovie = async (id) => {
+    console.log("id",id)
+    const movie = await fetchData(`movieSeries/${id}`)
+    return movie.movieseries
 }

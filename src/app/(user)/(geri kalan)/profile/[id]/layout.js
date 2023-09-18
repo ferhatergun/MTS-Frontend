@@ -1,14 +1,13 @@
 "use client"
-import React ,{ useState ,useEffect}from 'react'
+import React from 'react'
 import styles from './page.module.css'
 import { Avatar ,Skeleton} from '@mui/material'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
-import { useSelector } from 'react-redux'
 import { fetchData } from '$/utils/api'
 
 
-export default async function layout({children,...props}) {
+export default async function Layout({children}) {
   const pathname = usePathname()
   const path=pathname.split("/")
 

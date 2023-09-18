@@ -7,7 +7,6 @@ import { Dropdown, Space } from 'antd';
 import { TextField,Typography,InputLabel,MenuItem,FormControl,Select, Modal} from '@mui/material';
 import { Formik } from 'formik'
 import * as yup from "yup"
-// import { Modal } from 'antd';
 
 
 export default function CommentReportButton({ commentId }) {
@@ -48,29 +47,29 @@ const items = [
       </Space>
     </Dropdown>{/* formik başlangıcı */}
     {/* açılır report sayfası */}
-     <Modal
-      open={open}  
-      onClose={handleClose}  
-      disableScrollLock 
-      > 
-            <Formik
-            initialValues={{
-                report:"Uygunsuz İçerik",
-                description:"",
-            }}
-            validationSchema={
-                yup.object({
-                    report:yup.string().required("Rapor Nedeni Boş Bırakilamaz"),
-                    description:yup.string().required("Açıklama Yapmak Zorunludur"),
-                })
-            }
-            onSubmit={(values)=>{ // form submit olduktan sonra yapılacaklar
+      <Formik
+        initialValues={{
+            report:"Uygunsuz İçerik",
+            description:"",
+        }}
+        validationSchema={
+            yup.object({
+                report:yup.string().required("Rapor Nedeni Boş Bırakilamaz"),
+                description:yup.string().required("Açıklama Yapmak Zorunludur"),
+            })
+        }
+        onSubmit={(values)=>{ // form submit olduktan sonra yapılacaklar
 
-                    console.log(values)                    
-                }}
-            >
-            {              
-              ({values,errors,handleSubmit,handleChange,touched,handleBlur}) =>(
+                console.log(values)                    
+            }}
+        >
+        {              
+          ({values,errors,handleSubmit,handleChange,touched,handleBlur}) =>(
+            <Modal
+              open={open}  
+              onClose={handleClose}  
+              disableScrollLock 
+              >
                 <form onSubmit={handleSubmit}> 
                   <div className={styles.modal}>
                       <Typography variant="h6" component="h2">
@@ -107,9 +106,9 @@ const items = [
                     <button className={styles.sendBtn} onClick={()=>console.log(commentId)}  type='submit'>Gönder</button>
                   </div>
                  </form>
-              )}
-            </Formik>
-      </Modal>
+            </Modal> 
+          )}
+      </Formik>
     </>
   )
 }

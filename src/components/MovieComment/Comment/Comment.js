@@ -1,6 +1,6 @@
-"use client";
-import React, { useEffect, useState } from 'react';
-import { Avatar} from '@mui/material';
+"use client"
+import React,{useState,useEffect} from 'react';
+import { Avatar, Skeleton} from '@mui/material';
 import styles from './page.module.css';
 import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
 import CommentReportButton from '../../Buttons/CommentReportButton/CommentReportButton';
@@ -12,45 +12,46 @@ import { commentDate } from '$/utils/CommentOperations'
 import { fetchData } from '$/utils/api';
 
 export default function Comment({ commentId }) {
-  const auth = isAuth();
-  const [comment, setComment] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [data,setData] = useState(null)
 
-  useEffect(() => {
-    const commentSet = async () => {
-      const data = (await fetchData(`comments/${commentId}`)).comment
-      setComment(data);
-      setLoading(true);
-    };
 
-    commentSet();
-  }, [commentId]);
-
+  useEffect(()=>{
+    const getComment = async () => {
+      const data = await fetchData(`comments/${commentId}`)
+      setData(data.comment)
+    }
+    getComment()
+  },[commentId])
+  
 
   return (
     <div>
-      {loading ? (
+      {
+        data ?
         <div className={styles.commentDiv}>
           <div className={styles.commentTop}>
             <Avatar sx={{ width: 50, height: 50 }}>M</Avatar>
             <div style={{display:'relative'}}>
               <p>Murat Uçar</p>
-              <p className={styles.date}>{commentDate(comment.createdDate)}</p>
+              <p className={styles.date}>{commentDate(data?.createdDate)}</p>
             </div>
             
-            <RatingStar star={comment.rating} />
+            <RatingStar star={data?.rating} />
           </div>
           <div className={styles.commentContent}>
-            {comment.comment ? comment.comment : "Bu film hakkında yorum yapılmamıştır."}
+            {data?.comment ? data?.comment : "Bu film hakkında yorum yapılmamıştır."}
           </div>
           <div className={styles.commentBottom}>
             <LikeButtton />
             <DislikeButton />
             <div className={styles.commentIcon}><ModeCommentOutlinedIcon className={styles.Icon} />Cevapla</div>
             <CommentReportButton commentId={commentId} />
-          </div>
-        </div>
-      ) : null}
+          </div> 
+        </div>: 
+          <Skeleton variant="rectangular" width="100%" height={140} style={{marginBottom:5}} />
+      }
+        
+       
     </div>
   );
 }

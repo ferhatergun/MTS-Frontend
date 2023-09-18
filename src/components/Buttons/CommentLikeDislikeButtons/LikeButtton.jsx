@@ -1,21 +1,28 @@
 "use client"
-import React from 'react'
-import styles from './page.module.css'
+import React,{useEffect,useState}from 'react';
+import styles from './page.module.css';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import { Checkbox } from '@mui/material';
 import { isAuth } from '$/lib/auth';
 
-export default function LikeButtton() {
-    const auth = isAuth()
+export default function LikeButton() {
+    const auth = isAuth();
+    const [buttonStyle, setButtonStyle] = useState({});
+    const [disabled, setDisabled] = useState(false);
 
-  return (
-        <Checkbox  
-        icon={<div className={styles.commentIcon}><ThumbUpOffAltIcon className={styles.Icon}/>15</div>} 
-        checkedIcon={<div className={styles.commentIcon}><ThumbUpIcon className={styles.IconChecked} />16</div>} 
-        className={styles.commentIcon} 
-        disabled={!auth}
-        style={{opacity:!auth ? 0.5 : 1}}
+    useEffect(()=>{
+      setButtonStyle({opacity: auth ? 1 : 0.5})
+      setDisabled(!auth)
+    },[])
+
+    return (
+        <Checkbox
+          icon={<div className={styles.commentIcon}><ThumbUpOffAltIcon className={styles.Icon} />15</div>}
+          checkedIcon={<div className={styles.commentIcon}><ThumbUpIcon className={styles.IconChecked} />16</div>}
+          className={styles.commentIcon}
+          disabled={disabled}
+          style={buttonStyle} // Stil nesnesini style prop'una ekleyin
         />
-  )
+    );
 }

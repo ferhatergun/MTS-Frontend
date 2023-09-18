@@ -17,9 +17,11 @@ export default function CreateComment({movieId,setComments}) {
   const auth = isAuth()
   const userId = useSelector(state => state.user.userId)
 
+
     useEffect(() => {
       setLoading(true)
     }, [])
+
 
 
   return (

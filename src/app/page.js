@@ -5,7 +5,6 @@ import { redirect } from "next/navigation";
 import { fetchData } from "$/utils/api";
 
 export default async function Page() {
-
   const data = (await fetchData('movieSeries/AllMovieSeries')).moviesSeries
 
 

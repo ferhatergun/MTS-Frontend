@@ -5,24 +5,24 @@ import '../../app/globals.css'
 import OpenMenu from './OpenMenu';
 import Link from 'next/link'
 import { useSelector } from 'react-redux';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, use } from 'react';
 import ProfileToogle from '../ProfileToggleBtn(navbar)/ProfileToogle';
 import logo from '$/assets/logo.jpg'
 import Image from 'next/image';
 import { isAuth } from '$/lib/auth';
-import { getCookie } from 'cookies-next';
 
 export default function Navbar() {
     const auth = isAuth()
     const [loading,setLoading] = useState(false) 
-    const userId = getCookie("userId")
+    const userId = useSelector(state => state.user.userId)
+
 
 
     useEffect(()=>{
         setLoading(true)
     },[])
     
-    
+
     return (
         <div className={styles.container}>
             <div className={styles.ustContainer}>

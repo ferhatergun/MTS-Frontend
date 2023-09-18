@@ -9,17 +9,17 @@ export const getMovie=async(keyword)=>{
 
 export const fetchData = async (path) => {
     try{
-        const res = await fetch(`http://localhost:5000/${path}`,{cache:'no-cache'})
+        const res = await fetch(`http://172.2.3.196:5000/${path}`,{cache:'no-cache'})
         const data = await res.json()
         if(data.success){
         return data
         }
         else{
-            redirect('/500')
+            redirect('/error')
         } 
     }catch(e){
-        console.log("film getirilirken hata oluştu",e)
-        redirect('/500')
+        console.log("api getirilirken hata oluştu",e)
+        redirect('/error')
     }
 
 }
