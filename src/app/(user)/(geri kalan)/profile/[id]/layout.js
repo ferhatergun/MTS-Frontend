@@ -5,22 +5,20 @@ import { Avatar ,Skeleton} from '@mui/material'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { useSelector } from 'react-redux'
+import { fetchData } from '$/utils/api'
 
 
 export default async function layout({children,...props}) {
   const pathname = usePathname()
   const path=pathname.split("/")
-  const [loading,setLoading] = useState(false)
 
-  useEffect(()=>{
-    setLoading(true)
-  },[])
 
-  const user = await getUser(path[2])
+  const user = (await fetchData(`users/${path[2]}`)).user
+
   return (
     <div className={styles.container} >
       {
-        loading ?
+        user ?
         <div className={styles.headerDiv}>
           <div className={styles.profileCenter}>
             <div style={{display:'flex',flexDirection:'column',gap:'10px',textAlign:'center'}}>
@@ -53,15 +51,4 @@ export default async function layout({children,...props}) {
         </div>
     </div>
   )
-}
-
-const getUser = async (id) =>{
-  const res = await fetch(`http://localhost:5000/users/${id}`,{cache:'no-cache'})
-  const data = await res.json()
-  if(data.success == true){
-    return data.user
-  }
-  else{
-    return false
-  }
 }

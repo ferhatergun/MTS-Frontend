@@ -2,11 +2,12 @@ import Navbar from "$/components/Navbar/Navbar";
 import './globals.css'
 import CarouselMovie from "$/components/CarouselMovie/CarouselMovie";
 import { redirect } from "next/navigation";
+import { fetchData } from "$/utils/api";
 
 export default async function Page() {
 
-  const data = await getMovies() 
-  // console.log(data)
+  const data = (await fetchData('movieSeries/AllMovieSeries')).moviesSeries
+
 
  const dataa=[
   {id:1,name:'hızlı ve öfkeli 9',},
@@ -25,20 +26,3 @@ export default async function Page() {
     </main>
   )
 }
-
-const getMovies = async () => {
-  try{
-    const res = await fetch('http://localhost:5000/movieSeries/AllMovieSeries',{cache:'no-cache'})
-    const data = await res.json()
-    if(data.success){
-      return data.moviesSeries
-    }
-    else{
-      redirect('/error')
-    }
-  }catch(e){
-    console.log(e)
-    redirect('/error')
-  }
-  }
-  

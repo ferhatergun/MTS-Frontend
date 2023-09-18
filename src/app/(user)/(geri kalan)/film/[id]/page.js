@@ -5,15 +5,11 @@ import Image from 'next/image'
 import ScrollToComment from '$/components/Buttons/ScrollToComment/ScrollToComment'
 import CarouselMovie from '$/components/CarouselMovie/CarouselMovie'
 import RatingStar from '$/components/RatingStar/RatingStar'
-import { redirect } from 'next/navigation'
 import MovieComment from '$/components/MovieComment/MovieComment'
+import { fetchData } from '$/utils/api'
 
 
 export default async function page({params}) {
-    // const [comments,setComments] = useState(null) 
-    // yorumları yorum componentine gönderdik
-    // create comment componentine gönderdik ki yeni yorumu bu diziye push edebilelim
-
 
 
 const dataa=[
@@ -23,7 +19,7 @@ const dataa=[
     {id:4,name:'hızlı ve öfkeli 9',},
    ]
   
-   const movie = await getMovies(params.id) 
+   const movie = (await fetchData(`movieSeries/${params.id}`)).movieseries
    
 
    
@@ -58,22 +54,4 @@ const dataa=[
 
     </div>
   )
-}
-
-
-const getMovies = async (movieId) => {
-    try{
-        const res = await fetch(`http://localhost:5000/movieSeries/${movieId}`,{cache:'no-cache'})
-        const data = await res.json()
-        if(data.success){
-        return data.movieseries
-        }
-        else{
-            redirect('/500')
-        } 
-    }catch(e){
-        console.log("film getirilirken hata oluştu",e)
-        redirect('/500')
-    }
-
 }

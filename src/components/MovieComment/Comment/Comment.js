@@ -9,6 +9,7 @@ import { isAuth } from '$/lib/auth';
 import LikeButtton from '../../Buttons/CommentLikeDislikeButtons/LikeButtton';
 import DislikeButton from '../../Buttons/CommentLikeDislikeButtons/DislikeButton'
 import { commentDate } from '$/utils/CommentOperations'
+import { fetchData } from '$/utils/api';
 
 export default function Comment({ commentId }) {
   const auth = isAuth();
@@ -17,7 +18,7 @@ export default function Comment({ commentId }) {
 
   useEffect(() => {
     const commentSet = async () => {
-      const data = await getComment(commentId);
+      const data = (await fetchData(`comments/${commentId}`)).comment
       setComment(data);
       setLoading(true);
     };
@@ -53,13 +54,3 @@ export default function Comment({ commentId }) {
     </div>
   );
 }
-
-const getComment = async (id) => {
-  const res = await fetch(`http://localhost:5000/comments/${id}`,{cache:'no-cache'});
-  const data = await res.json();
-  if (data.success) {
-    return data.comment;
-  } else {
-    return false;
-  }
-};
