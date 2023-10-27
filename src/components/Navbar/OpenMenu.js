@@ -5,7 +5,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
 import { isAuth } from '$/lib/auth';
-import { userLogout } from '$/utils/AuthOperations';
+import { userLogout } from '$/allApi/AuthOperations';
 
 
 const OpenMenu = () => {

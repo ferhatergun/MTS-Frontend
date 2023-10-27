@@ -6,7 +6,7 @@ import ScrollToComment from '$/components/Buttons/ScrollToComment/ScrollToCommen
 import CarouselMovie from '$/components/CarouselMovie/CarouselMovie'
 import RatingStar from '$/components/RatingStar/RatingStar'
 import MovieComment from '$/components/MovieComment/MovieComment'
-import { fetchData } from '$/utils/api'
+import { fetchData } from '$/allApi/api'
 
 
 

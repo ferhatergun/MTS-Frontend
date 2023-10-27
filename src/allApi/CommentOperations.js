@@ -1,4 +1,5 @@
 import { toast } from "react-toastify";
+import { getCookie } from "cookies-next";
 
 export const CommentCreate = async (values,movieId,userId,setComments) => {
     const data ={
@@ -10,7 +11,8 @@ export const CommentCreate = async (values,movieId,userId,setComments) => {
         const response = await fetch(`http://localhost:5000/comments/${movieId}/CreateComment`,{
             method:'POST',
             headers:{
-                'Content-Type':'application/json'
+                'Content-Type':'application/json',
+                'Authorization': "Bearer " + getCookie('token'),
             },
             body:JSON.stringify(data)
              }) 

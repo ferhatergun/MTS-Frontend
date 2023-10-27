@@ -1,8 +1,7 @@
 import Navbar from "$/components/Navbar/Navbar";
 import './globals.css'
 import CarouselMovie from "$/components/CarouselMovie/CarouselMovie";
-import { redirect } from "next/navigation";
-import { fetchData } from "$/utils/api";
+import { fetchData } from "$/allApi/api";
 
 export default async function Page() {
   const data = (await fetchData('movieSeries/AllMovieSeries')).moviesSeries

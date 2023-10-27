@@ -10,7 +10,7 @@ import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { motion } from "framer-motion";
 import Link from 'next/link'
 import Image from 'next/image'
-import { userRegister } from '$/utils/AuthOperations'
+import { userRegister } from '$/allApi/AuthOperations'
 import { useRouter } from 'next/navigation'
 
 

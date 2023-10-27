@@ -5,7 +5,7 @@ import { Avatar ,FormHelperText,Rating ,TextField } from '@mui/material'
 import SendIcon from '@mui/icons-material/Send';
 import { Formik } from 'formik'
 import * as yup from "yup"
-import { CommentCreate } from '$/utils/CommentOperations';
+import { CommentCreate } from '$/allApi/CommentOperations';
 import { useSelector } from 'react-redux';
 import { isAuth } from '$/lib/auth';
 import { Skeleton } from '@mui/material';

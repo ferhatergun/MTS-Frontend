@@ -8,8 +8,8 @@ import RatingStar from '../../RatingStar/RatingStar';
 import { isAuth } from '$/lib/auth';
 import LikeButtton from '../../Buttons/CommentLikeDislikeButtons/LikeButtton';
 import DislikeButton from '../../Buttons/CommentLikeDislikeButtons/DislikeButton'
-import { commentDate } from '$/utils/CommentOperations'
-import { fetchData } from '$/utils/api';
+import { commentDate } from '$/allApi/CommentOperations'
+import { fetchData } from '$/allApi/api';
 
 export default function Comment({ commentId }) {
   const [data,setData] = useState(null)
@@ -22,7 +22,7 @@ export default function Comment({ commentId }) {
     }
     getComment()
   },[commentId])
-  
+
 
   return (
     <div>

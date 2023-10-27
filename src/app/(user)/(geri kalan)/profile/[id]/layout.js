@@ -4,7 +4,7 @@ import styles from './page.module.css'
 import { Avatar ,Skeleton} from '@mui/material'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
-import { fetchData } from '$/utils/api'
+import { fetchData } from '$/allApi/api'
 
 
 export default async function Layout({children}) {

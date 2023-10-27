@@ -46,7 +46,7 @@ export default function CarouselMovie({headerTitle,data,delay}) {
                             <Image src={img} className={styles.image} alt='resim bulunamadı' />
                         </div>
                         <div style={{display:'flex',flexDirection:'column',justifyContent:'space-around',height:'50px'}}>
-                        <div>{item.name}</div>
+                        <div className={styles.movieName}>{item.name}</div>
                             <Rating value={4} readOnly sx={{color:'purple'}} size='small' />  
                         </div>
                     </Link>
