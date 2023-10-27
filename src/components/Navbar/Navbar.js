@@ -1,4 +1,4 @@
-"use client"
+'use client'
 import styles from './page.module.css'
 import SearchBar from '../SearchBar/SearchBar'
 import '../../app/globals.css'
@@ -11,16 +11,26 @@ import logo from '$/assets/logo.jpg'
 import Image from 'next/image';
 import { isAuth } from '$/lib/auth';
 
+
+
+
 export default function Navbar() {
-    const auth = isAuth()
+    const [auth,setAuth] = useState(false)
     const [loading,setLoading] = useState(false) 
     const userId = useSelector(state => state.user.userId)
 
 
 
+
+
     useEffect(()=>{
+        setAuth(isAuth())
         setLoading(true)
     },[])
+
+
+
+    
     
 
     return (

@@ -7,13 +7,17 @@ import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import Link from 'next/link';
-import { userLogout } from '$/utils/AuthOperations';
+import { userLogout } from '$/allApi/AuthOperations';
+import { getUser } from '$/allApi/UserOperations';
+import { useRouter } from 'next/navigation';
 
 
 
 
 export default function ProfileToogle({MyUserId}) {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [user,setUser] = useState(null)
+  const router = useRouter()
 
 
   useEffect(() => {
@@ -27,6 +31,19 @@ export default function ProfileToogle({MyUserId}) {
     };
   }, [window.innerWidth]);
 
+  useEffect(()=>{
+    if(MyUserId){
+      userGet()
+    }
+  },[])
+
+  
+  const userGet = async () => {
+    const user = await getUser(MyUserId,router)
+    setUser(user)
+}
+
+console.log(user)
 
 
 const items = [
@@ -64,7 +81,7 @@ const items = [
     
     >
       <Space>
-      <Avatar>A</Avatar>
+      <Avatar>{user.UserName.substring(0,1).toUpperCase()}</Avatar>
       </Space>
     </Dropdown>
     </>
