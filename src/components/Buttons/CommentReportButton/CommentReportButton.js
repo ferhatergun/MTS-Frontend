@@ -40,7 +40,7 @@ const items = [
       items,
     }}
     trigger={['click']}
-    className={styles.reportBtn}
+    className={styles.btnIcon}
     >
       <Space>
       <MoreVertIcon className={styles.Icon} />
