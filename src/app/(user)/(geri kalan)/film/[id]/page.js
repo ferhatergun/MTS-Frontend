@@ -52,7 +52,7 @@ const dataa=[
         <div className={styles.movieCommentsDiv}>
             {
                 movie && params ?
-                <MovieComment movie={movie} movieId={params.id} /> :null
+                <MovieComment movieId={params.id} /> :null
             }
         </div>
 

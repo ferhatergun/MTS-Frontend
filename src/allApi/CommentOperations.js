@@ -1,10 +1,9 @@
 import { toast } from "react-toastify";
 import { getCookie } from "cookies-next";
 
-export const CommentCreate = async (values,movieId,userId,setComments) => {
+export const CommentCreate = async (values,movieId,setComments) => {
     const data ={
         comment:values.text,
-        user:userId, // cokie veya redux dan çekilecek
         rating:values.star
     }
     try{
@@ -12,7 +11,7 @@ export const CommentCreate = async (values,movieId,userId,setComments) => {
             method:'POST',
             headers:{
                 'Content-Type':'application/json',
-                'Authorization': "Bearer " + getCookie('token'),
+                'Authorization': "Bearer " + getCookie('accessToken'),
             },
             body:JSON.stringify(data)
              }) 
@@ -21,7 +20,7 @@ export const CommentCreate = async (values,movieId,userId,setComments) => {
              console.log(result)
             if(result.success === true){
                 toast.success("Yorum Gönderildi")
-                setComments((prev)=>[...prev,result.createComment._id])
+                setComments((prev)=>[result.createComment,...prev])
                 // yeni yorumu yorum dizisinin en sonuna pushladık
             }
             else if(result.status == 'fail'){

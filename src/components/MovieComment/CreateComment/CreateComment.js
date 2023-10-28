@@ -47,7 +47,7 @@ export default function CreateComment({movieId,setComments}) {
                     setTimeout(() => {
                       resetForm()
                     }, 2000);
-                    CommentCreate(values,movieId,userId,setComments)
+                    CommentCreate(values,movieId,setComments)
                     
                 }}
             >

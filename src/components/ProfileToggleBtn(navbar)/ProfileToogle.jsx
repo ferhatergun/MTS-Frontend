@@ -43,7 +43,6 @@ export default function ProfileToogle({MyUserId}) {
     setUser(user)
 }
 
-console.log(user)
 
 
 const items = [
@@ -81,7 +80,7 @@ const items = [
     
     >
       <Space>
-      <Avatar>{user.UserName.substring(0,1).toUpperCase()}</Avatar>
+      <Avatar>{user?.UserName.substring(0,1).toUpperCase()}</Avatar>
       </Space>
     </Dropdown>
     </>

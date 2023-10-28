@@ -1,19 +1,35 @@
 "use client"
-import React from 'react'
+import React ,{ useEffect, useState }from 'react'
 import CreateComment from './CreateComment/CreateComment'
 import Comment from './Comment/Comment'
+import { fetchData } from '$/allApi/api'
+import { Skeleton } from '@mui/material'
 
-export default function MovieComment({movieId,movie}) {
-  const [comments, setComments] = React.useState(movie.comments)
+export default function MovieComment({movieId}) {
+  const [comments, setComments] = useState([])
   // film içindeki yorumları createComment e gönderiyoruz yeni yorumu sonuna eklemek için
+
+  const getComments = async () => { // film içindeki yorumları getiriyoruz
+    try {
+      const response = await fetchData(`comments/${movieId}/comments`);
+      setComments(response.comments);
+    } catch (error) {
+      console.error("Veri yüklenirken hata oluştu: ", error);
+    }
+  }
+
+  useEffect(()=>{
+    getComments()
+  },[])
+
   return (
     <div>
         <CreateComment movieId={movieId} setComments={setComments} />
             {
                 comments ?
                 (
-                    comments?.map((commentId) => (
-                      <Comment key={commentId} commentId={commentId} />
+                    comments?.map((comment) => (
+                      <Comment key={comment._id} comment={comment} />
                     ))
                 ) :null
                 

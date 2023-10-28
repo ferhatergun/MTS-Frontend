@@ -14,15 +14,16 @@
     align-items: flex-end;
 }
 .sendBtn{
-    width: 20vw;
-    height: 50px;
+    width: 15vw;
+    height: 40px;
     background-color: antiquewhite;
-    border-radius: 10px;
+    border-radius: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 10px;
     gap: 5px;
+    cursor: pointer;
 }
 .commentInput{
     width: 80vw;
