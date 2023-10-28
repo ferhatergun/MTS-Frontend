@@ -1,6 +1,6 @@
 
 import React,{useState,useEffect} from 'react';
-import { Avatar, Skeleton} from '@mui/material';
+import { Avatar,Tooltip} from '@mui/material';
 import styles from './page.module.css';
 import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
 import CommentReportButton from '../../Buttons/CommentReportButton/CommentReportButton';
@@ -8,9 +8,15 @@ import RatingStar from '../../RatingStar/RatingStar';
 import LikeButtton from '../../Buttons/CommentLikeDislikeButtons/LikeButtton';
 import DislikeButton from '../../Buttons/CommentLikeDislikeButtons/DislikeButton'
 import { commentDate } from '$/allApi/CommentOperations'
+import { useSelector } from 'react-redux';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import { styled } from '@mui/material/styles';
 
 export default function Comment({ comment }) {
-  // console.log(comment)
+  const userId = useSelector(state => state.user.userId)
+ //createdUserId
+ console.log(comment)
+
   return (
     <div className={styles.commentDiv}>
       <div className={styles.commentTop}>
@@ -21,6 +27,12 @@ export default function Comment({ comment }) {
         </div>
         
         <RatingStar star={comment?.rating} />
+
+        <Tooltip title="Sil" followCursor placement="top" style={{display:comment.createdUserId !== userId && 'none'}}>
+          <div className={styles.deleteBtn}>
+            <DeleteOutlineIcon/>
+          </div>
+        </Tooltip>
       </div>
       <div className={styles.commentContent}>
         {comment?.comment ? comment?.comment : "Bu film hakkında yorum yapılmamıştır."}

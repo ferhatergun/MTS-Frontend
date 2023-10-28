@@ -46,6 +46,7 @@
     justify-content: center;
     align-items: center;
     padding: 5px;
+    cursor: pointer;
 
 }
 .nextButton{
@@ -58,6 +59,7 @@
     justify-content: center;
     align-items: center;
     padding: 5px;
+    cursor: pointer;
 }
 .visionMovies{
     position: relative;

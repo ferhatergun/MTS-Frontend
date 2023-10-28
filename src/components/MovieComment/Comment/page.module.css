@@ -12,6 +12,8 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    flex-wrap: wrap;
+    padding-right: 20px;
 }
 .commentBottom{
     width: 100%;
@@ -19,6 +21,7 @@
     align-items: center;
     gap:3%;
     height: 40px;
+    flex-wrap: wrap;
 }
 .commentContent{
     padding: 20px;
@@ -37,15 +40,25 @@
     color: rgb(93, 93, 93);
     margin-top: 3px;
 }
-
-
-@media(max-width:700px){
-    .container{
-        /* width: 95vw; */
-    }
-
+.deleteBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+    border-radius: 10px;
+    border:1px solid rgb(93, 93, 93);
+    cursor: pointer;
+    margin-left: auto;
+    
 }
+
+
+
 @media(max-width:500px){
+    .commentTop{
+        padding-right: 0px;
+    
+    }
     .commentBottom{
         font-size: 13px;
     }

@@ -9,6 +9,7 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import Autoplay from 'embla-carousel-autoplay'
 import Link from 'next/link'
+import RatingStar from '../RatingStar/RatingStar'
 
 
 
@@ -47,7 +48,7 @@ export default function CarouselMovie({headerTitle,data,delay}) {
                         </div>
                         <div style={{display:'flex',flexDirection:'column',justifyContent:'space-around',height:'50px'}}>
                         <div className={styles.movieName}>{item.name}</div>
-                            <Rating value={4} readOnly sx={{color:'purple'}} size='small' />  
+                            <RatingStar star={4} /> 
                         </div>
                     </Link>
                 ))

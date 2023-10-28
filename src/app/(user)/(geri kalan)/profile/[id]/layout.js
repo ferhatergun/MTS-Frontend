@@ -13,7 +13,7 @@ export default async function Layout({children}) {
 
 
   const user = (await fetchData(`users/${path[2]}`)).user
-
+  console.log(user)
   return (
     <div className={styles.container} >
       {
@@ -25,8 +25,8 @@ export default async function Layout({children}) {
               <p>{user.UserName}</p>
             </div>
             <div style={{display:'flex',gap:'10px'}}>
-              <div className={styles.level}>Amatör</div>
-              <div className={styles.score}>400 XP</div>
+              <div className={styles.level}>{user.skillRank ? user.skillRank : "Rütbesiz"}</div>
+              <div className={styles.score}>{user.userScore ? user.userScore : "Skorsuz"}</div>
             </div>
           </div>
         </div> :
