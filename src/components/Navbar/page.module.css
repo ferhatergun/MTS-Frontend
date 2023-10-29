@@ -1,6 +1,6 @@
 .container{
     width:100vw;
-    background-color: #77091C;
+    background-color:var(--color1);
 }
 .ustContainer{
     width: 80vw;

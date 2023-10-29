@@ -16,7 +16,8 @@
 .sendBtn{
     width: 15vw;
     height: 40px;
-    background-color: antiquewhite;
+    background-color: var(--color1);
+    color: var(--color3);
     border-radius: 15px;
     display: flex;
     align-items: center;

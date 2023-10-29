@@ -26,12 +26,17 @@ export default function MovieComment({movieId}) {
     <div>
         <CreateComment movieId={movieId} setComments={setComments} />
             {
-                comments ?
+                comments.length > 0 ?
                 (
                     comments?.map((comment) => (
                       <Comment key={comment._id} comment={comment} />
                     ))
-                ) :null
+                ) :
+                (<>
+                  <Skeleton variant="rectangular" style={{marginTop:30,borderRadius:20}} width="100%" height={150} animation="wave" />
+                  <Skeleton variant="rectangular" style={{marginTop:20,borderRadius:20}} width="100%" height={150} animation="wave" />
+                  </>
+                )
                 
             }
     </div>

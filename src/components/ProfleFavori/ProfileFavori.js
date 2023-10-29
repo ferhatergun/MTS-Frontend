@@ -4,6 +4,7 @@ import { Grid,Rating } from '@mui/material'
 import Image from 'next/image'
 import img from '$/assets/hizli-ve-ofkeli-9.jpeg'
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import RatingStar from '../RatingStar/RatingStar'
 
 
 export default function ProfileFavori() {
@@ -14,7 +15,7 @@ export default function ProfileFavori() {
         </div>
         <div className={styles.contentDiv}>
             <p className={styles.movieName}>Hızlı ve öfkeli 9</p>
-            <Rating value={4} readOnly className={styles.rating}/>
+            <RatingStar star={4} />
         </div>
         <div className={styles.favoriteBtn}>
             <FavoriteIcon fontSize='large' />

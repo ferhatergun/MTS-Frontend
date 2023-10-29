@@ -49,19 +49,19 @@
     margin-top: 20px !important;
     width: 56%;
     height: 40px;
-    background-color:#D268CC !important;
+    background-color:var(--color1) !important;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: all 1s ease-in-out;
+    transition: all 0.3s ease-in-out;
     justify-content: center !important;
     align-items: center !important;
     margin-bottom: 5px !important;
 }
 
 .btn:hover{
-    background-color: #91448d !important;
+    background-color: var(--color2) !important;
 }
 
 .loginGiris{
@@ -69,14 +69,6 @@
     font-weight: 500;
     margin-bottom: 20px;
 }
-.containerRight{
-     /* width: 100%; */
-
-    /* margin: auto;  */
-/*     align-items: center;
-    justify-content: center; */
-}
-
 
 .fotoRight{
     background-size: cover;
@@ -90,7 +82,6 @@
     justify-content: center;
     align-items: center;
     margin: auto;
-    /* margin-top: 50px; */
 }
 
 @media (max-width: 900px) {
@@ -135,12 +126,12 @@
 .kaydol{
     display: inline;
     transition: 1s;
-    color: #D268CC;
+    color: var(--color1);
 
 }
 
 .kaydol:hover{
-    color: #a3519f !important; 
+    color: var(--color2) !important; 
     cursor: pointer;
 }
 .notActive{

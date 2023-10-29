@@ -7,7 +7,7 @@
     color: black;
 }
 .IconChecked{
-    color: purple;
+    color: var(--color1);
 }
 
 @media(max-width:500px){

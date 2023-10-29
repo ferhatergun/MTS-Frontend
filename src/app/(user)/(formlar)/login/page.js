@@ -40,7 +40,7 @@ const Login = () => {
           color: "black",
         },
         "& .Mui-focused .MuiOutlinedInput-notchedOutline": {
-            borderColor: "#a3519f !important", // inputa basınca kenarlık
+            borderColor: "var(--color1) !important", // inputa basınca kenarlık
             borderWidth: "2px",
         },
         width: "100%",

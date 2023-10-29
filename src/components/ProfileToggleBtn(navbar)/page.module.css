@@ -15,6 +15,9 @@
 .dropdownOverlay{
     padding-top: 5px;
 }
+.avatar{
+    background-color: var(--color2);
+}
 
 
 @media(max-width:500px){

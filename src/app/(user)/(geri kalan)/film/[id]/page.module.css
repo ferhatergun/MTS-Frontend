@@ -39,7 +39,7 @@
 }
 .favBtn{
     padding: 10px;
-    background-color: antiquewhite;
+    background-color: var(--color3);
     border-radius: 10px;
     min-width: 48%;
     text-align: center;
@@ -47,7 +47,7 @@
 .movieSummary{
     width: 100%;
     height: 150px;
-    background-color: palegoldenrod;
+    background-color: var(--color3);
     padding: 20px;
 }
 .enPopulerSlider{

@@ -80,7 +80,7 @@ const items = [
     
     >
       <Space>
-      <Avatar>{user?.UserName.substring(0,1).toUpperCase()}</Avatar>
+      <Avatar className={styles.avatar}>{user?.UserName.substring(0,1).toUpperCase()}</Avatar>
       </Space>
     </Dropdown>
     </>
