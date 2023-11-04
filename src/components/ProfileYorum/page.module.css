@@ -17,7 +17,7 @@
     flex-direction: column;
 }
 .movieName{
-    font-size: 20px;
+    font-size: 17px;
     color:var(--color1);
     font-weight: bold;
     padding-bottom: 3px;

@@ -6,7 +6,7 @@ import { fetchData } from '$/allApi/api'
 import { Skeleton } from '@mui/material'
 
 export default function MovieComment({movieId}) {
-  const [comments, setComments] = useState([])
+  const [comments, setComments] = useState(null)
   // film içindeki yorumları createComment e gönderiyoruz yeni yorumu sonuna eklemek için
 
   const getComments = async () => { // film içindeki yorumları getiriyoruz
@@ -26,7 +26,7 @@ export default function MovieComment({movieId}) {
     <div>
         <CreateComment movieId={movieId} setComments={setComments} />
             {
-                comments.length > 0 ?
+                comments ?
                 (
                     comments?.map((comment) => (
                       <Comment key={comment._id} comment={comment} />

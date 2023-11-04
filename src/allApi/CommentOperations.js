@@ -32,6 +32,39 @@ export const CommentCreate = async (values,movieId,setComments) => {
     }
 }
 
+export const getUserComment = async(userId) => {
+  try{
+    const response = await fetch(`http://localhost:5000/comments/${userId}/user`,{
+      method:'GET',
+    })
+    const result = await response.json()
+    if(result.status === true){
+      return result.comments
+    }
+    else{
+      toast.warning("Yorumlar getirilemedi")
+    }
+  }catch(e){
+    console.log(e)
+  }
+}
+
+export const getComment = async(commentId) => {
+  try{
+    const response = await fetch(`http://localhost:5000/comments/${commentId} `,{
+      method:'GET',
+    })
+    const result = await response.json()
+     if(result.status === true){
+      return result.comment
+    }
+    else{
+      console.log("Yorum getirilemedi")
+    } 
+  }catch(e){
+    console.log(e)
+  }
+}
 
 
 

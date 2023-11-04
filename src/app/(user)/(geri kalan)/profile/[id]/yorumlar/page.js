@@ -3,19 +3,37 @@ import React ,{useEffect,useState}from 'react'
 import styles from './page.module.css'
 import ProfileYorum from '$/components/ProfileYorum/ProfileYorum'
 import { Skeleton } from '@mui/material'
+import { fetchData } from '$/allApi/api'
+import { useParams } from 'next/navigation'
+import { getUserComment } from '$/allApi/CommentOperations'
 
 export default function page() {
   const [loading,setLoading] = useState(false)
+  const [comments,setComments] = useState([])
+  const params = useParams()
+  const userId= params.id
   useEffect(()=>{
     setLoading(true)
+    getComment(userId)
   },[])
+
+  const getComment = async(userId) => {
+    const result = await getUserComment(userId)
+    setComments(result)
+  }
+  
   return (
     <div>
       <div className={styles.container}>
         {
-          loading ? <>
-          <ProfileYorum movieName="Hızlı ve öfkeli 9" star={3} content="çok sevdim" key={1} />
-          <ProfileYorum movieName="Barbie" star={4} content="idare eder eğlenceliydi" key={2}/></> :
+          loading ? 
+          <>
+          {
+            comments.map((commentId,index)=>
+              <ProfileYorum movieName="Hızlı ve öfkeli 9" star={3} content="çok sevdim" key={index} commentId={commentId} />
+            )
+          }
+          </> :
         <>
           <div style={{display:'flex'}}>
             <Skeleton animation="wave" width="100px" height="120px" variant='rectangular'/>
