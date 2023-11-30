@@ -77,9 +77,6 @@ const OpenMenu = () => {
                 <Link href={`/profile/${userId}/yorumlar`} className={styles.link} onClick={()=>setShowNavbar(false)}>Profilim</Link>
               </li>
               <li className={styles.toggleMenuItem}>
-                  <Link href={`/profile/${userId}/ayarlar`} className={styles.link} onClick={()=>setShowNavbar(false)}>Ayarlar</Link>
-              </li>
-              <li className={styles.toggleMenuItem}>
                 <div className={styles.link} onClick={logout}>Çıkış Yap</div>
               </li>
               </> :

@@ -16,7 +16,7 @@
     padding-top: 5px;
 }
 .avatar{
-    background-color: var(--color2);
+    background-color: var(--color2) !important;
 }
 
 

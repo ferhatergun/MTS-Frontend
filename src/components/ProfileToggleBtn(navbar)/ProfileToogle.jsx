@@ -54,15 +54,8 @@ const items = [
     type: 'divider',
   },
   {
-    label: <Link className={styles.reportBtn} href={`/profile/${MyUserId}/ayarlar`}><SettingsOutlinedIcon/>Ayarlar</Link>,
-    key: '1',
-  },
-  {
-    type: 'divider',
-  },
-  {
     label: <div className={styles.reportBtn} onClick={()=>userLogout()}><LogoutOutlinedIcon/>Çıkış Yap</div>,
-    key: '2',
+    key: '1',
   },
 ];
 

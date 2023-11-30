@@ -38,7 +38,6 @@ const dataa=[
                 <p>Film Süresi : {movie?.time}</p>
                 <RatingStar />
                 <div className={styles.fav_comment_btnDiv}>
-                    <div className={styles.favBtn}>Favoriye Ekle</div>
                     <ScrollToComment />
                 </div>
             </div>

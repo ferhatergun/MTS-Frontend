@@ -43,8 +43,6 @@ export default async function Layout({children}) {
           <div className={styles.menuBarDiv}>
             <ul>
               <Link href={`yorumlar`} className={`${styles.menuItem} ${path[3] =="yorumlar" && styles.active}`}>Film Yorumları</Link>
-              <Link href={`favoriler`} className={`${styles.menuItem} ${path[3] =="favoriler" && styles.active}`}>Favoriler</Link>
-              <Link href={`ayarlar`} className={`${styles.menuItem} ${path[3] =="ayarlar" && styles.active}`}>Ayarlar</Link>
             </ul>
             <hr/>
           </div>
