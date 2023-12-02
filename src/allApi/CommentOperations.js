@@ -90,6 +90,30 @@ export const likeComment = async(commentId,setLikeCount) => {
 
 }
 
+export const dislikeComment = async(commentId,setDislikeCount) => {
+  try{
+      const response = await fetch(`http://localhost:5000/comments/${commentId}/Dislike`,{
+        method:'PUT',
+        headers:{
+          'Content-Type':'application/json',
+          'Authorization': "Bearer " + getCookie('accessToken'),
+        }
+      })
+      const result = await response.json()
+      // beğeni atıyorsa beğeni sayısını arttır
+      if(result === 'The comment has been disliked'){
+        setDislikeCount((prev)=>prev+1)
+      }
+      else if(result === 'The dislike has been removed'){
+        setDislikeCount((prev)=>prev-1)
+      }
+      console.log(result)
+  }catch(e){
+    console.log(e)
+  }
+
+}
+
 
 export const commentDate=(date)=>{ // yorum tarih
 

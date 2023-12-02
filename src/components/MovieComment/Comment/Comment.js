@@ -43,7 +43,11 @@ export default function Comment({ comment }) {
           createdId={comment.createdUserId} 
           commentId={comment._id} 
         />
-        <DislikeButton />
+        <DislikeButton 
+          dislike={comment.dislikes} 
+          createdId={comment.createdUserId} 
+          commentId={comment._id}
+        />
         <div className={styles.commentIcon}><ModeCommentOutlinedIcon className={styles.Icon} />Cevapla</div>
         <CommentReportButton commentId={comment._id} />
       </div> 

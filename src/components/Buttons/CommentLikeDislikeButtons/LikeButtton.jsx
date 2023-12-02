@@ -18,9 +18,6 @@ export default function LikeButton({like,createdId,commentId}) {
       setDisabled(!auth)
     },[])
 
-    // console.log(createdId,"yorumu yazan kişi id")
-    console.log(like.length,"like sayısı")
-
     return (
         <Checkbox
           icon={
