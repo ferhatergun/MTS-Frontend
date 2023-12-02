@@ -34,7 +34,6 @@ export default function CarouselMovie({headerTitle,data,delay}) {
         <div className={styles.visionMovies} >
         <div className={styles.sliderHeader}>
             <div>{headerTitle}</div>
-            <div>tümünü gör</div>
         </div>
         <hr/>
         <div className={styles.embla} ref={emblaRef}>

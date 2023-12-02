@@ -13,19 +13,37 @@
     gap: 10px;
     align-items: flex-end;
 }
-.sendBtn{
-    width: 15vw;
-    height: 40px;
-    background-color: var(--color1);
-    color: var(--color3);
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    gap: 5px;
+/* CSS */
+.sendBtn {
+    background-color: #fff;
+    border: 1px solid var(--color2);
+    border-radius: 8px;
+    box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
     cursor: pointer;
-}
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    width: 15vw;
+    display:flex;
+    justify-content: center;
+    gap: 10px;
+    height: 40px;
+    align-items: center;
+  }
+  
+  .sendBtn:hover {
+    background-color: #f7fafa;
+  }
+  
+  .sendBtn:focus {
+    border-color: #008296;
+    box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+    outline: 0;
+  }
 .commentInput{
     width: 80vw;
 }
@@ -48,3 +66,4 @@
         flex-wrap: wrap;
     }
 }
+

@@ -2,6 +2,7 @@ import Navbar from "$/components/Navbar/Navbar";
 import './globals.css'
 import CarouselMovie from "$/components/CarouselMovie/CarouselMovie";
 import { fetchData } from "$/allApi/api";
+import Footer from "$/components/Footer/Footer";
 
 export default async function Page() {
   const data = (await fetchData('movieSeries/AllMovieSeries')).moviesSeries
@@ -20,6 +21,7 @@ export default async function Page() {
              <CarouselMovie headerTitle="Vizyondaki Filmler" delay={4000} data={data} />
             <CarouselMovie headerTitle="Popüler Filmler" delay={6000} data={dataa} /> 
           </div>
+          <Footer/>
 
     </main>
   )

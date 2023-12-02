@@ -42,7 +42,7 @@
 .toggleMenu{
     display:none;
     position: absolute;
-    background-color: #77091C;
+    background-color: var(--color1);
     right: 0;
     top:60px;
     padding:10px 20px;

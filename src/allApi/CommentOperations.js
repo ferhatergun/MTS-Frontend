@@ -55,6 +55,7 @@ export const getComment = async(commentId) => {
       method:'GET',
     })
     const result = await response.json()
+    console.log(result)
      if(result.status === true){
       return result.comment
     }

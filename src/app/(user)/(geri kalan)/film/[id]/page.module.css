@@ -37,19 +37,18 @@
     flex-wrap: wrap;
     width: 250px;
 }
-.favBtn{
-    padding: 10px;
-    background-color: var(--color3);
-    border-radius: 10px;
-    min-width: 48%;
-    text-align: center;
-}
 .movieSummary{
     width: 100%;
-    height: 150px;
-    background-color: var(--color3);
-    padding: 20px;
+    height: 70px;
+    /* background-color: #dbdbdb49; */
+    /* padding: 20px; */
+    /* box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px; */
+    border-radius: 7px;
+    margin-top: 5px;
+
 }
+
+
 .enPopulerSlider{
     width: 100%;
     height: 100%;
@@ -81,11 +80,8 @@
     .movieCommentsDiv{
         padding: 5px;
     }
-    
-}
-
-@media(max-width:400px){
-    .fav_comment_btnDiv ,.favBtn{
+    .fav_comment_btnDiv {
         width: 100%;
     }
+    
 }
