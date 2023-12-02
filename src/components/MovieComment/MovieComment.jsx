@@ -29,7 +29,11 @@ export default function MovieComment({movieId}) {
                 comments ?
                 (
                     comments?.map((comment) => (
-                      <Comment key={comment._id} comment={comment} />
+                      <Comment 
+                        key={comment._id} 
+                        comment={comment} 
+                        setComments={setComments} 
+                      />
                     ))
                 ) :
                 (<>

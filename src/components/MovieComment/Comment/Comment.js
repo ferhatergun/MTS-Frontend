@@ -1,5 +1,5 @@
 
-import React,{useState,useEffect} from 'react';
+import React from 'react';
 import { Avatar,Tooltip} from '@mui/material';
 import styles from './page.module.css';
 import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
@@ -7,12 +7,12 @@ import CommentReportButton from '../../Buttons/CommentReportButton/CommentReport
 import RatingStar from '../../RatingStar/RatingStar';
 import LikeButtton from '../../Buttons/CommentLikeDislikeButtons/LikeButtton';
 import DislikeButton from '../../Buttons/CommentLikeDislikeButtons/DislikeButton'
-import { commentDate } from '$/allApi/CommentOperations'
+import { commentDate, deleteComment } from '$/allApi/CommentOperations'
 import { useSelector } from 'react-redux';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
 
-export default function Comment({ comment }) {
+export default function Comment({ comment , setComments}) {
   const userId = useSelector(state => state.user.userId)
  //createdUserId
  console.log(comment)
@@ -28,7 +28,12 @@ export default function Comment({ comment }) {
         
         <RatingStar star={comment?.rating} />
 
-        <Tooltip title="Sil" followCursor placement="top" style={{display:comment.createdUserId !== userId && 'none'}}>
+        <Tooltip title="Sil" 
+          followCursor 
+          placement="top" 
+          style={{display:comment.createdUserId !== userId && 'none'}}
+          onClick={()=>deleteComment(comment,setComments)}
+        >
           <div className={styles.deleteBtn}>
             <DeleteOutlineIcon/>
           </div>

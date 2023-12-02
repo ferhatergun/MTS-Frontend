@@ -81,6 +81,7 @@ export const likeComment = async(commentId,setLikeCount) => {
       if(result === 'The comment has been liked'){
         setLikeCount((prev)=>prev+1)
       }
+      // beğeni kaldırıyorsa beğeni sayısını azalt
       else if(result === 'The like has been removed'){
         setLikeCount((prev)=>prev-1)
       }
@@ -101,10 +102,11 @@ export const dislikeComment = async(commentId,setDislikeCount) => {
         }
       })
       const result = await response.json()
-      // beğeni atıyorsa beğeni sayısını arttır
+      // dislike atıyorsa dislike sayısını arttır
       if(result === 'The comment has been disliked'){
         setDislikeCount((prev)=>prev+1)
       }
+      // dislike kaldırıyorsa dislike sayısını azalt
       else if(result === 'The dislike has been removed'){
         setDislikeCount((prev)=>prev-1)
       }
@@ -114,6 +116,32 @@ export const dislikeComment = async(commentId,setDislikeCount) => {
   }
 
 }
+
+export const deleteComment = async(comment,setComments) => {
+  try{
+      const response = await 
+      fetch(`http://localhost:5000/comments/${comment.movieSeriesId}
+      /deleteComment/${comment._id}`,{
+        method:'DELETE',
+        headers:{
+          'Content-Type':'application/json',
+          'Authorization': "Bearer " + getCookie('accessToken'),
+        }
+      })
+      const result = await response.json()
+      console.log(result)
+      if(result.success === true){
+        toast.success("Yorum Silindi")
+        setComments((prev)=>prev.filter((item)=>item._id !== comment._id))
+        // yorumu yorum dizisinden sildik
+      }
+  }catch(e){
+    console.log(e)
+  }
+
+}
+
+
 
 
 export const commentDate=(date)=>{ // yorum tarih
