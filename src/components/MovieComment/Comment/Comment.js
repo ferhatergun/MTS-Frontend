@@ -38,7 +38,11 @@ export default function Comment({ comment }) {
         {comment?.comment ? comment?.comment : "Bu film hakkında yorum yapılmamıştır."}
       </div>
       <div className={styles.commentBottom}>
-        <LikeButtton />
+        <LikeButtton 
+          like={comment.likes} 
+          createdId={comment.createdUserId} 
+          commentId={comment._id} 
+        />
         <DislikeButton />
         <div className={styles.commentIcon}><ModeCommentOutlinedIcon className={styles.Icon} />Cevapla</div>
         <CommentReportButton commentId={comment._id} />

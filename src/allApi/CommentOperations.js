@@ -66,7 +66,29 @@ export const getComment = async(commentId) => {
   }
 }
 
+export const likeComment = async(commentId,setLikeCount) => {
+  try{
+      const response = await fetch(`http://localhost:5000/comments/${commentId}/Like`,{
+        method:'PUT',
+        headers:{
+          'Content-Type':'application/json',
+          'Authorization': "Bearer " + getCookie('accessToken'),
+        }
+      })
+      const result = await response.json()
+      // beğeni atıyorsa beğeni sayısını arttır
+      if(result === 'The comment has been liked'){
+        setLikeCount((prev)=>prev+1)
+      }
+      else if(result === 'The like has been removed'){
+        setLikeCount((prev)=>prev-1)
+      }
+      console.log(result)
+  }catch(e){
+    console.log(e)
+  }
 
+}
 
 
 export const commentDate=(date)=>{ // yorum tarih
