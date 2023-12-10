@@ -82,7 +82,6 @@ const Login = () => {
                             }
                             onSubmit={(values,{setErrors})=>{ // form submit olduktan sonra yapılacaklar
 
-                                    console.log(values)
                                     userLogin(values,setErrors,router,dispatch)
                                     
                                 }}

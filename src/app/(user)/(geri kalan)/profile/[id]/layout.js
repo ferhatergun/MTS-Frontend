@@ -13,7 +13,6 @@ export default async function Layout({children}) {
 
 
   const user = (await fetchData(`users/${path[2]}`)).user
-  // console.log(user)
 
   if (!children) {
     return null; // veya başka bir varsayılan içerik gösterilebilir

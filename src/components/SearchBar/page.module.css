@@ -21,7 +21,7 @@
 
 .resultDiv{
     position:absolute;
-    background-color: #f1f2f3;
+    background-color: #f5f6f6;
     width:var(--searchw1) ; 
     margin-top: 15px;
     border-radius: 15px;
@@ -30,6 +30,10 @@
     display: none;
     z-index: 999;
 
+}
+.movieDiv:hover{
+    /* background-color: red; */
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.25);
 }
 .active{
     display:flex;
@@ -41,6 +45,7 @@
     /* background-color: red; */
     margin:5px 0;
     display: flex;
+    border-radius: 15px;
 }
 .movieImageDiv{
     width:65px;

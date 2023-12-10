@@ -39,7 +39,7 @@ export default function Navbar() {
                 <ul className={styles.ustNavbar}>
                     <li className={styles.ustNavItem}>
                         <Link href="/">
-                            <Image src={logo} alt="logo" width={80} height={50} style={{mixBlendMode:'color-burn'}} />
+                            <Image src={logo} alt="logo" className={styles.logo} />
                         </Link>
                     </li>
                     <li className={styles.ustNavItem}>

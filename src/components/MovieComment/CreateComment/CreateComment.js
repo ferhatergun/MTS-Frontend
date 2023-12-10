@@ -43,7 +43,6 @@ export default function CreateComment({movieId,setComments}) {
             }
             onSubmit={(values,{setErrors,resetForm})=>{ // form submit olduktan sonra yapılacaklar
 
-                    console.log(values)
                     setTimeout(() => {
                       resetForm()
                     }, 2000);

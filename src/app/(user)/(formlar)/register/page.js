@@ -101,17 +101,10 @@ const router = useRouter()
                             onSubmit={(values,{setErrors})=>{ // form submit olduktan sonra yapılacaklar
                                 if(values.trypassword === values.password && values.passwordControl===true)
                                 {    
-                                  /*   const registered =  */ userRegister(values,setErrors,router) // başarılı şekilde kayıt olursa true döndürdü
-                                /*     if(registered){ // true ise giriş sayfasına yönlendirme yaptık
-                                        router.push("/login")
-                                    }       
-                                    console.log(registered) */
-
-                                    
+                                     userRegister(values,setErrors,router) // başarılı şekilde kayıt olursa true döndürdü   
                                 }
                                 else{
                                     setpasswordControl(false)
-                                    console.log(passwordControl)
                                 } 
                                 }}
                             >

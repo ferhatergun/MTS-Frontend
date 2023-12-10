@@ -17,7 +17,6 @@ export default  function ProfileYorum({commentId}) {
   const commentGet = async() => {
     const comment = await getComment(commentId)
     setComment(comment)
-    console.log(comment)
   }
   return (
     <div className={styles.container}>

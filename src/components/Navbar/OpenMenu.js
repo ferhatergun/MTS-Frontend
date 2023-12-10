@@ -6,6 +6,8 @@ import Link from 'next/link';
 import { useSelector } from 'react-redux';
 import { isAuth } from '$/lib/auth';
 import { userLogout } from '$/allApi/AuthOperations';
+import { Spin as Hamburger } from 'hamburger-react'
+
 
 
 const OpenMenu = () => {
@@ -55,7 +57,8 @@ const OpenMenu = () => {
     return (
       <>
       <div className={styles.menuIcon} onClick={handleShowNavbar} ref={navbarRef}>
-          <MenuIcon fontSize='large' />
+          {/* <MenuIcon fontSize='large' /> */}
+          <Hamburger toggled={showNavbar} toggle={setShowNavbar} size={23} />
         </div>
         <div
           className={`${styles.toggleMenu} ${showNavbar && styles.active}`} ref={navbarRef1}

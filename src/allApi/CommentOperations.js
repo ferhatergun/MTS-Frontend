@@ -17,7 +17,6 @@ export const CommentCreate = async (values,movieId,setComments) => {
              }) 
              const result = await response.json(); // database den gelen mesaj 
              
-             console.log(result)
             if(result.success === true){
                 toast.success("Yorum Gönderildi")
                 setComments((prev)=>[result.createComment,...prev])
@@ -55,7 +54,6 @@ export const getComment = async(commentId) => {
       method:'GET',
     })
     const result = await response.json()
-    console.log(result)
      if(result.status === true){
       return result.comment
     }
@@ -85,7 +83,6 @@ export const likeComment = async(commentId,setLikeCount) => {
       else if(result === 'The like has been removed'){
         setLikeCount((prev)=>prev-1)
       }
-      console.log(result)
   }catch(e){
     console.log(e)
   }
@@ -110,7 +107,6 @@ export const dislikeComment = async(commentId,setDislikeCount) => {
       else if(result === 'The dislike has been removed'){
         setDislikeCount((prev)=>prev-1)
       }
-      console.log(result)
   }catch(e){
     console.log(e)
   }
@@ -129,7 +125,6 @@ export const deleteComment = async(comment,setComments) => {
         }
       })
       const result = await response.json()
-      console.log(result)
       if(result.success === true){
         toast.success("Yorum Silindi")
         setComments((prev)=>prev.filter((item)=>item._id !== comment._id))

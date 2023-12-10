@@ -16,12 +16,17 @@
 .ustNavbar{
     display:flex;
     justify-content: space-between;
+    align-items: start;
     height: 100%;
     /* align-items: flex-start; */
 }
+.ustNavItem:nth-child(1){
+    margin: 0;
+    padding: 0;
+}
 .ustNavItem:nth-child(1),
 .ustNavItem:nth-child(3) {
-  margin-top: 15px;
+  /* margin-top: 15px; */
 }
 .altNavbar{
     display: flex;
@@ -66,6 +71,11 @@
     align-items: center;
     cursor: pointer;
 }
+.logo{
+    width: 80px;
+    height: 50px;
+    mix-blend-mode: color-burn;
+}
 
 
 
@@ -88,10 +98,8 @@
     .Button{
         display:none;
     }
-    .ustNavItem:nth-child(1){
-        margin-top: 10px;
-    }
-    .ustNavItem:nth-child(3){
-        margin-top: 0 ;
+    .logo{
+        width: 60px;
+        height: 40px;
     }
 }

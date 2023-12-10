@@ -58,7 +58,6 @@ const ForgotPass = () => {
                             }
                             onSubmit={(values,{resetForm})=>{ // form submit olduktan sonra yapılacaklar
 
-                                    console.log(values)
                                     setTimeout(()=>{ // 2 sn sonra formu resetledik
                                         resetForm();
                                     },2000)

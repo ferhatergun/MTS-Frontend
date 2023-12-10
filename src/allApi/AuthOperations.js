@@ -21,7 +21,6 @@ export const userLogin=async(values,setErrors,router,dispatch)=>{
              }) 
              const result = await response.json(); // database den gelen mesaj 
              
-            console.log(result)
             if(result.success == true ){
                 toast.success("Giriş Başarılı")
                 setCookie("accessToken",result.accessToken,{maxAge:3600})
@@ -63,14 +62,12 @@ export const userRegister=async(values,setErrors,router)=>{
              }) 
              const result = await response.json(); // database den gelen mesaj 
              
-            console.log(result)
             if(result.status === 'success'){ // kayıt başarılı ise giriş yap sayfasına yönlendiriyoruz
                 toast.success("Kayıt Başarılı")
                 router.push("/login")
                 
             }
             else{ // hatanın kaynağını bulup kullanıcıya gösteriyoruz 
-                console.log("kayıt başarısız")
                if(result.message ==='Bu telefon numarası zaten kullanılıyor.'){ 
                 setErrors({ phonenumber: 'Telefon numarası kullanımda' })
                }

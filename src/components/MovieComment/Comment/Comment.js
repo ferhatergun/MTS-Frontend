@@ -10,21 +10,26 @@ import DislikeButton from '../../Buttons/CommentLikeDislikeButtons/DislikeButton
 import { commentDate, deleteComment } from '$/allApi/CommentOperations'
 import { useSelector } from 'react-redux';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import Link from 'next/link';
+import { FRONT_URL } from '$/allApi/api';
 
 
 export default function Comment({ comment , setComments}) {
   const userId = useSelector(state => state.user.userId)
  //createdUserId
- console.log(comment)
 
   return (
     <div className={styles.commentDiv}>
       <div className={styles.commentTop}>
-        <Avatar sx={{ width: 50, height: 50 }}>M</Avatar>
-        <div style={{display:'relative'}}>
+        <Link href={`${FRONT_URL}/profile/${comment.createdUserId}/yorumlar`} >
+        <Avatar sx={{ width: 50, height: 50 }}>
+          {comment.userName.substring(0,1).toUpperCase()}
+        </Avatar>
+        </Link>
+        <Link href={`${FRONT_URL}/profile/${comment.createdUserId}/yorumlar`} style={{display:'relative'}}>
           <p>{comment.userName ? comment.userName : "Murat Uçar"}</p>
           <p className={styles.date}>{commentDate(comment?.createdDate)}</p>
-        </div>
+        </Link>
         
         <RatingStar star={comment?.rating} />
 

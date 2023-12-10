@@ -12,18 +12,9 @@ import { fetchData } from '$/allApi/api'
 
 export default async function page({params}) {
 
-
-const dataa=[
-    {id:1,name:'hızlı ve öfkeli 9',},
-    {id:2,name:'hızlı ve öfkeli 9',},
-    {id:3,name:'hızlı ve öfkeli 9',},
-    {id:4,name:'hızlı ve öfkeli 9',},
-   ]
-  
-   const movie = await getMovie(params.id)
-   
-
-   
+    const mostPopular = (await fetchData('comments/rating/TopMovie')).topMovies
+    const movie = (await fetchData(`movieSeries/${params.id}`)).movieseries
+    
   return (
     <div className={styles.container}>
         <p className={styles.movieName}>{movie?.name}</p>
@@ -46,7 +37,7 @@ const dataa=[
             {movie?.description}
         </div>
         <div className={styles.enPopulerSlider}>
-            <CarouselMovie headerTitle="Benzer Filmler" delay={4000} data={dataa} />
+            <CarouselMovie headerTitle="Popüler Filmler" delay={6000} data={mostPopular} /> 
         </div>
         <div className={styles.movieCommentsDiv}>
             {
@@ -57,10 +48,4 @@ const dataa=[
 
     </div>
   )
-}
-
-const getMovie = async (id) => {
-    console.log("id",id)
-    const movie = await fetchData(`movieSeries/${id}`)
-    return movie.movieseries
 }

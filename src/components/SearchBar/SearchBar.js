@@ -6,6 +6,8 @@ import Image from 'next/image';
 import image from '../../assets/hizli-ve-ofkeli-9.jpeg'
 import { Rating } from '@mui/material'; 
 import Link from 'next/link';
+import RatingStar from '../RatingStar/RatingStar';
+import { FRONT_URL } from '$/allApi/api';
 
 export default function SearchBar() {
   const [searchKeyword,setSearchKeyword]=useState("")
@@ -13,9 +15,9 @@ export default function SearchBar() {
   const [showSearch,setShowSearch]=useState(false)
 
   const searchMovies=async(keyword)=>{
-    const response = await fetch(`https://jsonplaceholder.typicode.com/comments?postId=${keyword}`)
-    const result =  await response.json() 
-    setMovies(result)
+    const response = await fetch(`http://localhost:5000/movieSeries/Search/MovieSeries?search=${keyword}`)
+    const result = await response.json()
+    setMovies(result.moviesSeries)
   }
 
   const searchRef =useRef()
@@ -43,7 +45,6 @@ export default function SearchBar() {
     };
   }, []);
 
-  // console.log(showSearch)
   return (
     <>
       <div className={styles.container}>
@@ -61,7 +62,7 @@ export default function SearchBar() {
         { movies?.length !== 0  ?
           movies?.map((item,index)=>(
             <  >
-              <Link href="/film/1" className={styles.movieDiv} key={index} onClick={()=>setShowSearch(false)}>
+              <Link href={`${FRONT_URL}/film/${item._id}`} className={styles.movieDiv} key={index} onClick={()=>setShowSearch(false)}>
                 <div className={styles.movieImageDiv}>
                   <Image 
                     src={image}
@@ -72,10 +73,10 @@ export default function SearchBar() {
                 </div>
                 <div className={styles.movieTextDiv}>
                   <div>
-                    {item.email}
+                    {item.name}
                   </div>
                   <div>
-                    <Rating  value={3} precision={0.5} style={{color:'purple',borderColor:'yellow',marginTop:5}} readOnly /> 
+                    <RatingStar star={4} />
                   </div>
                 </div>
               </Link>

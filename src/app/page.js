@@ -5,21 +5,16 @@ import { fetchData } from "$/allApi/api";
 import Footer from "$/components/Footer/Footer";
 
 export default async function Page() {
-  const data = (await fetchData('movieSeries/AllMovieSeries')).moviesSeries
+  const newMovies= (await fetchData('movieSeries/current/CurrentMovies')).movieseries
+  const mostPopular = (await fetchData('comments/rating/TopMovie')).topMovies
+  
 
-
- const dataa=[
-  {id:1,name:'hızlı ve öfkeli 9',},
-  {id:2,name:'hızlı ve öfkeli 9',},
-  {id:3,name:'hızlı ve öfkeli 9',},
-  {id:4,name:'hızlı ve öfkeli 9',},
- ]
   return (
     <main>
           <Navbar />
           <div className="mainContainer">
-             <CarouselMovie headerTitle="Vizyondaki Filmler" delay={4000} data={data} />
-            <CarouselMovie headerTitle="Popüler Filmler" delay={6000} data={dataa} /> 
+            <CarouselMovie headerTitle="Yeni Gelenler" delay={4000} data={newMovies} />
+            <CarouselMovie headerTitle="Popüler Filmler" delay={6000} data={mostPopular} /> 
           </div>
           <Footer/>
 
