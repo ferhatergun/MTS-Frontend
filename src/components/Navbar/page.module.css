@@ -75,6 +75,7 @@
     width: 80px;
     height: 50px;
     mix-blend-mode: color-burn;
+    margin-top: 7px;
 }
 
 
@@ -101,5 +102,69 @@
     .logo{
         width: 60px;
         height: 40px;
+        margin-top: 0;
     }
 }
+
+/* giriş yap animation button */
+.btn {
+    --color: var(--color2);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .5s;
+    border: none;
+    background-color: transparent;
+    margin-top: 10px;
+    z-index: 1;
+  }
+  
+  .btn div {
+    letter-spacing: 2px;
+    font-weight: 600;
+    color:black;
+    background: var(--color);
+    border-radius: 2rem;
+    padding: 1rem;
+  }
+  
+  .btn::before {
+    content: '';
+    z-index: -1;
+    background-color: var(--color);
+    border: 1px solid black;
+    border-radius: 2rem;
+    width: 110%;
+    height: 100%;
+    position: absolute;
+    transform: rotate(10deg);
+    transition: .5s;
+    opacity: 0.3;
+  }
+  
+  .btn:hover {
+    cursor: pointer;
+    transform: scale(1);
+  }
+  
+  .btn:hover::before {
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+  
+  .btn svg {
+    transform: translateX(-200%);
+    transition: .5s;
+    width: 0;
+    opacity: 0;
+  }
+  
+  .btn:hover svg {
+    width: 20px;
+    transform: translateX(0%);
+    opacity: 1;
+    margin-left: -10px;
+
+  }
+  
