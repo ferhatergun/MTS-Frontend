@@ -3,7 +3,6 @@ import React ,{useEffect,useState}from 'react'
 import styles from './page.module.css'
 import ProfileYorum from '$/components/ProfileYorum/ProfileYorum'
 import { Skeleton } from '@mui/material'
-import { fetchData } from '$/allApi/api'
 import { useParams } from 'next/navigation'
 import { getUserComment } from '$/allApi/CommentOperations'
 

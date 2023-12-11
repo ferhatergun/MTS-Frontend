@@ -24,12 +24,12 @@ export default  function ProfileYorum({commentId}) {
             <Image src={img} fill={true} alt='resim' />
         </div>
         <div className={styles.contentDiv}>
-          <Link href={`${FRONT_URL}/film/${comment?.movieSeriesId}`} className={styles.movieName}>
+          <Link href={`${FRONT_URL}/film/${comment?.movieSeriesId}`}  className={styles.movieName}>
             {comment?.movieSeriesName ? comment.movieSeriesName : "İsimsiz Film"}
           </Link>
           <RatingStar star={comment?.rating} />
           <p className={styles.content}>{comment?.comment}</p>
-          <Link href="/" className={styles.link}>Yoruma Git</Link>
+          <Link href={{pathname: `${FRONT_URL}/film/${comment?.movieSeriesId}`,query:`target=${commentId}`}} className={styles.link}>Yoruma Git</Link>
         </div>
     </div>
   )

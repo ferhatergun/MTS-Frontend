@@ -61,7 +61,7 @@ export default function SearchBar() {
       <div className={`${styles.resultDiv}  ${showSearch && styles.active}`} ref={searchRef1}>
         { movies?.length !== 0  ?
           movies?.map((item,index)=>(
-            <  >
+            <>
               <Link href={`${FRONT_URL}/film/${item._id}`} className={styles.movieDiv} key={index} onClick={()=>setShowSearch(false)}>
                 <div className={styles.movieImageDiv}>
                   <Image 
@@ -77,6 +77,9 @@ export default function SearchBar() {
                   </div>
                   <div>
                     <RatingStar star={4} />
+                  </div>
+                  <div className={styles.commentPcs}>
+                    {item.comments.length} Adet Yorum
                   </div>
                 </div>
               </Link>

@@ -41,7 +41,6 @@ export default function Navbar() {
                     <li className={styles.ustNavItem}>
                         <OpenMenu />
                         <div className={styles.Button}>
-                        <div className={styles.Button}>
                             {loading  ? 
                             ( auth ? <ProfileToogle MyUserId={userId} />:
                             <Link href="/login">
@@ -55,8 +54,6 @@ export default function Navbar() {
                             </button>
                             </Link>): 
                             null}
-                        </div>
-
                         </div>
 
                     </li>

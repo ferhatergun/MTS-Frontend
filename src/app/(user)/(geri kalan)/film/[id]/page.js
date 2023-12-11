@@ -42,7 +42,7 @@ export default async function page({params}) {
         <div className={styles.movieCommentsDiv}>
             {
                 movie && params ?
-                <MovieComment movieId={params.id} /> :null
+                <MovieComment movieId={params.id} targetId={"3455"} /> :null
             }
         </div>
 

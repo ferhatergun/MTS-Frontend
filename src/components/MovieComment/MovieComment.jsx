@@ -4,10 +4,13 @@ import CreateComment from './CreateComment/CreateComment'
 import Comment from './Comment/Comment'
 import { fetchData } from '$/allApi/api'
 import { Skeleton } from '@mui/material'
+import {useSearchParams} from 'next/navigation'
 
 export default function MovieComment({movieId}) {
   const [comments, setComments] = useState(null)
   // film içindeki yorumları createComment e gönderiyoruz yeni yorumu sonuna eklemek için
+  const params = useSearchParams()
+  const targetId = params.get("target")
 
   const getComments = async () => { // film içindeki yorumları getiriyoruz
     try {
@@ -22,9 +25,17 @@ export default function MovieComment({movieId}) {
     getComments()
   },[])
 
+  
+
   return (
     <div>
         <CreateComment movieId={movieId} setComments={setComments} />
+          <div style={{fontWeight:600,fontSize:20,marginLeft:10}}>
+            Yorumlar 
+            <span style={{color:'gray'}}>
+              ({comments?.length})
+            </span>
+          </div>
             {
                 comments ?
                 (
@@ -33,6 +44,7 @@ export default function MovieComment({movieId}) {
                         key={comment._id} 
                         comment={comment} 
                         setComments={setComments} 
+                        divİd={targetId == comment._id ? "target" : "notarget"}
                       />
                     ))
                 ) :

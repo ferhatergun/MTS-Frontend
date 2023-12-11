@@ -84,6 +84,8 @@
 @media (max-width:1000px){
     .ustContainer{
         width:100vw !important;
+        padding-left: 10px;
+        padding-right: 10px;
     }
 }
 @media (max-width:700px){
