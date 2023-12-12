@@ -59,18 +59,15 @@
     border-top: 1px solid #e2e8f0;
 
 }
-/* flex-1 flex sm:justify-end justify-center max-sm:mt-4 gap-10; */
 .footer__bottom__links{
     display: flex;
     flex: 1;
     justify-content: center;
     gap: 1.5rem;
-    margin-top: 1rem;
 }
 
 .footer__link a:hover{
     color:var(--color1) !important;
-
 }
 
 @media (min-width: 768px) { /* md */
@@ -94,7 +91,5 @@
     }
     .footer__bottom__links{
         justify-content: flex-end !important;
-        margin-top: 0rem !important;
-
     }
 }

@@ -90,25 +90,6 @@
     }
   }
 
-
-
-
-.sifreUnuttum{
-    margin-top: 10px;
-    display: block !important;
-    width: 100% !important;
-    text-align: end;
-}
-
-.unuttum{
-    cursor: pointer;
-    display: inline;
-    font-size: 12px;
-    text-decoration: none;
-    color: #000;
-
-}
-
 .loginKaydol{
     width: 95%;
     font-size: 13px;

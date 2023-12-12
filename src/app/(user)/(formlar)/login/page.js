@@ -1,25 +1,17 @@
 "use client"
 import React ,{useState}from 'react'
-import { Grid } from '@mui/material'
+import { Grid ,TextField,Button,IconButton,OutlinedInput,
+InputLabel,FormControl,FormHelperText} from '@mui/material'
 import '../Forms.css'
-import TextField  from '@mui/material/TextField';
-import Button from '@mui/material/Button';
 import img from '$/assets/login.jpg'
 import { Formik } from 'formik'
 import * as yup from "yup"
 import { motion } from "framer-motion";
-import IconButton from "@mui/material/IconButton";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import InputLabel from "@mui/material/InputLabel";
-import FormControl from "@mui/material/FormControl";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import {FormHelperText} from '@mui/material';
 import Link from 'next/link';
 import Image from 'next/image';
 import {userLogin} from '$/allApi/AuthOperations';
-import { useRouter } from 'next/navigation';
-import { useDispatch } from 'react-redux';
 
 
 
@@ -54,8 +46,6 @@ const Login = () => {
         }
     }
     
-    const router = useRouter()
-    const dispatch = useDispatch()
 
   return (
     <div>
@@ -82,7 +72,7 @@ const Login = () => {
                             }
                             onSubmit={(values,{setErrors})=>{ // form submit olduktan sonra yapılacaklar
 
-                                    userLogin(values,setErrors,router,dispatch)
+                                    userLogin(values,setErrors)
                                     
                                 }}
                             >
@@ -129,9 +119,6 @@ const Login = () => {
                                                 {errors.password && touched.password ? errors.password:null}
                                             </FormHelperText>
                                             </FormControl>
-                                             <div className='sifreUnuttum'>
-                                            <Link className='unuttum' href="/forgotpass" >Şifremi Unuttum</Link>
-                                            </div>
                                             <Button className='btn' variant="contained" type='submit'>Giriş Yap</Button>
                                         </form>
                                     )

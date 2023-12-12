@@ -1,18 +1,18 @@
 import { toast } from "react-toastify";
 import { setCookie , deleteCookie } from "cookies-next";
-import { updateUser,updateToken } from "$/redux/userSlice";
+import { BACKEND_URL } from "./api";
 
 
 
 
 
-export const userLogin=async(values,setErrors,router,dispatch)=>{
+export const userLogin=async(values,setErrors)=>{
     const data={
         email:values.email,
         password:values.password
     }
     try{
-        const response = await fetch("http://localhost:5000/users/login",{
+        const response = await fetch(`${BACKEND_URL}/users/login`,{
             method:'POST',
             headers:{
                 'Content-Type':'application/json'
@@ -53,7 +53,7 @@ export const userRegister=async(values,setErrors,router)=>{
         password:values.password
     }
      try{
-        const response = await fetch("http://localhost:5000/users/register",{
+        const response = await fetch(`${BACKEND_URL}/users/register`,{
             method:'POST',
             headers:{
                 'Content-Type':'application/json'

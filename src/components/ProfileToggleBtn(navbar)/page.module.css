@@ -1,7 +1,8 @@
 .dropdown{
     cursor: pointer;
+    margin-top: 10px;
 }
-.reportBtn{
+.Btn{
     display: flex;
     align-items: center;
     gap: 5px;

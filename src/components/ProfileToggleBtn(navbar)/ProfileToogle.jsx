@@ -47,14 +47,14 @@ export default function ProfileToogle({MyUserId}) {
 
 const items = [
   {
-    label: <Link className={styles.reportBtn} href={`/profile/${MyUserId}/yorumlar`}><PersonOutlinedIcon/>Profilim</Link>,
+    label: <Link className={styles.Btn} href={`/profile/${MyUserId}/yorumlar`}><PersonOutlinedIcon/>Profilim</Link>,
     key: '0',
   },
   {
     type: 'divider',
   },
   {
-    label: <div className={styles.reportBtn} onClick={()=>userLogout()}><LogoutOutlinedIcon/>Çıkış Yap</div>,
+    label: <div className={styles.Btn} onClick={()=>userLogout()}><LogoutOutlinedIcon/>Çıkış Yap</div>,
     key: '1',
   },
 ];

@@ -1,5 +1,6 @@
 import { toast } from "react-toastify";
 import { getCookie } from "cookies-next";
+import { BACKEND_URL } from "./api";
 
 export const CommentCreate = async (values,movieId,setComments) => {
     const data ={
@@ -7,7 +8,7 @@ export const CommentCreate = async (values,movieId,setComments) => {
         rating:values.star
     }
     try{
-        const response = await fetch(`http://localhost:5000/comments/${movieId}/CreateComment`,{
+        const response = await fetch(`${BACKEND_URL}/comments/${movieId}/CreateComment`,{
             method:'POST',
             headers:{
                 'Content-Type':'application/json',
@@ -33,7 +34,7 @@ export const CommentCreate = async (values,movieId,setComments) => {
 
 export const getUserComment = async(userId) => {
   try{
-    const response = await fetch(`http://localhost:5000/comments/${userId}/user`,{
+    const response = await fetch(`${BACKEND_URL}/comments/${userId}/user`,{
       method:'GET',
     })
     const result = await response.json()
@@ -50,7 +51,7 @@ export const getUserComment = async(userId) => {
 
 export const getComment = async(commentId) => {
   try{
-    const response = await fetch(`http://localhost:5000/comments/${commentId} `,{
+    const response = await fetch(`${BACKEND_URL}/comments/${commentId} `,{
       method:'GET',
     })
     const result = await response.json()
@@ -67,7 +68,7 @@ export const getComment = async(commentId) => {
 
 export const likeComment = async(commentId,setLikeCount) => {
   try{
-      const response = await fetch(`http://localhost:5000/comments/${commentId}/Like`,{
+      const response = await fetch(`${BACKEND_URL}/comments/${commentId}/Like`,{
         method:'PUT',
         headers:{
           'Content-Type':'application/json',
@@ -91,7 +92,7 @@ export const likeComment = async(commentId,setLikeCount) => {
 
 export const dislikeComment = async(commentId,setDislikeCount) => {
   try{
-      const response = await fetch(`http://localhost:5000/comments/${commentId}/Dislike`,{
+      const response = await fetch(`${BACKEND_URL}/comments/${commentId}/Dislike`,{
         method:'PUT',
         headers:{
           'Content-Type':'application/json',
@@ -116,7 +117,7 @@ export const dislikeComment = async(commentId,setDislikeCount) => {
 export const deleteComment = async(comment,setComments) => {
   try{
       const response = await 
-      fetch(`http://localhost:5000/comments/${comment.movieSeriesId}
+      fetch(`${BACKEND_URL}/comments/${comment.movieSeriesId}
       /deleteComment/${comment._id}`,{
         method:'DELETE',
         headers:{

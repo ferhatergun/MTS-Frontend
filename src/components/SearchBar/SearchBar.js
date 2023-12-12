@@ -4,10 +4,9 @@ import styles from './page.module.css'
 import SearchIcon from '@mui/icons-material/Search'
 import Image from 'next/image';
 import image from '../../assets/hizli-ve-ofkeli-9.jpeg'
-import { Rating } from '@mui/material'; 
 import Link from 'next/link';
 import RatingStar from '../RatingStar/RatingStar';
-import { FRONT_URL } from '$/allApi/api';
+import { FRONT_URL ,BACKEND_URL} from '$/allApi/api';
 
 export default function SearchBar() {
   const [searchKeyword,setSearchKeyword]=useState("")
@@ -15,7 +14,7 @@ export default function SearchBar() {
   const [showSearch,setShowSearch]=useState(false)
 
   const searchMovies=async(keyword)=>{
-    const response = await fetch(`http://localhost:5000/movieSeries/Search/MovieSeries?search=${keyword}`)
+    const response = await fetch(`${BACKEND_URL}/movieSeries/Search/MovieSeries?search=${keyword}`)
     const result = await response.json()
     setMovies(result.moviesSeries)
   }
@@ -50,7 +49,11 @@ export default function SearchBar() {
       <div className={styles.container}>
         <input 
         className={styles.input}
-        onChange={(e)=>searchMovies(e.target.value)}
+        onChange={(e)=>
+        {
+          setSearchKeyword(e.target.value)
+          searchMovies(e.target.value)
+        }}
         onFocus={()=>setShowSearch(true)}
         ref={searchRef}
         ></input>
@@ -59,7 +62,7 @@ export default function SearchBar() {
 
 
       <div className={`${styles.resultDiv}  ${showSearch && styles.active}`} ref={searchRef1}>
-        { movies?.length !== 0  ?
+        { (movies?.length !== 0  && searchKeyword !== "") ?
           movies?.map((item,index)=>(
             <>
               <Link href={`${FRONT_URL}/film/${item._id}`} className={styles.movieDiv} key={index} onClick={()=>setShowSearch(false)}>

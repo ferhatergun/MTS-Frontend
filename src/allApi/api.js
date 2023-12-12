@@ -11,7 +11,7 @@ export const getMovie=async(keyword)=>{
 
 export const fetchData = async (path) => {
     try{
-        const res = await fetch(`http://localhost:5000/${path}`,{cache:'no-cache',})
+        const res = await fetch(`${BACKEND_URL}/${path}`,{cache:'no-cache',})
         const data = await res.json()
         if(data.success){
         return data
