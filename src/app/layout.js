@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
         </ProviderRedux>     
         <ToastContainer
           position="top-right"
-          autoClose={3000}
+          autoClose={1500}
           limit={2}
           hideProgressBar={false}
           newestOnTop={false}

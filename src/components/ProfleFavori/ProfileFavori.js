@@ -11,7 +11,7 @@ export default function ProfileFavori() {
   return (
     <div className={styles.container}>
         <div className={styles.ImageDiv}>
-            <Image src={img} fill />
+            <Image src={img} fill alt='resim bulunamadı' />
         </div>
         <div className={styles.contentDiv}>
             <p className={styles.movieName}>Hızlı ve öfkeli 9</p>

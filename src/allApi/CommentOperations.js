@@ -131,6 +131,9 @@ export const deleteComment = async(comment,setComments) => {
         setComments((prev)=>prev.filter((item)=>item._id !== comment._id))
         // yorumu yorum dizisinden sildik
       }
+      else{
+        toast.warning("Tekrar Deneyiniz")
+      }
   }catch(e){
     console.log(e)
   }

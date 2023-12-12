@@ -20,7 +20,7 @@ export default async function page({params}) {
         <p className={styles.movieName}>{movie?.name}</p>
         <div className={styles.movieInformationDiv}>
             <div className={styles.imageDiv}>
-                <Image src={img} fill className={styles.image} alt='resim bulunamadı' />
+                <Image src={img} className={styles.image} alt='resim bulunamadı' />
             </div>
             <div className={styles.informationDiv} >
                 <p>Kategori : {movie?.category}</p>

@@ -155,7 +155,7 @@ const Login = () => {
                     duration: 1.5,
                 }}
                 >
-                <Image   className='fotoRight'  src={img} alt=""  ></Image>
+                <Image   className='fotoRight'  src={img} alt="resim bulunamadı"  ></Image>
             </motion.div>
             </Grid>
         </Grid>

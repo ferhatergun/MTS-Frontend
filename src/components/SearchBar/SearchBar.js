@@ -64,29 +64,28 @@ export default function SearchBar() {
       <div className={`${styles.resultDiv}  ${showSearch && styles.active}`} ref={searchRef1}>
         { (movies?.length !== 0  && searchKeyword !== "") ?
           movies?.map((item,index)=>(
-            <>
-              <Link href={`${FRONT_URL}/film/${item._id}`} className={styles.movieDiv} key={index} onClick={()=>setShowSearch(false)}>
-                <div className={styles.movieImageDiv}>
-                  <Image 
-                    src={image}
-                    width={65}
-                    height={90}
-                    style={{borderRadius:10}}
-                  />
+            <Link href={`${FRONT_URL}/film/${item._id}`} className={styles.movieDiv} key={index} onClick={()=>setShowSearch(false)}>
+              <div className={styles.movieImageDiv}>
+                <Image 
+                  src={image}
+                  width={65}
+                  height={90}
+                  style={{borderRadius:10}}
+                  alt='resim bulunamadı'
+                />
+              </div>
+              <div className={styles.movieTextDiv}>
+                <div>
+                  {item.name}
                 </div>
-                <div className={styles.movieTextDiv}>
-                  <div>
-                    {item.name}
-                  </div>
-                  <div>
-                    <RatingStar star={4} />
-                  </div>
-                  <div className={styles.commentPcs}>
-                    {item.comments.length} Adet Yorum
-                  </div>
+                <div>
+                  <RatingStar star={4} />
                 </div>
-              </Link>
-            </>
+                <div className={styles.commentPcs}>
+                  {item.comments.length} Adet Yorum
+                </div>
+              </div>
+            </Link>
           )): movies && <p style={{padding:10,fontSize:20}}>Sonuç Bulunamadı</p>
         }
 

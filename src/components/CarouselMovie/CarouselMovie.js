@@ -43,7 +43,7 @@ export default function CarouselMovie({headerTitle,data,delay}) {
                 data.map((item,i)=>(
                     <Link className={styles.movieDiv} key={i} href={`/film/${item._id}`}>
                         <div className={styles.imageDiv}>
-                            <Image src={img} className={styles.image} alt='resim bulunamadı' />
+                            <Image src={img} className={styles.image} alt='resim bulunamadı' priority={true} />
                         </div>
                         <div style={{display:'flex',flexDirection:'column',justifyContent:'space-around',height:'50px'}}>
                         <div className={styles.movieName}>{item.name}</div>
