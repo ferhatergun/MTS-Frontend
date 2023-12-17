@@ -76,7 +76,9 @@ export default function CreateComment({movieId,setComments}) {
                       onBlur={handleBlur}
 
                       />
-                      <button className={styles.sendBtn} type='submit' >Gönder <SendIcon/></button>
+                      <button className={styles.sendBtn} type='submit' >
+                        Gönder <SendIcon sx={{color:'black'}}/>
+                      </button>
                   </div>
                   {
                     errors.star &&
