@@ -58,7 +58,7 @@ const OpenMenu = () => {
       <>
       <div className={styles.menuIcon} onClick={handleShowNavbar} ref={navbarRef}>
           {/* <MenuIcon fontSize='large' /> */}
-          <Hamburger toggled={showNavbar} toggle={setShowNavbar} size={23} />
+          <Hamburger toggled={showNavbar} toggle={setShowNavbar} size={23} color='white' />
         </div>
         <div
           className={`${styles.toggleMenu} ${showNavbar && styles.active}`} ref={navbarRef1}

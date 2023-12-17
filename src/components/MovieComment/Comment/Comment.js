@@ -22,8 +22,13 @@ export default function Comment({ comment , setComments,divİd}) {
  useEffect(() => {
   if (divİd === "target") {
     const targetElement = document.getElementById('target');
-    if (targetElement) {
+    if (targetElement) { // focus olacak dive gitik ve divi belirginleştirdik
       targetElement.scrollIntoView({ behavior: 'smooth' ,block:'center'})
+      targetElement.style.border = "2px solid rgba(245, 0, 87, 0.5)"
+      targetElement.style.transition = "border 0.5s ease-in";
+      setTimeout(() => {
+        targetElement.style.border = "2px solid transparent";
+      }, 2000);
       // router.replace(`${comment.movieSeriesId}`, undefined, { shallow: true, scroll: false })
     }
   }

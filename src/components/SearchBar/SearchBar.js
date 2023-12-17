@@ -78,7 +78,7 @@ export default function SearchBar() {
                   {item.name}
                 </div>
                 <div>
-                  <RatingStar star={4} />
+                  <RatingStar star={item.rating} isVisible={true} />
                 </div>
                 <div className={styles.commentPcs}>
                   {item.comments.length} Adet Yorum
