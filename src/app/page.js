@@ -1,8 +1,8 @@
-import Navbar from "$/components/Navbar/Navbar";
+import Navbar from "$/components (User)/Navbar/Navbar";
 import './globals.css'
-import CarouselMovie from "$/components/CarouselMovie/CarouselMovie";
+import CarouselMovie from "$/components (User)/CarouselMovie/CarouselMovie";
 import { fetchData } from "$/allApi/api";
-import Footer from "$/components/Footer/Footer";
+import Footer from "$/components (User)/Footer/Footer";
 
 export default async function Page() {
   const newMovies= (await fetchData('movieSeries/current/CurrentMovies')).movieseries
