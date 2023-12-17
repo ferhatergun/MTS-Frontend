@@ -7,7 +7,7 @@ import { Checkbox } from '@mui/material';
 import { isAuth } from '$/lib/auth';
 import { likeComment } from '$/allApi/CommentOperations';
 
-export default function LikeButton({like,createdId,commentId}) {
+export default function LikeButton({like,userId,commentId}) {
     const auth = isAuth();
     const [buttonStyle, setButtonStyle] = useState({});
     const [disabled, setDisabled] = useState(false);
@@ -36,7 +36,7 @@ export default function LikeButton({like,createdId,commentId}) {
           disabled={disabled}
           style={buttonStyle} // Stil nesnesini style prop'una ekleyin
           onClick={()=>likeComment(commentId,setLikeCount)}
-          defaultChecked={like.find((item)=>item === createdId) ? true : false}
+          defaultChecked={like.find((item)=>item === userId) ? true : false}
         />
     );
 }

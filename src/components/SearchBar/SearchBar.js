@@ -6,7 +6,6 @@ import Image from 'next/image';
 import image from '../../assets/hizli-ve-ofkeli-9.jpeg'
 import Link from 'next/link';
 import RatingStar from '../RatingStar/RatingStar';
-import { FRONT_URL ,BACKEND_URL} from '$/allApi/api';
 
 export default function SearchBar() {
   const [searchKeyword,setSearchKeyword]=useState("")
@@ -14,7 +13,7 @@ export default function SearchBar() {
   const [showSearch,setShowSearch]=useState(false)
 
   const searchMovies=async(keyword)=>{
-    const response = await fetch(`${BACKEND_URL}/movieSeries/Search/MovieSeries?search=${keyword}`)
+    const response = await fetch(`${process.env.BACKEND_URL}/movieSeries/Search/MovieSeries?search=${keyword}`)
     const result = await response.json()
     setMovies(result.moviesSeries)
   }
@@ -64,7 +63,7 @@ export default function SearchBar() {
       <div className={`${styles.resultDiv}  ${showSearch && styles.active}`} ref={searchRef1}>
         { (movies?.length !== 0  && searchKeyword !== "") ?
           movies?.map((item,index)=>(
-            <Link href={`${FRONT_URL}/film/${item._id}`} className={styles.movieDiv} key={index} onClick={()=>setShowSearch(false)}>
+            <Link href={`${process.env.FRONT_URL}/film/${item._id}`} className={styles.movieDiv} key={index} onClick={()=>setShowSearch(false)}>
               <div className={styles.movieImageDiv}>
                 <Image 
                   src={image}

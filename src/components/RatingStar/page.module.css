@@ -1,7 +1,15 @@
+.ratingContainer{
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    font-size: 0.8rem;
+}
+
 .rating{
     color:var(--color2) !important;
     font-size: 20px !important;
 }
+
 
 @media(max-width:400px){
     .rating{

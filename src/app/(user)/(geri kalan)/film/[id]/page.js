@@ -14,6 +14,8 @@ export default async function page({params}) {
 
     const mostPopular = (await fetchData('comments/rating/TopMovie')).topMovies
     const movie = (await fetchData(`movieSeries/${params.id}`)).movieseries
+
+    console.log(movie)
     
   return (
     <div className={styles.container}>
@@ -27,7 +29,7 @@ export default async function page({params}) {
                 <p>Yönetmen: {movie?.director} </p>
                 <p>Vizyona Giriş Tarihi : 13 Temmuz 2022</p>
                 <p>Film Süresi : {movie?.time}</p>
-                <RatingStar />
+                <RatingStar star={movie?.rating} isVisible={true} />
                 <div className={styles.fav_comment_btnDiv}>
                     <ScrollToComment />
                 </div>

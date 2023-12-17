@@ -3,8 +3,16 @@ import styles from './page.module.css'
 import {Rating} from '@mui/material'
 import '$/app/globals.css'
 
-export default function RatingStar({star}) {
+export default function RatingStar({star,isVisible}) {
   return (
-    <Rating value={star ? star :3} readOnly className={styles.rating} />
+    <div className={styles.ratingContainer}>
+      <Rating value={star ? parseFloat(star) :3} readOnly className={styles.rating} precision={0.1}/>
+      {/* her yıldız olan kısımda rating sayısı gösterilmesin diye */}
+      {isVisible ? (
+        star ? star.toString().substring(0,3) : 3
+      ):
+      null
+      }
+    </div>
   )
 }

@@ -29,7 +29,7 @@ export default function page() {
           <>
           {
             comments.map((commentId,index)=>
-              <ProfileYorum movieName="Hızlı ve öfkeli 9" star={3} content="çok sevdim" key={index} commentId={commentId} />
+              <ProfileYorum key={index} commentId={commentId} />
             )
           }
           </> :

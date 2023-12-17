@@ -213,7 +213,7 @@ const router = useRouter()
                                 }
                             </Formik>
                             <div className='loginKaydol'>
-                                    Hesabın varmı
+                                    Hesabın var mı ?
                                     <Link style={{textDecoration:"none",color:'tomato',marginLeft:1}} href="/login"> <div className='kaydol'>Giriş yap</div>
                                 </Link>
                             </div>

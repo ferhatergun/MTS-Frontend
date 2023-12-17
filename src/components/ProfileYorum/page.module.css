@@ -1,8 +1,12 @@
 .container{
     width: 100%;
-    background-color: rgb(230, 230, 230);
+    background-color: rgb(243, 243, 243);
     margin:5px 0;
+    padding: 5px;
     display: flex;
+    border-radius: 15px;
+    overflow: hidden;
+    
 }
 .Image{
     width: 100px;

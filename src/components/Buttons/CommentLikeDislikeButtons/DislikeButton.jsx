@@ -7,7 +7,7 @@ import { Checkbox } from "@mui/material";
 import { isAuth } from "$/lib/auth";
 import { dislikeComment } from "$/allApi/CommentOperations";
 
-export default function DislikeButton({ dislike, createdId, commentId }) {
+export default function DislikeButton({ dislike, userId, commentId }) {
   const auth = isAuth();
   const [dislikeCount, setDislikeCount] = useState(dislike.length);
   const [buttonStyle, setButtonStyle] = useState({});
@@ -36,7 +36,7 @@ export default function DislikeButton({ dislike, createdId, commentId }) {
       disabled={disabled}
       style={buttonStyle}
       defaultChecked={
-        dislike.find((item) => item === createdId) ? true : false
+        dislike.find((item) => item === userId) ? true : false
       }
       onClick={()=>dislikeComment(commentId,setDislikeCount)}
     />

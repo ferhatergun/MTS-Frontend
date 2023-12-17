@@ -130,7 +130,7 @@ const Login = () => {
                         
                            
                             <div className='loginKaydol'>
-                               Hesabın Yokmu ? <Link style={{textDecoration:"none",marginLeft:1}} href="/register"><div className='kaydol' > Hemen Kaydol</div> </Link>
+                               Hesabın Yok mu ? <Link style={{textDecoration:"none",marginLeft:1}} href="/register"><div className='kaydol' > Hemen Kaydol</div> </Link>
 
                             </div>
                         </motion.div>

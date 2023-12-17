@@ -11,7 +11,6 @@ import { commentDate, deleteComment } from '$/allApi/CommentOperations'
 import { useSelector } from 'react-redux';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import Link from 'next/link';
-import { FRONT_URL } from '$/allApi/api';
 import { useRouter} from 'next/navigation';
 
 
@@ -33,12 +32,12 @@ export default function Comment({ comment , setComments,divİd}) {
   return (
     <div className={styles.commentDiv} id={divİd}>
       <div className={styles.commentTop}>
-        <Link href={`${FRONT_URL}/profile/${comment.createdUserId}/yorumlar`} >
+        <Link href={`${process.env.FRONT_URL}/profile/${comment.createdUserId}/yorumlar`} >
         <Avatar sx={{ width: 50, height: 50 }}>
           {comment.userName.substring(0,1).toUpperCase()}
         </Avatar>
         </Link>
-        <Link href={`${FRONT_URL}/profile/${comment.createdUserId}/yorumlar`} style={{display:'relative'}}>
+        <Link href={`${process.env.FRONT_URL}/profile/${comment.createdUserId}/yorumlar`} style={{display:'relative'}}>
           <p>{comment.userName ? comment.userName : "Murat Uçar"}</p>
           <p className={styles.date}>{commentDate(comment?.createdDate)}</p>
         </Link>
@@ -62,12 +61,12 @@ export default function Comment({ comment , setComments,divİd}) {
       <div className={styles.commentBottom}>
         <LikeButtton 
           like={comment.likes} 
-          createdId={comment.createdUserId} 
+          userId={userId} 
           commentId={comment._id} 
         />
         <DislikeButton 
           dislike={comment.dislikes} 
-          createdId={comment.createdUserId} 
+          userId={userId} 
           commentId={comment._id}
         />
         <div className={styles.commentIcon}><ModeCommentOutlinedIcon className={styles.Icon} />Cevapla</div>

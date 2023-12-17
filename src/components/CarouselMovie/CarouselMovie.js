@@ -47,7 +47,7 @@ export default function CarouselMovie({headerTitle,data,delay}) {
                         </div>
                         <div style={{display:'flex',flexDirection:'column',justifyContent:'space-around',height:'50px'}}>
                         <div className={styles.movieName}>{item.name}</div>
-                            <RatingStar star={4} /> 
+                        <RatingStar star={item.rating} isVisible={true} /> 
                         </div>
                     </Link>
                 ))

@@ -1,9 +1,5 @@
 import { toast } from "react-toastify";
 import { setCookie , deleteCookie } from "cookies-next";
-import { BACKEND_URL } from "./api";
-
-
-
 
 
 export const userLogin=async(values,setErrors)=>{
@@ -12,7 +8,7 @@ export const userLogin=async(values,setErrors)=>{
         password:values.password
     }
     try{
-        const response = await fetch(`${BACKEND_URL}/users/login`,{
+        const response = await fetch(`${process.env.BACKEND_URL}/users/login`,{
             method:'POST',
             headers:{
                 'Content-Type':'application/json'
@@ -53,7 +49,7 @@ export const userRegister=async(values,setErrors,router)=>{
         password:values.password
     }
      try{
-        const response = await fetch(`${BACKEND_URL}/users/register`,{
+        const response = await fetch(`${process.env.BACKEND_URL}/users/register`,{
             method:'POST',
             headers:{
                 'Content-Type':'application/json'
