@@ -1,0 +1,31 @@
+.layoutContainer{
+    width: 70%;
+    padding-bottom:25px ;
+    margin: auto;
+}
+
+.container{
+    width: 100%;
+    margin: auto;
+    height: 300px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    padding: 20px;
+    margin-top: 20px;
+}
+@media (max-width: 1100px) {
+    .container{
+        padding: 10px;
+    }
+    .layoutContainer{
+        width: 85%;
+    }
+}
+@media (max-width: 768px) {
+    .container{
+        padding: 10px;
+    }
+    .layoutContainer{
+        width: 95%;
+    }
+}

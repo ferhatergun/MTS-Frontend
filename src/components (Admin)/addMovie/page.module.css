@@ -1,0 +1,22 @@
+.addMovie{
+    color:white;
+    background-color: var(--color1);
+    outline: none;
+    border: 0;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,0.5);
+}
+.modalContainer{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: white;
+    width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,0.5);
+    padding: 10px;
+
+}
