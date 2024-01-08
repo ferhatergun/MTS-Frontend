@@ -4,7 +4,6 @@ import { redirect } from 'next/navigation'
 export const fetchData = async (path) => {
     try{
         const res = await fetch(`${process.env.BACKEND_URL}/${path}`,{cache:'no-cache',})
-        console.log(process.env.BACKEND_URL)
         const data = await res.json()
         if(data.success){
         return data

@@ -14,9 +14,78 @@
     left: 50%;
     transform: translate(-50%,-50%);
     background-color: white;
-    width: 500px;
+    max-width: 500px;
+    width: 90%;
     border-radius: 10px;
     box-shadow: 0 0 5px 0 rgba(0,0,0,0.5);
     padding: 10px;
+    min-height: 80vh;
+    max-height: 95vh;
+    overflow-y: auto;
 
 }
+.InputsContainer{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.addMovieBtn{
+    color:white;
+    background-color: var(--color1);
+    outline: none;
+    border: 0;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,0.5);
+    text-align: center;
+    width: 70%;
+    margin: auto;
+    margin-top: 15px;
+}
+.closeBtn{
+    position: absolute;
+    top:10px;
+    right: 10px;
+    border-radius: 50%;
+    padding: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border:1px solid var(--color1);
+    cursor: pointer;
+}
+.fileInput{
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 5px;
+    border: 2px dashed #cacaca;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.fileInput input{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.modalContainer::-webkit-scrollbar{
+    width: 5px;
+}
+.modalContainer::-webkit-scrollbar-thumb {
+    background-color: #b7b7b7;
+    border-radius: 6px; 
+  }
+
+.modalContainer::-webkit-scrollbar-track {
+    background-color: #e2e2e2; 
+  }

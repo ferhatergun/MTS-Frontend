@@ -1,26 +1,219 @@
 "use client"
 import React ,{useState}from 'react'
 import styles from './page.module.css'
-import { Modal } from '@mui/material';
-
+import { Modal ,TextField ,InputLabel,MenuItem,FormControl,Select,
+FormHelperText} from '@mui/material';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import { addMovieInitialValues, addMovieSchema } from '$/lib/formikYup';
+import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { trTR } from '@mui/x-date-pickers';
+import {name} from 'dayjs/locale/tr';
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
+import UploadFileIcon from '@mui/icons-material/UploadFile';
 
 export default function AddMovie() {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+    const handleClose = () => {
+      formikProps.setValues(addMovieInitialValues)
+      formikProps.setTouched({})
+      formikProps.setErrors({})
+      console.log("kapandı")
+      setOpen(false)
+    } 
+
+
+    const formikProps = useFormik({
+      initialValues:addMovieInitialValues,
+      validationSchema:addMovieSchema,
+      onSubmit:(values)=>console.log(values)
+    })
+
   return (
     <div>
-        <button className={styles.addMovie} onClick={handleOpen}>Yeni Film Ekle</button>
-        <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <div className={styles.modalContainer}>
-            <h4>Film Ekle</h4>
+      <button className={styles.addMovie} onClick={handleOpen}>Yeni Film Ekle</button>
+      <Modal
+      open={open}
+      onClose={handleClose}
+      aria-labelledby="modal-modal-title"
+      aria-describedby="modal-modal-description"
+    >
+      <div className={styles.modalContainer}>
+        <h4 style={{padding:15}}>Film Ekle</h4>
+        <div className={styles.InputsContainer}>
+        <TextField 
+          id="name" 
+          label="Film Adı" 
+          variant="outlined" 
+          className="md:w-96 w-52"
+          onChange={formikProps.handleChange}
+          value={formikProps.values.name}
+          error={formikProps.errors.name && formikProps.touched.name}
+          onBlur={formikProps.handleBlur}
+          helperText={(formikProps.errors.name && 
+          formikProps.touched.name) && formikProps.errors.name}
+          sx={[InputSyles,erorStyles]}
+          />
+          <TextField 
+          id="description" 
+          label="Film Açıklaması" 
+          variant="outlined" 
+          onChange={formikProps.handleChange}
+          value={formikProps.values.description}
+          error={formikProps.errors.description && formikProps.touched.description}
+          onBlur={formikProps.handleBlur}
+          helperText={(formikProps.errors.description && 
+          formikProps.touched.description) && formikProps.errors.description}
+          sx={[InputSyles,erorStyles]}
+          />
+          <TextField 
+          id="time" 
+          label="Film Uzunluğu(saat)" 
+          placeholder='2 saat 10 dakika'
+          variant="outlined" 
+          onChange={formikProps.handleChange}
+          value={formikProps.values.time}
+          error={formikProps.errors.time && formikProps.touched.time}
+          onBlur={formikProps.handleBlur}
+          helperText={(formikProps.errors.time && 
+          formikProps.touched.time) && formikProps.errors.time}
+          sx={[InputSyles,erorStyles]}
+          />
+          <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={name} localeText={trTR.components.MuiLocalizationProvider.defaultProps.localeText} >
+            <DemoContainer components={['DatePicker']} sx={InputSyles}>
+              <DatePicker 
+              label="Film Çıkış Tarihi"
+              id="startDate"
+              onChange={(e) => {
+                formikProps.setFieldValue('startDate', e?.$d)
+              }}
+              value={formikProps.values.startDate}
+              slotProps={{
+                textField:{
+                  id:'startDate',
+                  onBlur:formikProps.handleBlur,
+                  helperText:(formikProps.errors.startDate && formikProps.touched.startDate)
+                  && formikProps.errors.startDate,
+                  error:(formikProps.errors.startDate && formikProps.touched.startDate) ? true : false,
+                  sx:[erorStyles],
+                  variant:'outlined',
+                },
+              }}
+              />
+            </DemoContainer>
+          </LocalizationProvider>
+          <TextField 
+          id="director" 
+          label="Film Yünetmeni" 
+          variant="outlined" 
+          onChange={formikProps.handleChange}
+          value={formikProps.values.director}
+          error={formikProps.errors.director && formikProps.touched.director}
+          onBlur={formikProps.handleBlur}
+          helperText={(formikProps.errors.director && 
+          formikProps.touched.director) && formikProps.errors.director}
+          sx={[InputSyles,erorStyles]}
+          />
+          <FormControl sx={InputSyles}>
+          <InputLabel id="category">Film Kategorisi</InputLabel>
+          <Select
+          id="category" 
+          label="Film Kategorisi" 
+          variant="outlined" 
+          onChange={formikProps.handleChange('category')}
+          value={formikProps.values.category}
+          error={formikProps.errors.category && formikProps.touched.category}
+          onBlur={formikProps.handleBlur}
+          sx={[InputSyles,erorStyles]}
+          >
+            <MenuItem value={"Komedi"}>Komedi</MenuItem>
+            <MenuItem value={'Macera'}>Macera</MenuItem>
+          </Select>
+          {
+            formikProps.errors.category && formikProps.touched.category && (
+              <FormHelperText sx={erorStylesHelper}>
+                {formikProps.errors.category}
+              </FormHelperText>
+            )
+          }
+          </FormControl>
+
+          <FormControl sx={InputSyles}>
+          <InputLabel id="MovieOrSeries">Tür Seçiniz</InputLabel>
+          <Select
+          id="MovieOrSeries" 
+          label="Tür Seçiniz" 
+          variant="outlined" 
+          onChange={formikProps.handleChange('MovieOrSeries')}
+          value={formikProps.values.MovieOrSeries}
+          error={formikProps.errors.MovieOrSeries && formikProps.touched.MovieOrSeries}
+          onBlur={formikProps.handleBlur}
+          sx={[InputSyles,erorStyles]}
+          >
+            <MenuItem value={"Film"}>Film</MenuItem>
+            <MenuItem value={'Dizi'}>Dizi</MenuItem>
+          </Select>
+          {
+            formikProps.errors.MovieOrSeries && formikProps.touched.MovieOrSeries && (
+              <FormHelperText sx={erorStylesHelper}>
+                {formikProps.errors.MovieOrSeries}
+              </FormHelperText>
+            )
+          }
+          </FormControl>
+        <div className={styles.fileInput}>
+          <UploadFileIcon fontSize='large' />
+          <p>Film Resmi Yükle</p>
+          <input type="file" onChange={formikProps.handleChange} id='moviePhoto'/>
+          {
+          formikProps.errors.moviePhoto && formikProps.touched.moviePhoto && (
+            <FormHelperText sx={[erorStylesHelper,{marginTop:'80px'}]}>
+              {formikProps.errors.moviePhoto}
+            </FormHelperText>
+          )
+        }
         </div>
-      </Modal>
+
+
+        </div>
+
+        <div className={styles.addMovieBtn} onClick={formikProps.handleSubmit}>Film Ekle</div>
+        <div className={styles.closeBtn} onClick={handleClose}>
+          <CloseOutlinedIcon/>
+        </div>
+      </div>
+    </Modal>
     </div>
   )
 }
+
+const erorStyles={
+  "& .MuiFormHelperText-root.Mui-error":{
+    position:'fixed',
+    marginTop:'55px',
+    marginLeft:0,
+    fontSize:'11px',
+  }
+}
+const erorStylesHelper={
+    marginLeft:0,
+    position:'absolute',
+    marginTop:'55px',
+    fontSize:'11px',
+    color:'#d32f2f'
+}
+
+const InputSyles={
+  '@media (max-width: 530px)': {
+    width: '80%',
+  },
+  '@media (max-width: 300px)': {
+    width: '90%',
+  },
+  width:'220px'
+}
+
