@@ -14,10 +14,13 @@ import { trTR } from '@mui/x-date-pickers';
 import {name} from 'dayjs/locale/tr';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import UploadFileIcon from '@mui/icons-material/UploadFile';
+import { uploadMoviePhoto } from '$/allApi/adminOperations';
+
 
 export default function AddMovie() {
-    const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
+    const [open, setOpen] = useState(false)
+    const handleOpen = () => setOpen(true)
+    const [file, setFile] = useState(null)
     const handleClose = () => {
       formikProps.setValues(addMovieInitialValues)
       formikProps.setTouched({})
@@ -30,7 +33,10 @@ export default function AddMovie() {
     const formikProps = useFormik({
       initialValues:addMovieInitialValues,
       validationSchema:addMovieSchema,
-      onSubmit:(values)=>console.log(values)
+      onSubmit:(values)=>{
+        console.log(values)
+        uploadMoviePhoto("123",file)
+      }
     })
 
   return (
@@ -167,8 +173,14 @@ export default function AddMovie() {
           </FormControl>
         <div className={styles.fileInput}>
           <UploadFileIcon fontSize='large' />
-          <p>Film Resmi Yükle</p>
-          <input type="file" onChange={formikProps.handleChange} id='moviePhoto'/>
+          {
+            formikProps.values.moviePhoto ? 
+            <p>{file.name}</p> : <p>Film Resmi Yükle</p>
+          }
+          <input type="file" id='moviePhoto' onChange={(e)=>{
+            setFile(e.target.files[0])
+            formikProps.setFieldValue('moviePhoto',"1")
+          }}/>
           {
           formikProps.errors.moviePhoto && formikProps.touched.moviePhoto && (
             <FormHelperText sx={[erorStylesHelper,{marginTop:'80px'}]}>
