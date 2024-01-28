@@ -60,6 +60,13 @@
 .commentPcs{
     font-size: 0.7rem;
 }
+.image{
+    width: 65px;
+    aspect-ratio: auto 65 / 90;
+    height: 90px;
+    border-radius: 10px;
+    object-fit: cover;
+}
 
 
 

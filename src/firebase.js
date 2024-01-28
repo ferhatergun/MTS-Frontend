@@ -13,7 +13,6 @@ const firebaseConfig = {
     appId: process.env.appId,
     measurementId: process.env.measurementId
   };
-  console.log(process.env.APIKEY)
 
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);

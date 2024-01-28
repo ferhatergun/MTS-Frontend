@@ -12,6 +12,9 @@ const nextConfig = {
         measurementId: process.env.measurementId
     },
     transpilePackages: ['@mui/x-charts'],
+    images: {
+        domains: ['firebasestorage.googleapis.com'],
+    },
 }
 
 module.exports = nextConfig

@@ -2,10 +2,9 @@
 import { useRef, useState ,useEffect} from 'react';
 import styles from './page.module.css'
 import SearchIcon from '@mui/icons-material/Search'
-import Image from 'next/image';
-import image from '../../assets/hizli-ve-ofkeli-9.jpeg'
 import Link from 'next/link';
 import RatingStar from '../RatingStar/RatingStar';
+import MovieImage from '../MovieImage/MovieImage';
 
 export default function SearchBar() {
   const [searchKeyword,setSearchKeyword]=useState("")
@@ -65,13 +64,12 @@ export default function SearchBar() {
           movies?.map((item,index)=>(
             <Link href={`${process.env.FRONT_URL}/film/${item._id}`} className={styles.movieDiv} key={index} onClick={()=>setShowSearch(false)}>
               <div className={styles.movieImageDiv}>
-                <Image 
+{/*                 <Image 
                   src={image}
-                  width={65}
-                  height={90}
-                  style={{borderRadius:10}}
+                  className={styles.image}
                   alt='resim bulunamadı'
-                />
+                /> */}
+                <MovieImage photoId={item.moviePhoto} style={styles.image} />
               </div>
               <div className={styles.movieTextDiv}>
                 <div>

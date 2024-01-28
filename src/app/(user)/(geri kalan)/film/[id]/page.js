@@ -1,12 +1,11 @@
 import React from 'react'
 import styles from './page.module.css'
-import img from '$/assets/hizli-ve-ofkeli-9.jpeg'
-import Image from 'next/image'
 import ScrollToComment from '$/components (User)/Buttons/ScrollToComment/ScrollToComment'
 import CarouselMovie from '$/components (User)/CarouselMovie/CarouselMovie'
 import RatingStar from '$/components (User)/RatingStar/RatingStar'
 import MovieComment from '$/components (User)/MovieComment/MovieComment'
 import { fetchData } from '$/allApi/api'
+import MovieImage from '$/components (User)/MovieImage/MovieImage'
 
 
 
@@ -22,7 +21,7 @@ export default async function page({params}) {
         <p className={styles.movieName}>{movie?.name}</p>
         <div className={styles.movieInformationDiv}>
             <div className={styles.imageDiv}>
-                <Image src={img} className={styles.image} alt='resim bulunamadı' />
+                <MovieImage photoId={movie.moviePhoto} style={styles.image} />
             </div>
             <div className={styles.informationDiv} >
                 <p>Kategori : {movie?.category}</p>

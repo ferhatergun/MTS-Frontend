@@ -4,7 +4,6 @@ import styles from './page.module.css'
 import { Modal ,TextField ,InputLabel,MenuItem,FormControl,Select,
 FormHelperText} from '@mui/material';
 import { useFormik } from 'formik';
-import * as Yup from 'yup';
 import { addMovieInitialValues, addMovieSchema } from '$/lib/formikYup';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -14,13 +13,15 @@ import { trTR } from '@mui/x-date-pickers';
 import {name} from 'dayjs/locale/tr';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import UploadFileIcon from '@mui/icons-material/UploadFile';
-import { uploadMoviePhoto } from '$/allApi/adminOperations';
+import { addMovieSeries, uploadMoviePhoto } from '$/allApi/adminOperations';
+
 
 
 export default function AddMovie() {
     const [open, setOpen] = useState(false)
     const handleOpen = () => setOpen(true)
     const [file, setFile] = useState(null)
+    
     const handleClose = () => {
       formikProps.setValues(addMovieInitialValues)
       formikProps.setTouched({})
@@ -35,7 +36,7 @@ export default function AddMovie() {
       validationSchema:addMovieSchema,
       onSubmit:(values)=>{
         console.log(values)
-        uploadMoviePhoto("123",file)
+        addMovieSeries(values,file)
       }
     })
 
@@ -134,7 +135,7 @@ export default function AddMovie() {
           value={formikProps.values.category}
           error={formikProps.errors.category && formikProps.touched.category}
           onBlur={formikProps.handleBlur}
-          sx={[InputSyles,erorStyles]}
+          sx={[erorStyles]}
           >
             <MenuItem value={"Komedi"}>Komedi</MenuItem>
             <MenuItem value={'Macera'}>Macera</MenuItem>
@@ -158,7 +159,7 @@ export default function AddMovie() {
           value={formikProps.values.MovieOrSeries}
           error={formikProps.errors.MovieOrSeries && formikProps.touched.MovieOrSeries}
           onBlur={formikProps.handleBlur}
-          sx={[InputSyles,erorStyles]}
+          sx={[erorStyles]}
           >
             <MenuItem value={"Film"}>Film</MenuItem>
             <MenuItem value={'Dizi'}>Dizi</MenuItem>

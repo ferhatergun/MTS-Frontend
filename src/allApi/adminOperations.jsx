@@ -2,6 +2,8 @@ import { ref ,uploadBytes } from 'firebase/storage'
 import { storage } from '../firebase'
 import { getCookie ,setCookie} from "cookies-next"
 import { toast } from 'react-toastify'
+import { v4 as uuidv4 } from 'uuid';
+
 
 export const adminLogin = async (values,setErrors) => {
     const data={
@@ -50,5 +52,45 @@ export const uploadMoviePhoto = (photoId,file) => {
     const imageRef = ref(storage, `moviePhotos/${photoId}`)
     uploadBytes(imageRef, file)
     console.log("Başarı ile yüklendi")
+}
+
+export const addMovieSeries = async (values,file) => {
+    const id = uuidv4()
+    const data={
+        name:values.name,
+        description:values.description,
+        time:values.time,
+        startDate:values.startDate,
+        category:values.category,
+        MovieOrSeries:values.MovieOrSeries,
+        director:values.director,
+        moviePhoto:id,
+    }
+    try
+    {
+        const response = await fetch(`${process.env.BACKEND_URL}/AdminMovieseries/admin/createMovieSeries`, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': "Bearer " + getCookie('accessToken'),
+            },
+            body: JSON.stringify(data),
+        })
+        const result = await response.json()
+        console.log(result)
+        if(result.status == "success"){
+            toast.success("Film Başarıyla Eklendi")
+            uploadMoviePhoto(id,file)
+        }
+        else{
+            toast.error("Film Eklenemedi")
+        }
+    }catch(err)
+    {
+        console.log(err)
+    }
+
+
+
 }
 
