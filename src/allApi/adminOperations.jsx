@@ -1,4 +1,4 @@
-import { ref ,uploadBytes } from 'firebase/storage'
+import { ref ,uploadBytes ,updateMetadata} from 'firebase/storage'
 import { storage } from '../firebase'
 import { getCookie ,setCookie} from "cookies-next"
 import { toast } from 'react-toastify'
@@ -54,7 +54,7 @@ export const uploadMoviePhoto = (photoId,file) => {
     console.log("Başarı ile yüklendi")
 }
 
-export const addMovieSeries = async (values,file) => {
+export const addMovieSeries = async (values,file,setOpen) => {
     const id = uuidv4()
     const data={
         name:values.name,
@@ -81,6 +81,47 @@ export const addMovieSeries = async (values,file) => {
         if(result.status == "success"){
             toast.success("Film Başarıyla Eklendi")
             uploadMoviePhoto(id,file)
+            setOpen(false)
+        }
+        else{
+            toast.error("Film Eklenemedi")
+        }
+    }catch(err)
+    {
+        console.log(err)
+    }
+}
+
+
+export const updateMovieSeries = async (values,file,movieId,setOpen) => {
+    const data={
+        name:values.name,
+        description:values.description,
+        time:values.time,
+        startDate:values.startDate,
+        category:values.category,
+        MovieOrSeries:values.MovieOrSeries,
+        director:values.director,
+        moviePhoto:values.moviePhoto,
+    }
+    try
+    {
+        const response = await fetch(`${process.env.BACKEND_URL}/AdminMovieseries/admin/UpdateMovieSeries/${movieId}`, {
+            method: "PUT",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': "Bearer " + getCookie('accessToken'),
+            },
+            body: JSON.stringify(data),
+        })
+        const result = await response.json()
+        console.log(result)
+        if(result.status == "success"){
+            toast.success("Film Başarıyla Güncellendi")
+            if(file != null){
+                uploadMoviePhoto(values.moviePhoto,file)
+                setOpen(false)
+            }
         }
         else{
             toast.error("Film Eklenemedi")
@@ -93,4 +134,5 @@ export const addMovieSeries = async (values,file) => {
 
 
 }
+
 

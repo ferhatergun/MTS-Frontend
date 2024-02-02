@@ -2,7 +2,8 @@
 import React ,{useState}from 'react'
 import styles from './page.module.css'
 import { Modal ,TextField ,InputLabel,MenuItem,FormControl,Select,
-FormHelperText} from '@mui/material';
+FormHelperText,
+Tooltip} from '@mui/material';
 import { useFormik } from 'formik';
 import { addMovieInitialValues, addMovieSchema } from '$/lib/formikYup';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
@@ -13,17 +14,20 @@ import { trTR } from '@mui/x-date-pickers';
 import {name} from 'dayjs/locale/tr';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import UploadFileIcon from '@mui/icons-material/UploadFile';
-import { addMovieSeries, uploadMoviePhoto } from '$/allApi/adminOperations';
+import { addMovieSeries, updateMovieSeries, uploadMoviePhoto } from '$/allApi/adminOperations';
+import EditIcon from '@mui/icons-material/Edit';
+import dayjs from 'dayjs';
 
 
 
-export default function AddMovie() {
+
+export default function AddMovie({updateMovie,uploadStyle}) {
     const [open, setOpen] = useState(false)
     const handleOpen = () => setOpen(true)
     const [file, setFile] = useState(null)
     
     const handleClose = () => {
-      formikProps.setValues(addMovieInitialValues)
+      formikProps.setValues(addMovieInitialValues())
       formikProps.setTouched({})
       formikProps.setErrors({})
       console.log("kapandı")
@@ -32,17 +36,28 @@ export default function AddMovie() {
 
 
     const formikProps = useFormik({
-      initialValues:addMovieInitialValues,
+      initialValues:addMovieInitialValues(updateMovie),
       validationSchema:addMovieSchema,
       onSubmit:(values)=>{
         console.log(values)
-        addMovieSeries(values,file)
+        if(updateMovie){
+          updateMovieSeries(values,file,updateMovie.id,setOpen)
+        }
+        else{
+          addMovieSeries(values,file,setOpen)
+        }
       }
     })
 
   return (
     <div>
-      <button className={styles.addMovie} onClick={handleOpen}>Yeni Film Ekle</button>
+      <Tooltip title={updateMovie && "Düzenle"} followCursor>
+        <div className={uploadStyle ? uploadStyle: styles.addMovie} onClick={handleOpen}>
+          {
+            updateMovie ? <EditIcon/> : "Yeni Film Ekle"
+          }
+        </div>
+      </Tooltip>
       <Modal
       open={open}
       onClose={handleClose}
@@ -98,7 +113,8 @@ export default function AddMovie() {
               onChange={(e) => {
                 formikProps.setFieldValue('startDate', e?.$d)
               }}
-              value={formikProps.values.startDate}
+              value={dayjs(formikProps.values.startDate)}
+              views={['year', 'month', 'day']}
               slotProps={{
                 textField:{
                   id:'startDate',
@@ -176,7 +192,8 @@ export default function AddMovie() {
           <UploadFileIcon fontSize='large' />
           {
             formikProps.values.moviePhoto ? 
-            <p>{file.name}</p> : <p>Film Resmi Yükle</p>
+            <p>{file?.name || updateMovie?.name}</p> 
+            : <p>Film Resmi Yükle</p>
           }
           <input type="file" id='moviePhoto' onChange={(e)=>{
             setFile(e.target.files[0])
@@ -194,7 +211,11 @@ export default function AddMovie() {
 
         </div>
 
-        <div className={styles.addMovieBtn} onClick={formikProps.handleSubmit}>Film Ekle</div>
+        <div className={styles.addMovieBtn} onClick={formikProps.handleSubmit}>
+          {
+            updateMovie ? "Film Güncelle" : "Film Ekle"
+          }
+        </div>
         <div className={styles.closeBtn} onClick={handleClose}>
           <CloseOutlinedIcon/>
         </div>

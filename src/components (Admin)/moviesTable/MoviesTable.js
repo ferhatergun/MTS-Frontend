@@ -61,7 +61,7 @@ const columns = [
       headerName: 'Film Resmi',
       flex:1,
       renderCell:(params)=>(
-        <MovieImage photoId={params.row.movieImage ?? false} style={styles.movieImage} />
+        <MovieImage photoId={params.row.moviePhoto ?? false} style={styles.movieImage} />
       ),
       
     },
