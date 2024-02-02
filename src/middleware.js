@@ -29,5 +29,5 @@ export function middleware(request) {
 }
 
 export const config = { // hangi sayfalarda kontrol yapılacak onu belirledik
-    matcher: ['/admin','/login','/register','/loginadmin']
+    matcher: ['/admin/:path*','/login','/register','/loginadmin']
 };

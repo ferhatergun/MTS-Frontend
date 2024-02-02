@@ -64,11 +64,6 @@ export default function SearchBar() {
           movies?.map((item,index)=>(
             <Link href={`${process.env.FRONT_URL}/film/${item._id}`} className={styles.movieDiv} key={index} onClick={()=>setShowSearch(false)}>
               <div className={styles.movieImageDiv}>
-{/*                 <Image 
-                  src={image}
-                  className={styles.image}
-                  alt='resim bulunamadı'
-                /> */}
                 <MovieImage photoId={item.moviePhoto} style={styles.image} />
               </div>
               <div className={styles.movieTextDiv}>

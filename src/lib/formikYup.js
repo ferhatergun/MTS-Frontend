@@ -12,13 +12,17 @@ export const addMovieSchema = Yup.object().shape({
     moviePhoto:Yup.mixed().required('Film resim zorunludur'),
 })
 
-export const addMovieInitialValues = {
-    name:'',
-    description:'',
-    time:'',
-    startDate:'',
-    director:'',
-    category:'',
-    MovieOrSeries:'',
-    moviePhoto:'',
-}
+export const addMovieInitialValues = (movie) => {
+    return {
+        name: movie?.name || '',
+        description: movie?.description || '',
+        time: movie?.time || '',
+        startDate: movie?.startDate || '',
+        director: movie?.director || '',
+        category: movie?.category || '',
+        MovieOrSeries: movie?.MovieOrSeries || '',
+        moviePhoto: movie?.moviePhoto || '',
+    };
+};
+
+
