@@ -65,7 +65,11 @@ export default function AddMovie({updateMovie,uploadStyle}) {
       aria-describedby="modal-modal-description"
     >
       <div className={styles.modalContainer}>
-        <h4 style={{padding:15}}>Film Ekle</h4>
+        <h4 style={{padding:15}}>
+          {
+            updateMovie ? "Film Düzenle" : "Film Ekle"
+          }
+        </h4>
         <div className={styles.InputsContainer}>
         <TextField 
           id="name" 

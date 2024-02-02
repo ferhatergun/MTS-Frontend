@@ -28,3 +28,7 @@
 .openMovieBtn{
     background-color: lightblue;
 }
+
+.custom-data-grid .MuiDataGrid-root .MuiDataGrid-cell:focus {
+    outline: none !important;
+  }
