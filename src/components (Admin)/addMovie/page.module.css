@@ -19,8 +19,8 @@
     border-radius: 10px;
     box-shadow: 0 0 5px 0 rgba(0,0,0,0.5);
     padding: 10px;
-    min-height: 80vh;
-    max-height: 95vh;
+    height: 95vh;
+    max-height: 600px;
     overflow-y: auto;
 
 }

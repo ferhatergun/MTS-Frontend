@@ -21,7 +21,7 @@ import dayjs from 'dayjs';
 
 
 
-export default function AddMovie({updateMovie,uploadStyle}) {
+export default function AddMovie({updateMovie,uploadStyle,setRefresh}) {
     const [open, setOpen] = useState(false)
     const handleOpen = () => setOpen(true)
     const [file, setFile] = useState(null)
@@ -41,7 +41,7 @@ export default function AddMovie({updateMovie,uploadStyle}) {
       onSubmit:(values)=>{
         console.log(values)
         if(updateMovie){
-          updateMovieSeries(values,file,updateMovie.id,setOpen)
+          updateMovieSeries(values,file,updateMovie.id,setOpen,setRefresh)
         }
         else{
           addMovieSeries(values,file,setOpen)

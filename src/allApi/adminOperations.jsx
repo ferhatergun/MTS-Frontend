@@ -3,6 +3,7 @@ import { storage } from '../firebase'
 import { getCookie ,setCookie} from "cookies-next"
 import { toast } from 'react-toastify'
 import { v4 as uuidv4 } from 'uuid';
+import { setRef } from '@mui/material';
 
 
 export const adminLogin = async (values,setErrors) => {
@@ -93,7 +94,7 @@ export const addMovieSeries = async (values,file,setOpen) => {
 }
 
 
-export const updateMovieSeries = async (values,file,movieId,setOpen) => {
+export const updateMovieSeries = async (values,file,movieId,setOpen,setRefresh) => {
     const data={
         name:values.name,
         description:values.description,
@@ -121,6 +122,7 @@ export const updateMovieSeries = async (values,file,movieId,setOpen) => {
             if(file != null){
                 uploadMoviePhoto(values.moviePhoto,file)
                 setOpen(false)
+                setRefresh((prev) => prev+1)
             }
         }
         else{
@@ -135,4 +137,28 @@ export const updateMovieSeries = async (values,file,movieId,setOpen) => {
 
 }
 
+
+export const deleteMovieSeries = async (movieId,setRefresh) => {
+ 
+    try {
+        const response = await fetch(`${process.env.BACKEND_URL}/AdminMovieseries/admin/DeleteMovieSeries/${movieId}`, {
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': "Bearer " + getCookie('accessToken'),
+            },
+        })
+        const result = await response.json()
+        console.log(result)
+        if(result.status == "success"){
+            toast.success("Film Başarıyla Silindi")
+            setRefresh((prev) => prev+1)
+        }
+        else{
+            toast.error("Film Silinemedi")
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
 

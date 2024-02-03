@@ -4,6 +4,7 @@ import { useFormik } from 'formik';
 import { TextField } from '@mui/material';
 import * as Yup from 'yup';
 import { adminLogin } from '$/allApi/adminOperations';
+import '../../globals.css'
 
 export default function LoginAdmin() {
 

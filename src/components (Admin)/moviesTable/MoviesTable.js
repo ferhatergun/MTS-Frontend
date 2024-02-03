@@ -11,6 +11,7 @@ import { Tooltip } from '@mui/material';
 import AddMovie from '../addMovie/AddMovie';
 import Link from 'next/link';
 import { Badge } from 'antd';
+import { deleteMovieSeries } from '$/allApi/adminOperations';
 
 
 export default function MoviesTable() {
@@ -21,7 +22,7 @@ export default function MoviesTable() {
   const [loading, setLoading] = useState(false)
   const [movieList, setMovieList] = useState([])
   const [rowSelectionModel, setRowSelectionModel] = useState([]);
-  console.log(rowSelectionModel)
+  const [refresh, setRefresh] = useState(0)
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -31,7 +32,7 @@ export default function MoviesTable() {
     };
 
     fetchMovies();
-  }, []);
+  }, [refresh]);
 
   
 const customToolbar = () => {
@@ -50,12 +51,78 @@ const customToolbar = () => {
   );
 }
 
+const columns = [
+  {
+    field: 'moviePhoto',
+    headerName: 'Film Resmi',
+    minWidth:120,
+    flex:1,
+    renderCell:(params)=>(
+      <MovieImage photoId={params.row.moviePhoto ?? false} style={styles.movieImage} />
+    ),
+    
+  },
+  {
+    field: 'name',
+    headerName: 'Film Adı',
+    minWidth:200,
+    flex:1
+  },
+  {
+    field: 'category',
+    headerName: 'Film Kategorisi',
+    minWidth:150,
+    flex:1
+  },
+  {
+    field: 'startDate',
+    headerName: 'Vizyona Giriş Tarihi',
+    minWidth:200,
+    renderCell:(params)=>(
+      <div>{params.row.startDate.slice(0,10)}</div>
+    ),
+    flex:1
+    
+  },
+  {
+    field: 'operations',
+    headerName: 'İşlemler',
+    sortable: false,
+    renderCell:(params)=>(
+      <div className={styles.operationsButtons}>
+        <Tooltip title="Düzenle" followCursor>
+            <AddMovie updateMovie={params.row} 
+            uploadStyle={styles.editBtn} 
+            setRefresh={setRefresh} />
+        </Tooltip>
+        
+        <Tooltip title="Sil" followCursor>
+          <div className={styles.deleteBtn} 
+          onClick={()=>deleteMovieSeries(params.row.id,setRefresh)}>
+            <DeleteOutlineIcon/>
+          </div>
+        </Tooltip>
+
+        <Tooltip title="Filme git" followCursor>
+          <Link href={`${process.env.FRONT_URL}/film/${params.row.id}`} 
+          target='_blank'
+          className={styles.openMovieBtn}>
+            <OpenInNewIcon/>
+          </Link>
+        </Tooltip>
+      </div>
+    ),
+    minWidth:180,
+    flex:1
+  },
+];
+
 
 if(loading === false) return (<div>loading</div>)
   return (
     <div>
     <DataGrid
-    key={paginationModel.page}
+    key={refresh}
     slots={{toolbar:customToolbar}}
     autoHeight={true}
     getRowHeight={()=>90}
@@ -90,64 +157,6 @@ if(loading === false) return (<div>loading</div>)
     </div>
   )
 }
-
-const columns = [
-    {
-      field: 'moviePhoto',
-      headerName: 'Film Resmi',
-      width:120,
-      renderCell:(params)=>(
-        <MovieImage photoId={params.row.moviePhoto ?? false} style={styles.movieImage} />
-      ),
-      
-    },
-    {
-      field: 'name',
-      headerName: 'Film Adı',
-      width:200
-    },
-    {
-      field: 'category',
-      headerName: 'Film Kategorisi',
-      width:150
-    },
-    {
-      field: 'startDate',
-      headerName: 'Vizyona Giriş Tarihi',
-      width:200,
-      renderCell:(params)=>(
-        <div>{params.row.startDate.slice(0,10)}</div>
-      ),
-      
-    },
-    {
-      field: 'operations',
-      headerName: 'İşlemler',
-      sortable: false,
-      renderCell:(params)=>(
-        <div className={styles.operationsButtons}>
-          <Tooltip title="Düzenle" followCursor>
-              <AddMovie updateMovie={params.row} uploadStyle={styles.editBtn} />
-          </Tooltip>
-          
-          <Tooltip title="Sil" followCursor>
-            <div className={styles.deleteBtn}>
-              <DeleteOutlineIcon/>
-            </div>
-          </Tooltip>
-
-          <Tooltip title="Filme git" followCursor>
-            <Link href={`${process.env.FRONT_URL}/film/${params.row.id}`} 
-            target='_blank'
-            className={styles.openMovieBtn}>
-              <OpenInNewIcon/>
-            </Link>
-          </Tooltip>
-        </div>
-      ),
-      width:180
-    },
-  ];
   
 
   const rows = async () => {
