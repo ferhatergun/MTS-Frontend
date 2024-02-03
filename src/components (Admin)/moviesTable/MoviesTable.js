@@ -38,9 +38,10 @@ export default function MoviesTable() {
 const customToolbar = () => {
   return (
     <GridToolbarContainer>
-      <Tooltip title="Sil" followCursor>
+      <Tooltip title="Sil" followCursor placement='top'>
         <Badge count={rowSelectionModel.length} color='#0174BE' offset={[0,30]}>
-        <div className={styles.deleteBtn} style={{padding:2}}>
+        <div className={styles.deleteBtn} style={{padding:2}} 
+        onClick={()=>console.log(rowSelectionModel)}>
           <DeleteOutlineIcon/>
         </div>
         </Badge>
@@ -90,20 +91,18 @@ const columns = [
     sortable: false,
     renderCell:(params)=>(
       <div className={styles.operationsButtons}>
-        <Tooltip title="Düzenle" followCursor>
-            <AddMovie updateMovie={params.row} 
-            uploadStyle={styles.editBtn} 
-            setRefresh={setRefresh} />
-        </Tooltip>
+        <AddMovie updateMovie={params.row} 
+        uploadStyle={styles.editBtn} 
+        setRefresh={setRefresh} />
         
-        <Tooltip title="Sil" followCursor>
+        <Tooltip title="Sil" followCursor placement='top'>
           <div className={styles.deleteBtn} 
           onClick={()=>deleteMovieSeries(params.row.id,setRefresh)}>
             <DeleteOutlineIcon/>
           </div>
         </Tooltip>
 
-        <Tooltip title="Filme git" followCursor>
+        <Tooltip title="Filme git" followCursor placement='top'>
           <Link href={`${process.env.FRONT_URL}/film/${params.row.id}`} 
           target='_blank'
           className={styles.openMovieBtn}>

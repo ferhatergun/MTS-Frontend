@@ -51,7 +51,7 @@ export default function AddMovie({updateMovie,uploadStyle,setRefresh}) {
 
   return (
     <div>
-      <Tooltip title={updateMovie && "Düzenle"} followCursor>
+      <Tooltip title={updateMovie && "Düzenle"} followCursor placement='top'>
         <div className={uploadStyle ? uploadStyle: styles.addMovie} onClick={handleOpen}>
           {
             updateMovie ? <EditIcon/> : "Yeni Film Ekle"
