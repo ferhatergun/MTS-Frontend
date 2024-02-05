@@ -10,7 +10,7 @@ export function middleware(request) {
         if(request.nextUrl.pathname.startsWith('/loginadmin')){ // admin tekrar admin girişi görmesin diye
             if(request.cookies.has("adminId")){
                 console.log("admin var");
-                return NextResponse.redirect(new URL("/admin",request.url));
+                return NextResponse.redirect(new URL("/admin/filmler",request.url));
             }
         }
         if(request.nextUrl.pathname.startsWith('/login') || // giriş yapmış kişiler tekrar giriş sayfasına girmesin diye

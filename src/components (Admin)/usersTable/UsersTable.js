@@ -7,7 +7,7 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { Tooltip } from '@mui/material';
 import AddMovie from '../addMovie/AddMovie';
 import { Badge } from 'antd';
-import { deleteMovieSeries } from '$/allApi/adminOperations';
+import { deleteMovieSeries, deleteUser } from '$/allApi/adminOperations';
 import ReportGmailerrorredIcon from '@mui/icons-material/ReportGmailerrorred';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import NotInterestedIcon from '@mui/icons-material/NotInterested';
@@ -22,6 +22,7 @@ export default function UsersTable() {
   const [rowSelectionModel, setRowSelectionModel] = useState([]);
   const [refresh, setRefresh] = useState(0)
 
+  
   useEffect(() => {
     const fetchUsers = async () => {
       const movieList = await rows();
@@ -39,7 +40,7 @@ const customToolbar = () => {
       <Tooltip title="Sil" followCursor placement='top'>
         <Badge count={rowSelectionModel.length} color='#0174BE' offset={[0,30]}>
         <div className={styles.deleteBtn} style={{padding:2}} 
-        onClick={()=>console.log(rowSelectionModel)}>
+        onClick={()=>deleteUser(rowSelectionModel,setRefresh)}>
           <DeleteOutlineIcon/>
         </div>
         </Badge>
@@ -97,7 +98,7 @@ const columns = [
         
         <Tooltip title="Sil" followCursor placement='top'>
           <div className={styles.deleteBtn} 
-          onClick={()=>deleteMovieSeries(params.row.id,setRefresh)}>
+          onClick={()=>deleteUser(params.row.id,setRefresh)}>
             <DeleteOutlineIcon/>
           </div>
         </Tooltip>
@@ -115,7 +116,12 @@ const columns = [
 ];
 
 
-if(loading === false) return (<div>loading</div>)
+if(loading === false) 
+  return (
+    <div style={{textAlign:"center",marginTop:100}}>
+      <span class="loader">Loading</span>
+    </div>
+  )
   return (
     <div>
     <DataGrid

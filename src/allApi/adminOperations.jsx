@@ -138,15 +138,20 @@ export const updateMovieSeries = async (values,file,movieId,setOpen,setRefresh) 
 }
 
 
-export const deleteMovieSeries = async (movieId,setRefresh) => {
+export const deleteMovieSeries = async (movieIds,setRefresh) => {
+    const data ={
+        movieSeriesIds:movieIds
+    }
+    console.log(data)
  
     try {
-        const response = await fetch(`${process.env.BACKEND_URL}/AdminMovieseries/admin/DeleteMovieSeries/${movieId}`, {
-            method: "DELETE",
+        const response = await fetch(`${process.env.BACKEND_URL}/AdminMovieseries/admin/BulkDeleteMovieSeries`, {
+            method: "POST",
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': "Bearer " + getCookie('accessToken'),
             },
+            body: JSON.stringify(data),
         })
         const result = await response.json()
         console.log(result)
@@ -156,6 +161,36 @@ export const deleteMovieSeries = async (movieId,setRefresh) => {
         }
         else{
             toast.error("Film Silinemedi")
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
+export const deleteUser = async (userIds,setRefresh) => {
+    const data ={
+        userIds:userIds
+    }
+    console.log(data)
+ 
+    try {
+        const response = await fetch(`${process.env.BACKEND_URL}/AdminUser/admin/bulkDeleteUser`, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': "Bearer " + getCookie('accessToken'),
+            },
+            body: JSON.stringify(data),
+        })
+        const result = await response.json()
+        console.log(result)
+        if(result.status == "success"){
+            toast.success("User Başarıyla Silindi")
+            setRefresh((prev) => prev+1)
+        }
+        else{
+            toast.error("User Silinemedi")
         }
     } catch (error) {
         console.log(error)

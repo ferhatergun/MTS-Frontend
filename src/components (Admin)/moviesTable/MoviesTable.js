@@ -41,7 +41,7 @@ const customToolbar = () => {
       <Tooltip title="Sil" followCursor placement='top'>
         <Badge count={rowSelectionModel.length} color='#0174BE' offset={[0,30]}>
         <div className={styles.deleteBtn} style={{padding:2}} 
-        onClick={()=>console.log(rowSelectionModel)}>
+        onClick={()=>deleteMovieSeries(rowSelectionModel,setRefresh)}>
           <DeleteOutlineIcon/>
         </div>
         </Badge>
@@ -117,7 +117,12 @@ const columns = [
 ];
 
 
-if(loading === false) return (<div>loading</div>)
+if(loading === false)
+  return (
+    <div style={{textAlign:"center",marginTop:100}}>
+      <span class="loader">Loading</span>
+    </div>
+  )
   return (
     <div>
     <DataGrid
