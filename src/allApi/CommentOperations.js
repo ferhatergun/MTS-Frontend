@@ -65,7 +65,8 @@ export const getComment = async(commentId) => {
   }
 }
 
-export const likeComment = async(commentId,setLikeCount) => {
+export const likeComment = async(commentId,setLikes,dislike,setDislikes) => {
+  const userId= getCookie('userId')
   try{
       const response = await fetch(`${process.env.BACKEND_URL}/comments/${commentId}/Like`,{
         method:'PUT',
@@ -77,11 +78,14 @@ export const likeComment = async(commentId,setLikeCount) => {
       const result = await response.json()
       // beğeni atıyorsa beğeni sayısını arttır
       if(result === 'The comment has been liked'){
-        setLikeCount((prev)=>prev+1)
+        if(dislike.includes(userId)){ // beğeni atarken önceden dislike atmışsa dislike ı siliyoruz
+          dislikeComment(commentId,setDislikes)
+        }
+        setLikes((prev)=>[...prev,userId])
       }
       // beğeni kaldırıyorsa beğeni sayısını azalt
       else if(result === 'The like has been removed'){
-        setLikeCount((prev)=>prev-1)
+        setLikes((prev)=>prev.filter((item)=>item !== userId))
       }
   }catch(e){
     console.log(e)
@@ -89,7 +93,8 @@ export const likeComment = async(commentId,setLikeCount) => {
 
 }
 
-export const dislikeComment = async(commentId,setDislikeCount) => {
+export const dislikeComment = async(commentId,setDislikes,likes,setLikes) => {
+  const userId= getCookie('userId')
   try{
       const response = await fetch(`${process.env.BACKEND_URL}/comments/${commentId}/Dislike`,{
         method:'PUT',
@@ -101,11 +106,15 @@ export const dislikeComment = async(commentId,setDislikeCount) => {
       const result = await response.json()
       // dislike atıyorsa dislike sayısını arttır
       if(result === 'The comment has been disliked'){
-        setDislikeCount((prev)=>prev+1)
+        if(likes.includes(userId)){ // dislike atarken önceden like atmışsa like ı siliyoruz
+          likeComment(commentId,setLikes)
+        }
+        setDislikes((prev)=>[...prev,userId])
+
       }
       // dislike kaldırıyorsa dislike sayısını azalt
       else if(result === 'The dislike has been removed'){
-        setDislikeCount((prev)=>prev-1)
+        setDislikes((prev)=>prev.filter((item)=>item !== userId))
       }
   }catch(e){
     console.log(e)

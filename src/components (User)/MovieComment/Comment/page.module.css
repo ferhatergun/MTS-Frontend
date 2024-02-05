@@ -18,7 +18,7 @@
     width: 100%;
     display: flex;
     align-items: center;
-    gap:3%;
+    gap:1%;
     height: 40px;
     flex-wrap: wrap;
 }

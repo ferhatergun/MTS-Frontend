@@ -1,3 +1,9 @@
+.container{
+    display: flex;
+    align-items: center;
+    gap:10px
+}
+
 .commentIcon{
     display: flex;
     align-items: center;

@@ -5,13 +5,12 @@ import styles from './page.module.css';
 import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
 import CommentReportButton from '../../Buttons/CommentReportButton/CommentReportButton';
 import RatingStar from '../../RatingStar/RatingStar';
-import LikeButtton from '../../Buttons/CommentLikeDislikeButtons/LikeButtton';
-import DislikeButton from '../../Buttons/CommentLikeDislikeButtons/DislikeButton'
 import { commentDate, deleteComment } from '$/allApi/CommentOperations'
 import { useSelector } from 'react-redux';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import Link from 'next/link';
 import { useRouter} from 'next/navigation';
+import LikeDislikeButtons from '$/components (User)/Buttons/CommentLikeDislikeButtons/LikeDislikeButtons';
 
 
 export default function Comment({ comment , setComments,divİd}) {
@@ -64,15 +63,11 @@ export default function Comment({ comment , setComments,divİd}) {
         {comment?.comment ? comment?.comment : "Bu film hakkında yorum yapılmamıştır."}
       </div>
       <div className={styles.commentBottom}>
-        <LikeButtton 
+        <LikeDislikeButtons
           like={comment.likes} 
           userId={userId} 
           commentId={comment._id} 
-        />
-        <DislikeButton 
           dislike={comment.dislikes} 
-          userId={userId} 
-          commentId={comment._id}
         />
         <div className={styles.commentIcon}><ModeCommentOutlinedIcon className={styles.Icon} />Cevapla</div>
         <CommentReportButton commentId={comment._id} />
