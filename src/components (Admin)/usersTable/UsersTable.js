@@ -57,13 +57,13 @@ const columns = [
   {
     field: 'UserName',
     headerName: 'Kullanıcı Adı',
-    minWidth:200,
+    minWidth:150,
     flex:1
   },
   {
     field: 'email',
     headerName: 'Email',
-    minWidth:150,
+    minWidth:200,
     flex:1
   },
   {

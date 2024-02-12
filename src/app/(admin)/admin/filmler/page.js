@@ -2,6 +2,7 @@
 import AddMovie from '$/components (Admin)/addMovie/AddMovie'
 import MoviesTable from '$/components (Admin)/moviesTable/MoviesTable'
 import styles from './page.module.css'
+import '$/app/globals.css'
 
 export default function Filmler() {
   return (

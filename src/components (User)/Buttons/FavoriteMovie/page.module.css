@@ -1,4 +1,4 @@
-.commentBtn{
+.favBtn{
     padding: 10px;
     min-width: 48%;
     text-align:center;
@@ -16,12 +16,13 @@
     touch-action: manipulation;
     vertical-align: middle;
 }
-.commentBtn:hover{
-    cursor: pointer;
-}
-
 @media(max-width:500px){
-    .commentBtn{
+    .container{
         width: 100%;
     }
+    .favBtn{
+        width: 100% !important;
+        margin: auto;
+    }
+    
 }

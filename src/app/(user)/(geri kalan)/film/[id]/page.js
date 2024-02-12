@@ -6,11 +6,11 @@ import RatingStar from '$/components (User)/RatingStar/RatingStar'
 import MovieComment from '$/components (User)/MovieComment/MovieComment'
 import { fetchData } from '$/allApi/api'
 import MovieImage from '$/components (User)/MovieImage/MovieImage'
-
+import FavoriteMovieBtn from '$/components (User)/Buttons/FavoriteMovie/FavoriteMovieBtn'
 
 
 export default async function page({params}) {
-
+    const options = { year: 'numeric', month: 'long', day: 'numeric' }
     const mostPopular = (await fetchData('comments/rating/TopMovie')).topMovies
     const movie = (await fetchData(`movieSeries/${params.id}`)).movieseries
 
@@ -26,11 +26,12 @@ export default async function page({params}) {
             <div className={styles.informationDiv} >
                 <p>Kategori : {movie?.category}</p>
                 <p>Yönetmen: {movie?.director} </p>
-                <p>Vizyona Giriş Tarihi : 13 Temmuz 2022</p>
+                <p>Vizyona Giriş Tarihi: {new Date(movie?.startDate).toLocaleDateString("tr-TR",options)}</p>
                 <p>Film Süresi : {movie?.time}</p>
                 <RatingStar star={movie?.rating} isVisible={true} />
                 <div className={styles.fav_comment_btnDiv}>
                     <ScrollToComment />
+                    <FavoriteMovieBtn movieId={movie._id} />
                 </div>
             </div>
         </div>
