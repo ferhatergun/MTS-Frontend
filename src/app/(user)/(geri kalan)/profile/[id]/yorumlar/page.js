@@ -20,7 +20,6 @@ export default function page() {
     const result = await getUserComment(userId)
     setComments(result)
   }
-  
   return (
     <div>
       <div className={styles.container}>
@@ -29,7 +28,7 @@ export default function page() {
           <>
           {
             comments.map((commentId,index)=>
-              <ProfileYorum key={index} commentId={commentId} />
+              <ProfileYorum key={index} commentId={commentId} setComments={setComments} />
             )
           }
           </> :

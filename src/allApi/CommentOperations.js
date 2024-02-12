@@ -148,6 +148,33 @@ export const deleteComment = async(comment,setComments) => {
 
 }
 
+export const deleteCommentProfile = async(comment,setComments) => {
+  try{
+      const response = await 
+      fetch(`${process.env.BACKEND_URL}/comments/${comment.movieSeriesId}
+      /deleteComment/${comment._id}`,{
+        method:'DELETE',
+        headers:{
+          'Content-Type':'application/json',
+          'Authorization': "Bearer " + getCookie('accessToken'),
+        }
+      })
+      const result = await response.json()
+      if(result.success === true){
+        toast.success("Yorum Silindi")
+        setComments((prev)=>prev.filter((item)=>item !== comment._id))
+        // yorumu yorum dizisinden sildik
+      }
+      else{
+        toast.warning("Tekrar Deneyiniz")
+      }
+  }catch(e){
+    console.log(e)
+  }
+
+}
+
+
 
 
 

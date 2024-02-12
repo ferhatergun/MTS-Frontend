@@ -6,6 +6,7 @@
     display: flex;
     border-radius: 15px;
     overflow: hidden;
+    position: relative;
     
 }
 .Image{
@@ -33,4 +34,18 @@
 .link{
     color:var(--color1);
 
+}
+.deleteBtn{
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+    border-radius: 10px;
+    border:1px solid rgb(93, 93, 93);
+    cursor: pointer;
+    margin-left: auto;
+    
 }

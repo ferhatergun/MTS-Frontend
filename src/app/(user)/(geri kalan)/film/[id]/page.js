@@ -21,7 +21,7 @@ export default async function page({params}) {
         <p className={styles.movieName}>{movie?.name}</p>
         <div className={styles.movieInformationDiv}>
             <div className={styles.imageDiv}>
-                <MovieImage photoId={movie.moviePhoto} style={styles.image} />
+                <MovieImage photoId={movie?.moviePhoto} style={styles.image} />
             </div>
             <div className={styles.informationDiv} >
                 <p>Kategori : {movie?.category}</p>
@@ -43,7 +43,7 @@ export default async function page({params}) {
         <div className={styles.movieCommentsDiv}>
             {
                 movie && params ?
-                <MovieComment movieId={params.id} targetId={"3455"} /> :null
+                <MovieComment movieId={params.id}/> :null
             }
         </div>
 
