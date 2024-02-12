@@ -14,7 +14,7 @@ export default function SearchBar() {
   const searchMovies=async(keyword)=>{
     const response = await fetch(`${process.env.BACKEND_URL}/movieSeries/Search/MovieSeries?search=${keyword}`)
     const result = await response.json()
-    setMovies(result.moviesSeries)
+    setMovies(result.moviesSeries.slice(0,10))
   }
 
   const searchRef =useRef()

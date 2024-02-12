@@ -197,3 +197,29 @@ export const deleteUser = async (userIds,setRefresh) => {
     }
 }
 
+
+export const bannedUser = async (userId) => { 
+    try {
+        const response = await fetch(`${process.env.BACKEND_URL}/AdminUser/${userId}/bannedUser`, {
+            method: "PATCH",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': "Bearer " + getCookie('accessToken'),
+            },
+        })
+        const result = await response.json()
+        console.log(result)
+        if(result.status == "success"){
+            toast.success("İşlem Başarılı")
+            setRefresh((prev) => prev+1)
+        }
+        else{
+            toast.error("Hata")
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
+
