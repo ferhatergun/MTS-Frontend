@@ -29,14 +29,14 @@ if(loading)
         {
             !userId ? 
             <div className={styles.favBtn} style={{opacity:0.5,pointerEvents:'none'}}>
-            Favorile
+            Favori
             <BookmarkBorderIcon/>
         </div>
             
             :(
                 favoriteMovies && (
                 <div className={styles.favBtn} onClick={()=>favoriteMovie(movieId,setFavoriteMovies)}>
-                    Favorile
+                    Favori
                     {
                         favoriteMovies.includes(movieId) ?
                         <BookmarkIcon/> :
