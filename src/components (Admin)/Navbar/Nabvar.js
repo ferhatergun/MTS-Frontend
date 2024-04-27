@@ -20,9 +20,9 @@ export default function Nabvar() {
     <div className={styles.container}>
         <div className={styles.rightItems}>
             <Image 
-            src="/logo.jpg" 
+            src="/logo.png" 
             alt="logo" 
-            width={80} height={50} 
+            width={70} height={70} 
             style={{mixBlendMode:'color-burn'}} />
             <Link href="/admin/filmler">Filmler</Link>
             <Link href="/admin/users">Kullanıcılar</Link> 

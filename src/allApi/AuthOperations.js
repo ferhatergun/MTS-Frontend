@@ -16,7 +16,7 @@ export const userLogin=async(values,setErrors)=>{
             body:JSON.stringify(data)
              }) 
              const result = await response.json(); // database den gelen mesaj 
-             
+             console.log(result)
             if(result.success == true ){
                 toast.success("Giriş Başarılı")
                 setCookie("accessToken",result.accessToken,{maxAge:3600})
@@ -27,6 +27,12 @@ export const userLogin=async(values,setErrors)=>{
                 toast.error("Giriş Başarısız")
                 if(result.error =="Kayitli kullanici bulunamadi"){
                     setErrors({ email: 'Kayıtlı Kullanıcı Bulunamadı' })
+                }
+                if(result.error =="Admin girişi yapamazsınız."){
+                    setErrors({ email: 'Admin Girişi Yapınız' })
+                }
+                if(result.error =="Kullanıcı yasaklandı."){
+                    setErrors({ email: 'Kullanıcı Yasaklandı' })
                 }
                 else if(result.error =="Girdiginiz şifre yanlis"){
                     setErrors({ password: 'Girdiğiniz Şifre Yanlış' })

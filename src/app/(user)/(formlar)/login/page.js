@@ -3,7 +3,7 @@ import React ,{useState}from 'react'
 import { Grid ,TextField,Button,IconButton,OutlinedInput,
 InputLabel,FormControl,FormHelperText} from '@mui/material'
 import '../Forms.css'
-import img from '$/assets/login.jpg'
+import img from '$/assets/login.svg'
 import { Formik } from 'formik'
 import * as yup from "yup"
 import { motion } from "framer-motion";

@@ -7,7 +7,7 @@ import Link from 'next/link'
 import { useSelector } from 'react-redux';
 import { useState, useEffect, use } from 'react';
 import ProfileToogle from '../ProfileToggleBtn(navbar)/ProfileToogle';
-import logo from '$/assets/logo.jpg'
+import logo from '$/assets/logo.png'
 import Image from 'next/image';
 import { isAuth } from '$/lib/auth';
 
@@ -58,14 +58,7 @@ export default function Navbar() {
 
                     </li>
                 </ul>
-            </div>
-            <div className={styles.altContainer}>
-                <ul className={styles.altNavbar}>
-                    <li className={styles.altNavItem}>Filmler</li>
-                    <li className={styles.altNavItem}>Diziler</li>
-                    <li className={styles.altNavItem}>Vizyondaki Filmler</li>
-                </ul>
-            </div>           
+            </div>          
         </div>
     );
 }

@@ -198,7 +198,7 @@ export const deleteUser = async (userIds,setRefresh) => {
 }
 
 
-export const bannedUser = async (userId) => { 
+export const bannedUser = async (userId,setRefresh) => { 
     try {
         const response = await fetch(`${process.env.BACKEND_URL}/AdminUser/${userId}/bannedUser`, {
             method: "PATCH",

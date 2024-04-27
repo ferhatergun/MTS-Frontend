@@ -5,7 +5,6 @@ import Link from "next/link";
 import styles from "./page.module.css"
 
 const Footer = () => {
-  const footerLinks = []
   return (
     <footer
       className={styles.footer}
@@ -17,10 +16,10 @@ const Footer = () => {
           className={styles.footer__logo}
         >
           <Image 
-          src="/logo.jpg" 
+          src="/logo.png" 
           alt="logo" 
-          width={150} 
-          height={38} 
+          width={100} 
+          height={50} 
           style={{objectFit: "contain"}}
           />
           <p className={styles.logo}>

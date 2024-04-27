@@ -73,14 +73,14 @@ const columns = [
     flex:1,
     renderCell:(params)=>(
       <div className={styles.accountHealt}>
-        {params.row.role === "user" ? 
-        <div className={styles.healt}>
-          <PersonIcon sx={{color:'blue'}} />
-          User
-        </div> : 
+        {params.row.role === "admin" ? 
         <div className={styles.healt}>
           <ManageAccountsIcon sx={{color:'black'}} />
           Admin
+        </div> : 
+        <div className={styles.healt}>
+          <PersonIcon sx={{color:'blue'}} />
+          User
         </div>
         }
         
@@ -123,7 +123,7 @@ const columns = [
         </Tooltip>
 
         <Tooltip title="Kısıtla" followCursor placement='top'>
-          <div className={styles.reportUserBtn} onClick={()=>bannedUser(params.row.id)}>
+          <div className={styles.reportUserBtn} onClick={()=>bannedUser(params.row.id,setRefresh)}>
             <ReportGmailerrorredIcon/>
           </div>
         </Tooltip>
