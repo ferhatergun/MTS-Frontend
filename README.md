@@ -1,34 +1,98 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Projenin Backend Reposu : https://github.com/nurettinyavuz/MovieReview-BackEnd
+## MTS - Movie Tv Series Review
 
-## Getting Started
+<details>
+<summary>Kullanıcı Paneli Özellikleri</summary> <br/>
 
-First, run the development server:
+- searchbar sayesinde film arama
+- film detaylarını görüntüleme
+- filmlere yorum yazma ve yıldız verme
+- yazılan yorumlara like & dislike atma
+- yazdığı yorumu güncelleme
+- profil sayfasında yaptığı yorumları listeleme ve silme
+- profil sayfasında favori filmlerin listelenmesi
 
-```bash
+</details>
+
+<details>
+<summary>Admin Paneli Özellikleri</summary> <br/>
+
+- sisteme yüklü filmleri listeler
+- film ekleme güncelleme silme yapabilir
+- film tablosunu filtreleme
+- sisteme kayıtlı tüm kullanıcıları listeler
+- kullanıcıları silebilir
+- kullanıcıyı kısıtlayabilir
+- kullanıcı ismi ve mailden filtreleme yapılabilir
+</details>
+
+## Proje Görüntüleri
+<details>
+<summary>Kullanıcı Paneli</summary> <br/>
+
+| Ana Sayfa | Film Arama | 
+|------|--------|
+| ![Ana Sayfa](https://github.com/ferhatergun/MTS-Frontend/blob/main/public/k1.png) | ![Film Arama](https://github.com/ferhatergun/MTS-Frontend/blob/main/public/k2.png)
+
+| Film Detay Sayfası | Film Yorum | 
+|------|--------|
+| ![Film Detay Sayfası](https://github.com/ferhatergun/MTS-Frontend/blob/main/public/k3.png) | ![Film Yorum](https://github.com/ferhatergun/MTS-Frontend/blob/main/public/k4.png)
+
+| Profil Sayfası |
+|------|
+| ![Profil Sayfası](https://github.com/ferhatergun/MTS-Frontend/blob/main/public/k5.png) | 
+
+
+
+
+</details>
+
+<details>
+<summary>Admin Paneli</summary> <br/>
+  
+| Filmler Sayfası | Film Ekle | 
+|------|--------|
+| ![Film Detay Sayfası](https://github.com/ferhatergun/MTS-Frontend/blob/main/public/a1.png) | ![Film Yorum](https://github.com/ferhatergun/MTS-Frontend/blob/main/public/a2.png)
+
+| Kullanıcılar Sayfası |
+|------|
+| ![Profil Sayfası](https://github.com/ferhatergun/MTS-Frontend/blob/main/public/a3.png) | 
+
+
+
+</details>
+
+## Kullanılan Teknolojiler
+- Next.js ( Frontend Framework )
+- Firebase ( Resim Depolama Veritabanı )
+- Formik & Yup ( Form Validasyon )
+- React Redux ( Global State Management )
+- MUI & ANTD ( UI Component Paketi )
+- Framer Motion ( Animasyon Paketi )
+- Embla Carousel ( Film Carousel )
+- React Toastify ( Hata-Alert Paketi )
+   
+
+### Projeyi Çalıştırma
+````
+git clone https://github.com/ferhatergun/MTS-Frontend.git
+
+cd MTS-Frontend
+
+npm install
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+````
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### .env dosyası
+````
+FRONT_URL: http://localhost:3000
+BACKEND_URL: http://localhost:5000
+apiKey: "YOUR_FIREBASE-APIKEY"
+authDomain: "YOUR_FIREBASE_AUTHDOMAIN"
+projectId: "YOUR_FIREBASE_PROJECTID"
+storageBucket: "YOUR_FIREBASE_STOREBUCKET"
+messagingSenderId: "YOUR_FIREBASE_MESSAGINHSENDERID"
+appId: "YOUR_FIREBASE_APPID"
+measurementId: "YOUR_FIREBASE_MEASUREMENTID"
+````
