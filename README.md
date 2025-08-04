@@ -1,7 +1,7 @@
 Projenin Backend Reposu : https://github.com/nurettinyavuz/MovieReview-BackEnd
 ## MTS - Movie Tv Series Review
 
-<details>
+<details open>
 <summary>Kullanıcı Paneli Özellikleri</summary> <br/>
 
 - searchbar sayesinde film arama
@@ -14,7 +14,7 @@ Projenin Backend Reposu : https://github.com/nurettinyavuz/MovieReview-BackEnd
 
 </details>
 
-<details>
+<details open>
 <summary>Admin Paneli Özellikleri</summary> <br/>
 
 - sisteme yüklü filmleri listeler
@@ -27,7 +27,7 @@ Projenin Backend Reposu : https://github.com/nurettinyavuz/MovieReview-BackEnd
 </details>
 
 ## Proje Görüntüleri
-<details>
+<details open>
 <summary>Kullanıcı Paneli</summary> <br/>
 
 | Ana Sayfa | Film Arama | 
@@ -47,7 +47,7 @@ Projenin Backend Reposu : https://github.com/nurettinyavuz/MovieReview-BackEnd
 
 </details>
 
-<details>
+<details open>
 <summary>Admin Paneli</summary> <br/>
   
 | Filmler Sayfası | Film Ekle | 
