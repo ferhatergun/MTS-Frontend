@@ -64,15 +64,6 @@ const OpenMenu = () => {
           className={`${styles.toggleMenu} ${showNavbar && styles.active}`} ref={navbarRef1}
         >
           <ul>
-            <li className={styles.toggleMenuItem}>
-              <Link className={styles.link} href="/filmler" onClick={()=>setShowNavbar(false)}>Filmler</Link>
-            </li>
-            <li className={styles.toggleMenuItem}>
-              <Link className={styles.link} href="/diziler" onClick={()=>setShowNavbar(false)}>Diziler</Link>
-            </li>
-            <li className={styles.toggleMenuItem}>
-              <Link className={styles.link} href="/vizyondakifilmler" onClick={()=>setShowNavbar(false)}>Vizyondaki Filmler</Link>
-            </li>
             { loading ?
               (auth ? 
               <>
